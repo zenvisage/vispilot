@@ -1,0 +1,8 @@
+psycopg2>=2.7,<2.8 --no-binary :all:
+networkx==1.11
+Flask==0.12.2
+Flask-DebugToolbar==0.10.1
+Flask-SQLAlchemy==2.2
+Jinja2==2.7.3
+SQLAlchemy==1.1.13
+simplejson==3.7.3

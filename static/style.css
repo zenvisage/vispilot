@@ -1,0 +1,325 @@
+body,div,dl,dt,dd,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,textarea,p,blockquote,th,td {
+    margin: 0;
+    padding: 0;
+
+}
+
+charttable {
+    border-collapse: collapse;
+    border:1px solid black;
+}
+
+fieldset,
+img {
+    border: 0;
+}
+address,caption,cite,code,dfn,em,strong,th,var {
+    font-style: normal;
+    font-weight: normal;
+}
+
+caption,
+th {
+    text-align: left;
+}
+h1{
+  font-size: 130%;
+  font-weight: bold;
+}
+h2,h3,h4,h5,h6{
+    font-size: 100%;
+    font-weight: normal;
+}
+
+q:before,
+q:after {
+    content: '';
+}
+
+abbr,
+acronym {
+    border: 0;
+}
+
+body {
+    background: #fff;
+
+}
+/*Treant settings */
+
+#mynetwork {
+    width: 75%;
+    height: 600px;
+    border: 1px solid lightgray;
+    background-color:#eeeeee;
+    float:left;
+
+}
+/*Webpage Style settings */
+#chartid body {
+  margin: 0px;
+  padding: 0px;
+  font-family: 'Avenir';
+}
+
+#chartid h1, button {
+  margin-left: 25px;
+  text-align: left;
+}
+
+#chartid h1 {
+  font-size: 25px;
+}
+
+#chartid button {
+  margin-bottom: 25px;
+}
+
+.main {
+  margin: 0px 25px;
+}
+
+#chartid svg {
+  padding: 20px 40px;
+}
+
+.axis path,
+.axis line {
+  fill: none;
+  stroke: black;
+  shape-rendering: crispEdges;
+}
+
+text,
+.axis text {
+  font-size: 11px;
+}
+
+rect:hover {
+  fill: orange;
+}
+
+/*select {
+  font: 400 18px/1.3 "Helvetica Neue", sans-serif;
+  -webkit-appearance: none;
+  appearance: none;
+  border: 5px #657383;
+  line-height: 1;
+  outline: 0;
+  color: #657383;
+  border-color: #657383;
+  padding: 0.65em 2.5em 0.55em 0.75em;
+  border-radius: 3px;
+  background: linear-gradient(#657383, #657383) no-repeat,
+              linear-gradient(-135deg, rgba(255,255,255,0) 50%, white 50%) no-repeat,
+              linear-gradient(-225deg, rgba(255,255,255,0) 50%, white 50%) no-repeat,
+              linear-gradient(#657383, #657383) no-repeat;
+  background-color: white;
+  background-size: 1px 100%, 28px 28px, 28px 28px, 28px 60%;
+  background-position: right 20px center, right bottom, right bottom, right bottom;   
+}*/
+
+
+.btn-xs {
+    padding: 10px 10px;
+    font-size: 30px;
+    line-height: 1.5;
+    border-radius: 3px;
+}
+.title h2 {
+  left:40px; 
+  font-family:Verdana,sans-serif; 
+  font-size:15px;
+}
+
+.menu-item{
+  margin-left: 20px;
+  display: inline-block;
+}
+
+#slidecontainer {
+    width: 100%; /* Width of the outside container */
+}
+input[type=range] {
+    display: block;
+    width: 80%;
+}
+
+/* The slider itself */
+
+/* Mouse-over effects */
+.slider:hover {
+    opacity: 1; /* Fully shown on mouse-over */
+
+}
+
+/* The slider handle (use webkit (Chrome, Opera, Safari, Edge) and moz (Firefox) to override default look) */
+
+
+/*menu icon*/
+.iconcontainer {
+    display: inline-block;
+    cursor: pointer;
+}
+
+
+.bar1, .bar2, .bar3 {
+    width: 35px;
+    height: 5px;
+    background-color: #ffffff;
+    margin: 6px 0;
+    transition: 0.4s;
+}
+
+.change .bar1 {
+    -webkit-transform: rotate(-45deg) translate(-9px, 6px) ;
+    transform: rotate(-45deg) translate(-9px, 6px) ;
+}
+
+.change .bar2 {opacity: 0;}
+
+.change .bar3 {
+    -webkit-transform: rotate(45deg) translate(-8px, -8px) ;
+    transform: rotate(45deg) translate(-8px, -8px) ;
+}
+
+/* Popup container */
+.popup {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+}
+
+/* The actual popup (appears on top) */
+.popup .popuptext {
+    visibility: hidden;
+    width: 160px;
+    background-color: #555;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 8px 0;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    margin-left: -80px;
+}
+
+/* Popup arrow */
+.popup .popuptext::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #555 transparent transparent transparent;
+}
+
+
+* {
+    box-sizing: border-box;
+}
+
+.column {
+    float: right;
+    padding: 5px;
+}
+.clearfix::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+.menu {
+    width: 25%;
+}
+
+.menu ul {
+    list-style-type:circle;
+    margin: 0;
+    padding: 0;
+}
+.panel {
+    padding: 8px;
+    margin-bottom: 8px;
+    background-color: #33b5e5;
+    color: #ffffff;
+}
+.panel:hover {
+    background-color: #0099cc;
+}
+
+/* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content/Box */
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 50%; /* Full width */
+    height: 70%;
+}
+
+/* The Close Button */
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+select#soflow, select#soflow-color {
+   -webkit-appearance: button;
+   -webkit-border-radius: 2px;
+   -webkit-box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
+   -webkit-padding-end: 20px;
+   -webkit-padding-start: 2px;
+   -webkit-user-select: none;
+   background-image: url(http://i62.tinypic.com/15xvbd5.png), -webkit-linear-gradient(#FAFAFA, #F4F4F4 40%, #E5E5E5);
+   background-position: 97% center;
+   background-repeat: no-repeat;
+   border: 1px solid #AAA;
+   color: #555;
+   font-size: inherit;
+   margin: 0px;
+   overflow: hidden;
+   padding: 5px 10px;
+   text-overflow: ellipsis;
+   white-space: nowrap;
+   width: 180px;
+}
+
+#yearSlider .slider-selection {
+	background: #BABABA;
+}
+
+.slider-handle{
+  width:60px;
+  height:60px;
+  line-height:60px;
+  text-align:center;
+  color:white;
+  top:-20px;
+}

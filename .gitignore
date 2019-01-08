@@ -1,0 +1,12 @@
+.settings/
+.idea/
+target/
+*.csv
+*.pyc
+ipynb/.ipynb_checkpoints/
+*.zip
+*.log
+/bin/
+2.17.3/
+ipynb/dashboards/
+static/generated_dashboards/
