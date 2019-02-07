@@ -14,7 +14,7 @@ import edu.uiuc.viz.lattice.Lattice;
 public class GreedyPickingAlternativeRoot extends Traversal{
 	String alternativeRoot;
 	ArrayList<Integer> existingDashboard;
-	public GreedyPickingAlternativeRoot(ArrayList<Integer> existingDashboard, String alternativeRoot) {
+	public GreedyPickingAlternativeRoot(/*ArrayList<Integer> existingDashboard*/ String alternativeRoot) {
 		super("greedy_picking_alternative_root");
 		this.alternativeRoot=alternativeRoot;
 		this.existingDashboard=existingDashboard;
@@ -26,6 +26,8 @@ public class GreedyPickingAlternativeRoot extends Traversal{
 	   System.out.println("---------------- Greedy Picking -----------------");
        double total_utility = 0;
        ArrayList<Integer> dashboard = new ArrayList<Integer>();
+       System.out.println(exp.lattice.id2IDMap);
+       System.out.println(alternativeRoot);
        int correspondingID = exp.lattice.id2IDMap.get(alternativeRoot);
        System.out.println(correspondingID);
        dashboard.add(correspondingID); 
@@ -64,13 +66,13 @@ public class GreedyPickingAlternativeRoot extends Traversal{
            dashboard.add(next);
            total_utility+=max_utility;
        }
-       System.out.println(dashboard);
-       dashboard.remove((Integer) correspondingID);
-       //dashboard.remove(correspondingID);// Do not add alternative root since it is already included in the original dashboard
-       //Combining this with existing dashboard
-       for (int existingID : existingDashboard) {
-    	   		dashboard.add(existingID);
-       }
+//       System.out.println(dashboard);
+//       dashboard.remove((Integer) correspondingID);
+//       //dashboard.remove(correspondingID);// Do not add alternative root since it is already included in the original dashboard
+//       //Combining this with existing dashboard
+//       for (int existingID : existingDashboard) {
+//    	   		dashboard.add(existingID);
+//       }
        exp.dashboard.maxSubgraph= dashboard; 
        exp.dashboard.maxSubgraphUtility=total_utility;
        exp.dashboard.printMaxSubgraphSummary();

@@ -625,7 +625,7 @@ function updateTextInput(val) {
     })
     //console.log(svgString)
 }*/
-
+var dic = [];
 async function generateNode(nodeDicStr,callback){
     var nodelist = [];
     nodeDicStr = JSON.parse(nodeDicStr);
@@ -645,6 +645,8 @@ async function generateNode(nodeDicStr,callback){
             if(node[values]['xAxis'])
                 xAttrs.push(node[values]['xAxis']);
             if(node[values]["filter"]){
+                dic[i]=  node[values]["filter"];
+                
                 if(node[values]["filter"]=="#")
                     filterVal="overall"
                 else if(node[values]["filter"]=="collapsed")
@@ -659,6 +661,7 @@ async function generateNode(nodeDicStr,callback){
             if(node[values]['collapse'])
                 collapse.push(node[values]['collapse']);
         }
+        console.log(filterVal);
         /*console.log(yVals);
         console.log(xAttrs);
         console.log(filterVal);
@@ -709,6 +712,7 @@ async function generateNode(nodeDicStr,callback){
         //     nodelist.push({"id": parseInt(i), "filterVal":filterVal,"collapse":collapse,"image": "data:image/svg+xml;base64," + btoa(result), "shape": 'image', "color":{"border": "grey"} });
         //  }).catch(function(err) { console.error(err); });
         var svgString =  (view.toSVG()).then(function(result) {
+            //console.log(filterVal);
             nodelist.push({"id": parseInt(i), "filterVal":filterVal,"collapse":collapse,"image": "data:image/svg+xml;base64," + btoa(result), "shape": 'image', "color":{"border": "grey"} });
             if (nodelist.length == Object.keys(nodeDicStr).length){//$("#kInputId").val()
                 var cur = 0;
@@ -730,6 +734,7 @@ async function generateNode(nodeDicStr,callback){
 function generateEdge(nodeDicStr){
     var edgelist = [];
     nodeDicStr = JSON.parse(nodeDicStr);
+    
     if(Object.keys(nodeDicStr).length>0){
         var nBars = (Object.values(nodeDicStr)[0]).length -1;
         for( key in (nodeDicStr)){
@@ -746,8 +751,9 @@ function generateEdge(nodeDicStr){
     
     return edgelist;
 }
-
+var old_dic;
 function getNodeEdgeListThenDraw(nodeDicStr){
+    old_dic = nodeDicStr;
     nodeDicStr = nodeDicStr.split("\\").join("");
     console.log(nodeDicStr);
 //    nodeDicStr = JSON.stringify(nodeDicStr);
@@ -782,6 +788,7 @@ function Draw(){
         },
         success: function(data) {
                 console.log(data);
+                //old_dic = data;
                 getNodeEdgeListThenDraw(data);
                 document.getElementById("loadingDashboard").style.display = "none";
             }
@@ -803,6 +810,34 @@ function getCol(){
                     for(i = 0; i<data.length; i++){
                         document.getElementById("x").innerHTML += "<option>" + data[i] + "</option>";
                     }
+                }
+
+            })
+}
+function Expand(id){
+    var expand = document.getElementById("expandID").value;
+    //dic = JSON.parse(dic);
+    console.log(dic[id]);
+    $.ajax({
+            type: "POST",
+            url: "viz/expand",
+            async: false,
+            data: {
+                "rootid": JSON.stringify(dic[id]),
+                "expand": expand,
+                "datasetName" : JSON.stringify(document.getElementById('data').value),
+                "yAxis" : JSON.stringify(document.getElementById('y').value),
+                "xAxis" : JSON.stringify(document.getElementById('x').value),
+                "aggType" : JSON.stringify(document.getElementById('agg').value),
+                //"k" : document.getElementById('kOutputId').value,
+                "ic" : 0,
+                "info" : 0.9
+            },
+            success: function(data) {
+                    console.log(data);
+                    var new_dic = old_dic.slice(0,-1) + ',' + data.substring(1);
+                    console.log(new_dic);
+                    getNodeEdgeListThenDraw(new_dic);
                 }
 
             })

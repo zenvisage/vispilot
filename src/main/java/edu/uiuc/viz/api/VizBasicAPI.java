@@ -115,24 +115,74 @@ public class VizBasicAPI {
 		return colArrs;
 	}	
 	
+	@RequestMapping(value = "/expand", method = RequestMethod.POST)
+	@ResponseBody
+	public String expand(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException, InterruptedException, SQLException {
+		String newroot = request.getParameter("rootid").replace("\"", "");
+		int expand = Integer.parseInt(request.getParameter("expand"));
+		
+		Distance dist = new Euclidean();
+		ArrayList<String>  groupby = null;
+
+		boolean online = false;
+		
+		String name = request.getParameter("datasetName").replace("\"", "");
+		String y = request.getParameter("yAxis").replace("\"", "");
+		String x = request.getParameter("xAxis").replace("\"", "");
+		String agg = request.getParameter("aggType").replace("\"", "");
+		//int k = Integer.parseInt(request.getParameter("k"));
+		double ic = Double.parseDouble(request.getParameter("ic"));
+		double info = Double.parseDouble(request.getParameter("info"));
+		ArrayList<Integer> org = new ArrayList<Integer>(Arrays.asList(1,2,3,5,6,7,8,9));
+		Traversal ourAlgo = new GreedyPickingAlternativeRoot(newroot);
+		
+		if (name.equals("turn")){
+		   	groupby = new ArrayList<String>(Arrays.asList("is_multi_query","is_profile_query","is_event_query","has_impressions_tbl",
+				"has_clicks_tbl","has_actions_tbl","has_distinct","has_list_fn"));
+		}
+		else if (name.equals("ct_police_stop")) {
+		   // Dataset #2 : Police Stop
+		   groupby = new ArrayList<String>(Arrays.asList(
+			"driver_gender", "driver_race", "search_conducted",
+			"contraband_found",  "duration", "stop_outcome",
+			"stop_time", "driver_age"));//"is_arrested",
+		}
+		else if (name.equals("mushroom")) {
+		   // Dataset #3 : Mushroom 
+		   groupby = new ArrayList<String>(Arrays.asList("type","cap_shape", "cap_surface" , "cap_color" , "bruises" , "odor"));
+		}else if (name.equals("titanic")) {
+		   // Dataset #3 : Titanic 
+		   groupby = new ArrayList<String>(Arrays.asList("survived","gender","pc_class"));
+		}else if (name.equals("autism")) {
+		   // Dataset #2 : Autism
+		   groupby = new ArrayList<String>(Arrays.asList("autism", "a1_score", "a2_score", "a3_score", "a4_score", "a5_score", "a6_score", "a7_score","a8_score", "a9_score", "a10_score"));
+		}
+
+
+		System.out.print(name + x + y + agg + Integer.toString(expand) + " "+Double.toString(ic)+" "+Double.toString(info));
+		Experiment exp = new Experiment(name, x, y ,groupby,agg, expand, dist,ic,info,false);
+		exp.setAlgo(ourAlgo);
+        String nodedic = exp.runOutputReturnJSON(exp);
+//      System.out.print(nodedic);
+//		String nodedic = name + x + y + agg + Integer.toString(k) + " "+Double.toString(ic)+" "+Double.toString(info);
+		return nodedic;
+	}
 	public static void main(String[] args) throws SQLException, FileNotFoundException, UnsupportedEncodingException{
-		/*Experiment.experiment_name="../ipynb/dashboards/";
+		Experiment.experiment_name="../ipynb/dashboards/";
 		Distance dist = new Euclidean();
 		ArrayList<String>  groupby = new ArrayList<String>(Arrays.asList("survived","gender","pc_class"));
 		//"titanic""survived""id""COUNT"9 0.0 0.9
 		String yAxis = "id";
 	    String xAxis = "survived"; 
 	    String aggType = "COUNT";
-	    Traversal ourAlgo = new GreedyPicking();
+	    Traversal ourAlgo = new GreedyPickingAlternativeRoot("#gender$female#");
 	    Experiment exp = new Experiment("titanic", xAxis, yAxis,groupby,aggType, 9, dist,0,0.9,false);
+	    System.out.println(exp.lattice.id2IDMap.get("#gender$female#"));
 	    exp.setAlgo(ourAlgo);
 		VizOutput vo = new VizOutput(exp);
         String nodedic = vo.generateNodeDic();
-        System.out.print(nodedic);*/
-		Database d = new Database();
-		ResultSet ret= d.getColumns("titanic");
-		ArrayList<String> colArrs = d.resultSet2ArrayStr(ret);
-		System.out.print(colArrs);
+        System.out.print(nodedic);
+		
 	}
 	
 }

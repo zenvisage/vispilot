@@ -7,7 +7,7 @@ var node_dataset = null;
 var totalclick = {};
 var options;
 function draw(node,edge) {
-
+    console.log(node)
     // create a network
     var container = document.getElementById('canvas-graph');
     container.removeChild(container.childNodes[0])
@@ -41,7 +41,7 @@ function draw(node,edge) {
               border: '#A1BACB',
               background: '#FFFFFF',
               highlight: 'red',
-              hover: '#ff9933'
+              //hover: '#ff9933'
             },
           font:{color:'#0B131A',
                 size:8
@@ -60,9 +60,9 @@ function draw(node,edge) {
             improvedLayout:true,
             hierarchical: {
               enabled:true,
-              levelSeparation: 260,
-              nodeSpacing: 230,
-              treeSpacing: 600,
+              levelSeparation: 300,
+              nodeSpacing: 250,
+              treeSpacing: 650,
               blockShifting: true,
               edgeMinimization: true,
               parentCentralization: true,
@@ -192,8 +192,13 @@ function showJQueryDialog(params, nodeID, selection) {
 
     title = "Expanding " + node_dataset._data[nodeID]["filterVal"] + "<br> with ";
     var d = document.getElementById('dlg_text');
-    var input = '&nbsp;<input type="text" size="1" name="lastname" value="0"> additional visualizations &nbsp;<input type="submit" style="border-radius: 5px;" value="Submit">'
-    d.innerHTML = "<style='font-size:22px'>"+ title + input ;
+    var expandroot = (node_dataset._data[nodeID].id);
+    //console.log(node_dataset._data[nodeID].filterVal);
+    //var expandroot = node_dataset._data[nodeID]["filterVal"];
+    //console.log(expandroot);
+    var input1 = '&nbsp;<input type="number" id="expandID" size="1" value="0"> additional visualizations &nbsp;<button onclick="Expand(';
+    var input2 = ')">Submit</button>';
+    d.innerHTML = "<style='font-size:22px'>"+ title + input1 + "'" + expandroot+"'" + input2;
     d.style.position = "fixed";
     d.style.display = "inline";
     d.style.left = params.pointer.DOM.x+40+'px';
