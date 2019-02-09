@@ -815,6 +815,8 @@ function getCol(){
             })
 }
 function Expand(id){
+    var d = document.getElementById('dlg_text');
+    d.style.display = 'none';
     var expand = document.getElementById("expandID").value;
     //dic = JSON.parse(dic);
     console.log(dic[id]);
@@ -838,7 +840,31 @@ function Expand(id){
                     var new_dic = old_dic.slice(0,-1) + ',' + data.substring(1);
                     console.log(new_dic);
                     getNodeEdgeListThenDraw(new_dic);
-                }
+                },
+              error: function(xhr, textStatus, error){
+                  alert("Invalid Input! Try another smaller number.");
+              }
 
             })
 }
+function showDialog(nodeID){
+    var title = dic[nodeID];
+    if(title=="#")
+        title="overall"
+    else if(title=="collapsed")
+        title="collapsed"
+    else
+        title = String(title.split("#").join("&").split("$").join("=")).slice(1, -1);
+    title = "Expanding " + title + "<br> with ";
+    var d = document.getElementById('dlg_text');
+    var expandroot = (node_dataset._data[nodeID].id);
+    //console.log(node_dataset._data[nodeID].filterVal);
+    //var expandroot = node_dataset._data[nodeID]["filterVal"];
+    //console.log(expandroot);
+    var input1 = '&nbsp;<input  width="50px" type="number" id="expandID" value="0"> additional visualizations &nbsp;<button onclick="Expand(';
+    var input2 = ')">Submit</button>';
+    d.innerHTML = "<style='font-size:22px'>"+ title + input1 + "'" + expandroot+"'" + input2;
+    document.getElementById('expandID').style.width = '50px';
+}
+
+

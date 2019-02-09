@@ -40,7 +40,7 @@ function draw(node,edge) {
           color: {
               border: '#A1BACB',
               background: '#FFFFFF',
-              highlight: 'red',
+              //highlight: 'red',
               //hover: '#ff9933'
             },
           font:{color:'#0B131A',
@@ -117,55 +117,55 @@ function draw(node,edge) {
         var nodeID = params['nodes']['0'];
         console.log(nodeID);
 
-        totalclick[nodeID] = (totalclick[nodeID]+1)%3;
-        if(totalclick[nodeID]==0)
-            totalclick[nodeID] = 3;
-        var color;
-        if(totalclick[nodeID]==1)
-            color = 'grey';
-        else if(totalclick[nodeID]==2)
-            color = '#cc66ff';
-        else if(totalclick[nodeID]==3)
-            color = '#ff9933';
+        // totalclick[nodeID] = (totalclick[nodeID]+1)%3;
+        // if(totalclick[nodeID]==0)
+        //     totalclick[nodeID] = 3;
+        // var color;
+        // if(totalclick[nodeID]==1)
+        //     color = 'grey';
+        // else if(totalclick[nodeID]==2)
+        //     color = '#cc66ff';
+        // else if(totalclick[nodeID]==3)
+        //     color = '#ff9933';
 
-        if (nodeID>=0) {
-            var clickedNode = node_dataset.get(nodeID);
-            //node_dataset.remove(nodeID);
-            console.log(clickedNode);
-            console.log(totalclick);
+        // if (nodeID>=0) {
+        //     var clickedNode = node_dataset.get(nodeID);
+        //     //node_dataset.remove(nodeID);
+        //     console.log(clickedNode);
+        //     console.log(totalclick);
 
 
-            clickedNode.color = {
-                border: color,
-                highlight:color
-            }
+        //     clickedNode.color = {
+        //         border: color,
+        //         highlight:color
+        //     }
 
-            //console.log("before: ")
-            //console.log(node_dataset);
-            node_dataset.update(clickedNode);
-            //console.log("after: ")
-            //console.log(node_dataset);
-        }
-        var user = $("#user").find(":selected").text();
-        $.post("/getInterested",{
-            "user" : JSON.stringify(user),
-            "task" : JSON.stringify(currentQuery),
-            "interested" : JSON.stringify(totalclick),
-            "fname" : JSON.stringify(fname)
-        },'application/json')
-        //document.getElementById('interested-in').innerHTML = '';
-        //document.getElementById('not-interested-in').innerHTML = '';
-        for (i = 0; i < node.length; i++) {
+        //     //console.log("before: ")
+        //     //console.log(node_dataset);
+        //     node_dataset.update(clickedNode);
+        //     //console.log("after: ")
+        //     //console.log(node_dataset);
+        // }
+        // var user = $("#user").find(":selected").text();
+        // $.post("/getInterested",{
+        //     "user" : JSON.stringify(user),
+        //     "task" : JSON.stringify(currentQuery),
+        //     "interested" : JSON.stringify(totalclick),
+        //     "fname" : JSON.stringify(fname)
+        // },'application/json')
+        // //document.getElementById('interested-in').innerHTML = '';
+        // //document.getElementById('not-interested-in').innerHTML = '';
+        // for (i = 0; i < node.length; i++) {
 
-            if(totalclick[node[i].id]==2){
-                //var currNode = node_dataset.get(i);
-                //document.getElementById('interested-in').innerHTML+='<li type="square" style="color:green">'+node[i].filterVal+'</li>';
-            }
-            else if (totalclick[node[i].id]==3){
-                //var currNode = node_dataset.get(i);
-                //document.getElementById('not-interested-in').innerHTML+='<li type="square" style="color:red">'+node[i].filterVal+'</li>';
-            }
-        }
+        //     if(totalclick[node[i].id]==2){
+        //         //var currNode = node_dataset.get(i);
+        //         //document.getElementById('interested-in').innerHTML+='<li type="square" style="color:green">'+node[i].filterVal+'</li>';
+        //     }
+        //     else if (totalclick[node[i].id]==3){
+        //         //var currNode = node_dataset.get(i);
+        //         //document.getElementById('not-interested-in').innerHTML+='<li type="square" style="color:red">'+node[i].filterVal+'</li>';
+        //     }
+        // }
         selection = params.nodes
         if (nodeID != undefined) {
           showJQueryDialog(params, nodeID, selection);
@@ -189,16 +189,8 @@ function draw(node,edge) {
     container.prepend(div.firstChild);
 }
 function showJQueryDialog(params, nodeID, selection) {
-
-    title = "Expanding " + node_dataset._data[nodeID]["filterVal"] + "<br> with ";
+    showDialog(nodeID);
     var d = document.getElementById('dlg_text');
-    var expandroot = (node_dataset._data[nodeID].id);
-    //console.log(node_dataset._data[nodeID].filterVal);
-    //var expandroot = node_dataset._data[nodeID]["filterVal"];
-    //console.log(expandroot);
-    var input1 = '&nbsp;<input type="number" id="expandID" size="1" value="0"> additional visualizations &nbsp;<button onclick="Expand(';
-    var input2 = ')">Submit</button>';
-    d.innerHTML = "<style='font-size:22px'>"+ title + input1 + "'" + expandroot+"'" + input2;
     d.style.position = "fixed";
     d.style.display = "inline";
     d.style.left = params.pointer.DOM.x+40+'px';
