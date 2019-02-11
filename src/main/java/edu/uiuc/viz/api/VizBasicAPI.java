@@ -120,7 +120,7 @@ public class VizBasicAPI {
 	public String expand(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException, InterruptedException, SQLException {
 		String newroot = request.getParameter("rootid").replace("\"", "");
 		int expand = Integer.parseInt(request.getParameter("expand"));
-		
+		System.out.print(expand);
 		Distance dist = new Euclidean();
 		ArrayList<String>  groupby = null;
 

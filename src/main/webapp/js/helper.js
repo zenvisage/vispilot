@@ -817,7 +817,8 @@ function getCol(){
 function Expand(id){
     var d = document.getElementById('dlg_text');
     d.style.display = 'none';
-    var expand = document.getElementById("expandID").value;
+    var expand = parseInt(document.getElementById("expandID").value) + 1;
+    console.log(expand)
     //dic = JSON.parse(dic);
     console.log(dic[id]);
     $.ajax({
