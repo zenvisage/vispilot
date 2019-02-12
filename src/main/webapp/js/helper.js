@@ -627,6 +627,7 @@ function updateTextInput(val) {
 }*/
 var dic = [];
 async function generateNode(nodeDicStr,callback){
+    dic = [];
     var nodelist = [];
     nodeDicStr = JSON.parse(nodeDicStr);
 
@@ -730,8 +731,9 @@ async function generateNode(nodeDicStr,callback){
     // return nodelist;
     // callback(nodelist);
 }
-
+var child_dic = []; 
 function generateEdge(nodeDicStr){
+    child_dic = []; 
     var edgelist = [];
     nodeDicStr = JSON.parse(nodeDicStr);
     
@@ -740,6 +742,7 @@ function generateEdge(nodeDicStr){
         for( key in (nodeDicStr)){
             //console.log(key);
             if(nodeDicStr[key][nBars]['childrenIndex'].length>0){
+                child_dic[key] = nodeDicStr[key][nBars]['childrenIndex'];
                 for(i in nodeDicStr[key][nBars]['childrenIndex']){
                     var child = nodeDicStr[key][nBars]['childrenIndex'][i];
                     //console.log(child);
@@ -752,6 +755,7 @@ function generateEdge(nodeDicStr){
     return edgelist;
 }
 var old_dic;
+
 function getNodeEdgeListThenDraw(nodeDicStr){
     old_dic = nodeDicStr;
     nodeDicStr = nodeDicStr.split("\\").join("");
@@ -814,10 +818,29 @@ function getCol(){
 
             })
 }
+
+function numOfChildren(id, child_dic){
+    var ret = 1;
+    console.log(child_dic);
+    if((!id in child_dic) || (child_dic[id] == undefined) || (child_dic[id].length == 0))
+        return ret;
+
+    for(i in child_dic[id]){
+        //console.log(child_dic[i]);
+        if(child_dic[id][i] in dic){
+            console.log(child_dic[id][i]);
+            ret += numOfChildren(child_dic[id][i], child_dic);
+        }
+    }
+    return ret;
+}
+
 function Expand(id){
     var d = document.getElementById('dlg_text');
     d.style.display = 'none';
-    var expand = parseInt(document.getElementById("expandID").value) + 1;
+    var children = numOfChildren(id, child_dic);
+    console.log(children);
+    var expand = parseInt(document.getElementById("expandID").value) + parseInt(children);
     console.log(expand)
     //dic = JSON.parse(dic);
     console.log(dic[id]);
