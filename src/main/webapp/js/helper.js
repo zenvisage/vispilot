@@ -627,6 +627,7 @@ function updateTextInput(val) {
 }*/
 var dic = [];
 async function generateNode(nodeDicStr,callback){
+    console.log("start svg");
     dic = [];
     var nodelist = [];
     nodeDicStr = JSON.parse(nodeDicStr);
@@ -716,6 +717,7 @@ async function generateNode(nodeDicStr,callback){
             //console.log(filterVal);
             nodelist.push({"id": parseInt(i), "filterVal":filterVal,"collapse":collapse,"image": "data:image/svg+xml;base64," + btoa(result), "shape": 'image', "color":{"border": "grey"} });
             if (nodelist.length == Object.keys(nodeDicStr).length){//$("#kInputId").val()
+                console.log("finish svg");
                 var cur = 0;
                 for(idx in nodeDicStr){
                     nodelist[cur].id = parseInt(idx);
