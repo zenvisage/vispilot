@@ -56,8 +56,6 @@ public class VizBasicAPI {
 	@RequestMapping(value = "/draw", method = RequestMethod.POST)
 	@ResponseBody
 	public String draw(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException, InterruptedException, SQLException {
-		Experiment exp;
-		
 		
 		String name = request.getParameter("datasetName").replace("\"", "");
 		String y = request.getParameter("yAxis").replace("\"", "");
@@ -74,6 +72,7 @@ public class VizBasicAPI {
 		String key = name + x + y + agg;
 		if(cache.containsKey(key)) {//exists in cache
 			System.out.print("----------------------exists in cache-----------------------");
+			Experiment exp;
 			exp = cache.get(key);
 			exp.setK(k);
 			exp.setAlgo(ourAlgo);
@@ -106,7 +105,7 @@ public class VizBasicAPI {
 
 
 			System.out.print(name + x + y + agg + Integer.toString(k) + " "+Double.toString(ic)+" "+Double.toString(info));
-			exp = new Experiment(name, x, y ,groupby,agg, k, dist,ic,info,false);
+			Experiment exp = new Experiment(name, x, y ,groupby,agg, k, dist,ic,info,false);
 			cache.put(key, exp);
 			exp.setAlgo(ourAlgo);
 	        String nodedic = exp.runOutputReturnJSON(exp);

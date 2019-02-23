@@ -49,7 +49,8 @@ function draw(node,edge) {
           shapeProperties: {
               useBorderWithImage:true
             }
-
+          //   ,
+          // label: "xxx title"
         },
         physics: {enabled: false},
         edges: {smooth: false,

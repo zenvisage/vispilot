@@ -686,19 +686,25 @@ async function generateNode(nodeDicStr,callback){
         }
         
         vlSpec['encoding'] = {
-            "x": {"field": xname, "type": "ordinal"},
-            "y": {"field": yname, "type": "quantitative", "scale":{"domain": [0,100]},"axis": {"minExtent":0}}
+            "x": {"field": xname, "type": "ordinal", "axis":{"title":false}},
+            "y": {"field": yname, "type": "quantitative", "scale":{"domain": [0,100]},"axis": {"title":false, "grid":false}}, 
+            "color":{
+              "legend": null,
+              "field": xname,
+              "scale":{
+                "scheme": "set2"
+              }
+            }
           };
         vlSpec['layer'] = [{
             "mark": "bar"
           }, {
             "mark": {
-              "type": "text",
-              "align": "center",
-              "baseline": "top",
-              "dx": 0,
-              "dy": 0,
-              "color": "white",
+              "type": "text", 
+              "align": "center", 
+              "center": "middle", 
+              "dx": 3, 
+              "color": "black",
               "fontSize": 12
             },
             "encoding": {
