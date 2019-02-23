@@ -654,7 +654,7 @@ async function generateNode(nodeDicStr,callback){
                 else if(node[values]["filter"]=="collapsed")
                     filterVal="collapsed"
                 else
-                    filterVal = String(node[values]["filter"].split("#").join("&").split("$").join("=")).slice(1, -1);
+                    filterVal = String(node[values]["filter"].split("#").join(", ").split("$").join("=")).slice(1, -2);
             }
             if(node[values]['xName'])
                 xname = node[values]['xName'];
@@ -684,7 +684,12 @@ async function generateNode(nodeDicStr,callback){
             vlSpec['data']['values'][i][xname] = xAttrs[i];
             vlSpec['data']['values'][i][yname] = Math.max( Math.round(yVals[i] * 10) / 10, 2.8 ).toFixed(2);
         }
-        
+        vlSpec['config'] = {
+            "text":{"color":"black"},
+            "view": {
+             "stroke": "transparent"
+          }
+        };
         vlSpec['encoding'] = {
             "x": {"field": xname, "type": "ordinal", "axis":{"title":false}},
             "y": {"field": yname, "type": "quantitative", "scale":{"domain": [0,100]},"axis": {"title":false, "grid":false}}, 
@@ -705,7 +710,7 @@ async function generateNode(nodeDicStr,callback){
               "center": "middle", 
               "dx": 3, 
               "color": "black",
-              "fontSize": 12
+              "fontSize": 15
             },
             "encoding": {
               "text": {"field": yname, "type": "quantitative", "fontSize":20}
@@ -886,7 +891,7 @@ function showDialog(nodeID){
     else if(title=="collapsed")
         title="collapsed"
     else
-        title = String(title.split("#").join("&").split("$").join("=")).slice(1, -1);
+        title = String(title.split("#").join(", ").split("$").join("=")).slice(1, -2);
     title = "Expanding " + title + "<br> with ";
     var d = document.getElementById('dlg_text');
     var expandroot = (node_dataset._data[nodeID].id);
