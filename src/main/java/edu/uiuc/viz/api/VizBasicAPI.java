@@ -5,7 +5,12 @@ import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.EOFException;
+import java.io.FileOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.sql.ResultSet;
@@ -16,6 +21,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.Hashtable;
 import java.util.Map;
 import java.util.Scanner;
 
@@ -48,9 +54,9 @@ import edu.uiuc.viz.lattice.*;
 
 @Controller
 public class VizBasicAPI {
-	Map<String, Experiment> cache;
+	Hashtable<String, Lattice> cache;
 	public VizBasicAPI(){
-			cache = new HashMap<String, Experiment>();
+			cache = new Hashtable<String, Lattice>();
 		}
 	
 	@RequestMapping(value = "/draw", method = RequestMethod.POST)
@@ -69,11 +75,41 @@ public class VizBasicAPI {
 		ArrayList<String>  groupby = null;
 		boolean online = false;
 		
+		if (name.equals("turn")){
+		   	groupby = new ArrayList<String>(Arrays.asList("is_multi_query","is_profile_query","is_event_query","has_impressions_tbl",
+				"has_clicks_tbl","has_actions_tbl","has_distinct","has_list_fn"));
+		}
+		else if (name.equals("ct_police_stop")) {
+		   // Dataset #2 : Police Stop
+		   groupby = new ArrayList<String>(Arrays.asList(
+			"driver_gender", "driver_race", "search_conducted",
+			"contraband_found",  "duration", "stop_outcome",
+			"stop_time", "driver_age"));//"is_arrested",
+		}
+		else if (name.equals("mushroom")) {
+		   // Dataset #3 : Mushroom 
+		   groupby = new ArrayList<String>(Arrays.asList("type","cap_shape", "cap_surface" , "cap_color" , "bruises" , "odor"));
+		}else if (name.equals("titanic")) {
+		   // Dataset #3 : Titanic 
+		   groupby = new ArrayList<String>(Arrays.asList("survived","gender","pc_class"));
+		}else if (name.equals("autism")) {
+		   // Dataset #2 : Autism
+		   groupby = new ArrayList<String>(Arrays.asList("autism", "a1_score", "a2_score", "a3_score", "a4_score", "a5_score", "a6_score", "a7_score","a8_score", "a9_score", "a10_score"));
+		}
+
+		
 		String key = name + x + y + agg;
+		
+		
 		if(cache.containsKey(key)) {//exists in cache
 			System.out.print("----------------------exists in cache-----------------------");
-			Experiment exp;
-			exp = cache.get(key);
+			Experiment exp = new Experiment(name, x, y ,groupby,agg, k, dist,ic,info,false);
+			Lattice l = cache.get(key);
+			exp.setLattice(l);
+//			exp.uniqueAttributeKeyVals = exp.populateUniqueAttributeKeyVals();
+//			System.out.print("----------------------printing uniqueAttributeKeyVals-----------------------");
+//			System.out.print(exp.uniqueAttributeKeyVals);
+//			System.out.print(exp.lattice);
 			exp.setK(k);
 			exp.setAlgo(ourAlgo);
 	        String nodedic = exp.runOutputReturnJSON(exp);
@@ -81,32 +117,11 @@ public class VizBasicAPI {
 		}
 		else {//does not exist in cache
 			System.out.print("--------------------does not exist in cache------------------");
-			if (name.equals("turn")){
-			   	groupby = new ArrayList<String>(Arrays.asList("is_multi_query","is_profile_query","is_event_query","has_impressions_tbl",
-					"has_clicks_tbl","has_actions_tbl","has_distinct","has_list_fn"));
-			}
-			else if (name.equals("ct_police_stop")) {
-			   // Dataset #2 : Police Stop
-			   groupby = new ArrayList<String>(Arrays.asList(
-				"driver_gender", "driver_race", "search_conducted",
-				"contraband_found",  "duration", "stop_outcome",
-				"stop_time", "driver_age"));//"is_arrested",
-			}
-			else if (name.equals("mushroom")) {
-			   // Dataset #3 : Mushroom 
-			   groupby = new ArrayList<String>(Arrays.asList("type","cap_shape", "cap_surface" , "cap_color" , "bruises" , "odor"));
-			}else if (name.equals("titanic")) {
-			   // Dataset #3 : Titanic 
-			   groupby = new ArrayList<String>(Arrays.asList("survived","gender","pc_class"));
-			}else if (name.equals("autism")) {
-			   // Dataset #2 : Autism
-			   groupby = new ArrayList<String>(Arrays.asList("autism", "a1_score", "a2_score", "a3_score", "a4_score", "a5_score", "a6_score", "a7_score","a8_score", "a9_score", "a10_score"));
-			}
-
-
+			
 			System.out.print(name + x + y + agg + Integer.toString(k) + " "+Double.toString(ic)+" "+Double.toString(info));
 			Experiment exp = new Experiment(name, x, y ,groupby,agg, k, dist,ic,info,false);
-			cache.put(key, exp);
+			exp.buildLattice(false);
+			cache.put(key, exp.lattice);
 			exp.setAlgo(ourAlgo);
 	        String nodedic = exp.runOutputReturnJSON(exp);
 			return nodedic;

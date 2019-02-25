@@ -62,6 +62,10 @@ public class Experiment {
 		// Generate base table via group-by
 		ResultSet rs = Database.viz_query(this.datasetName, this.groupby, this.yAxisName, this.aggFunc, new ArrayList<String>(Arrays.asList()));
 		Database.resultSet2csv(rs,this.datasetName,this.groupby,this.aggFunc+"("+this.yAxisName+")"); //generate csv file
+		
+	}
+	
+	public void buildLattice(boolean online) {
 		if (online) {
 			this.lattice = new Lattice();
 		}else {
@@ -72,6 +76,12 @@ public class Experiment {
 			this.nbars = lattice.id2MetricMap.get("#").size();
 		}
 	}
+	
+	public void setLattice(Lattice l) {
+		this.lattice = l;
+		this.nbars = this.lattice.id2MetricMap.get("#").size();
+	}
+	
 	public void setK(int k) {
 		this.k = k;
 	}
@@ -333,4 +343,5 @@ public class Experiment {
 	   */	   
 	   
 	}
+	
 }
