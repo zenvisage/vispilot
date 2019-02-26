@@ -697,7 +697,9 @@ async function generateNode(nodeDicStr,callback){
               "legend": null,
               "field": xname,
               "scale":{
-                "scheme": "set2"
+                "name": "color",
+                "type": "ordinal",
+                "range": ["#EF9242", "#7CD485","#9FC0F0", "plum","teal", "#F68B8B", "DarkOrchid"]
               }
             }
           };
@@ -709,8 +711,9 @@ async function generateNode(nodeDicStr,callback){
               "align": "center", 
               "center": "middle", 
               "dx": 3, 
+              "dy": -4,
               "color": "black",
-              "fontSize": 15
+              "fontSize": 13
             },
             "encoding": {
               "text": {"field": yname, "type": "quantitative", "fontSize":20}

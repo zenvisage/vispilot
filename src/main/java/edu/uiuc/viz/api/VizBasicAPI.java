@@ -106,10 +106,6 @@ public class VizBasicAPI {
 			Experiment exp = new Experiment(name, x, y ,groupby,agg, k, dist,ic,info,false);
 			Lattice l = cache.get(key);
 			exp.setLattice(l);
-//			exp.uniqueAttributeKeyVals = exp.populateUniqueAttributeKeyVals();
-//			System.out.print("----------------------printing uniqueAttributeKeyVals-----------------------");
-//			System.out.print(exp.uniqueAttributeKeyVals);
-//			System.out.print(exp.lattice);
 			exp.setK(k);
 			exp.setAlgo(ourAlgo);
 	        String nodedic = exp.runOutputReturnJSON(exp);
@@ -184,9 +180,12 @@ public class VizBasicAPI {
 		   groupby = new ArrayList<String>(Arrays.asList("autism", "a1_score", "a2_score", "a3_score", "a4_score", "a5_score", "a6_score", "a7_score","a8_score", "a9_score", "a10_score"));
 		}
 
-
+		String key = name + x + y + agg;
 		System.out.print(name + x + y + agg + Integer.toString(expand) + " "+Double.toString(ic)+" "+Double.toString(info));
 		Experiment exp = new Experiment(name, x, y ,groupby,agg, expand, dist,ic,info,false);
+		Lattice l = cache.get(key);
+		exp.setLattice(l);
+		exp.setK(expand);
 		exp.setAlgo(ourAlgo);
         String nodedic = exp.runOutputReturnJSON(exp);
 //      System.out.print(nodedic);

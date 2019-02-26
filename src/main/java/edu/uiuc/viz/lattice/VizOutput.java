@@ -36,9 +36,9 @@ public class VizOutput {
 			  {'childrenIndex': [], 'filter': 'Gender = F', 'yName': '% of vote'}]}
 		*/
 		ArrayList<String> xAttr = exp.uniqueAttributeKeyVals.get(exp.xAxisName);
-		System.out.println("--------------printing xattr---------------------");
-		System.out.println(exp.xAxisName);
-		System.out.println(exp.uniqueAttributeKeyVals);
+//		System.out.println("--------------printing xattr---------------------");
+//		System.out.println(exp.xAxisName);
+//		System.out.println(exp.uniqueAttributeKeyVals);
 		System.out.println(xAttr);
 		String nodeDic = "{";
 		//nodeDic+="\\\"label\\\":[{\\\"xName\\\":\\\""+exp.xAxisName+"\\\",\\\"yName\\\":\\\""+exp.aggFunc+"("+exp.yAxisName+")"+"\\\"}],";
@@ -48,8 +48,8 @@ public class VizOutput {
 			nodeDic+= "\\\""+(selectedNodeID)+"\\\": [";
 			Node selectedNode = exp.lattice.nodeList.get(selectedNodeID);
 			ArrayList<Double> nodeVal = exp.lattice.id2MetricMap.get(selectedNode.id);
-			System.out.println(xAttr);
-			System.out.println(nodeVal);
+//			System.out.println(xAttr);
+//			System.out.println(nodeVal);
 			for (int ix=0; ix<xAttr.size();ix++) {
 				nodeDic+="{ \\\"xAxis\\\": \\\""+xAttr.get(ix)+"\\\", \\\"yAxis\\\":"+ nodeVal.get(ix) +"},";
 			}

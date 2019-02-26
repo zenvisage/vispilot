@@ -60,15 +60,17 @@ public class Experiment {
 //		this.attribute_names.remove("id");
 		this.uniqueAttributeKeyVals = populateUniqueAttributeKeyVals();
 		// Generate base table via group-by
-		ResultSet rs = Database.viz_query(this.datasetName, this.groupby, this.yAxisName, this.aggFunc, new ArrayList<String>(Arrays.asList()));
-		Database.resultSet2csv(rs,this.datasetName,this.groupby,this.aggFunc+"("+this.yAxisName+")"); //generate csv file
-		
+//		ResultSet rs = Database.viz_query(this.datasetName, this.groupby, this.yAxisName, this.aggFunc, new ArrayList<String>(Arrays.asList()));
+//		Database.resultSet2csv(rs,this.datasetName,this.groupby,this.aggFunc+"("+this.yAxisName+")"); //generate csv file
+//		
 	}
 	
-	public void buildLattice(boolean online) {
+	public void buildLattice(boolean online) throws FileNotFoundException, UnsupportedEncodingException, SQLException {
 		if (online) {
 			this.lattice = new Lattice();
 		}else {
+			ResultSet rs = Database.viz_query(this.datasetName, this.groupby, this.yAxisName, this.aggFunc, new ArrayList<String>(Arrays.asList()));
+			Database.resultSet2csv(rs,this.datasetName,this.groupby,this.aggFunc+"("+this.yAxisName+")"); //generate csv file
 			//generate the lattice for this experiment
 			this.lattice = Hierarchia.generateFullyMaterializedLattice(dist,iceberg_ratio,
 							informative_critera,uniqueAttributeKeyVals,attribute_names,xAxisName,datasetName);
