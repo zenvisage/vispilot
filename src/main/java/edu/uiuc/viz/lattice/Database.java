@@ -115,7 +115,8 @@ public class Database {
 	    return s != null && s.matches("[-+]?\\d*\\.?\\d+");  
 	}  
 	public static ArrayList<Double> computeViz(Experiment exp, ArrayList<String> filters) throws SQLException {
-		
+		//System.out.println("------");
+		//System.out.println(filters);
 		// When the filter variable are characters and not int/floats, need to insert single quotes. 
 		int startIdx = filters.get(0).indexOf("=");
 		ArrayList<String> newFilters = new ArrayList<String>();
@@ -144,13 +145,18 @@ public class Database {
 			opt2measure.put(opt, val);
 		}
 		// Fill zero to populate measure_value array from HashMap
+		
 		for (int oi=0 ; oi<options.size();oi++) {
 			String opt = options.get(oi);
+			//System.out.println(opt);
 			if (opt2measure.containsKey(opt)) {
 				measure_values.add(opt2measure.get(opt));
 			}else {
 				measure_values.add(0.0);
+//				System.out.println("Contain missing value");
+//				System.out.println(opt2measure);
 			}
+//			System.out.println(measure_values);
 	    }
 	    return measure_values;
 		

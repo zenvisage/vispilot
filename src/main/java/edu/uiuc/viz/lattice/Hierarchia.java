@@ -115,8 +115,7 @@ public class Hierarchia
                     if (node.getPopulation_size()>= min_iceberg_support) {
 	                    	if(current_visualization_measure_values.get(0) > 0.0 || current_visualization_measure_values.get(1)> 0.0 )
 	                        {
-	                            //System.out.println("Current Visualization: "+visualization_key+" -- "+measure_values);
-	                            //System.out.print("C");
+	                            //System.out.println("Current Visualization: "+visualization_key+" -- "+current_visualization_measure_values);
 	                            map_id_to_metric_values.put(visualization_key, current_visualization_measure_values);
 	                            node_list.add(node);
 	                            map_id_to_index.put(visualization_key, node_list.size()-1);
