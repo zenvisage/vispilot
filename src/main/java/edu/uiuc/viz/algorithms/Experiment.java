@@ -39,7 +39,7 @@ public class Experiment {
 	public ArrayList<String> groupby;
 	public String aggFunc;
 	public static String experiment_name="../ipynb/dashboards/json/"+"vary_dataset_ip";
-	
+	public final int LEVEL_CUTOFF = 4;//set level cutoff for lattice generation to be no more than 5 filter combination (speed up lattice materialization process)
 	public static Database db ;
 	public static ArrayList<String> attribute_names;
 	public static HashMap<String, ArrayList<String>> uniqueAttributeKeyVals;

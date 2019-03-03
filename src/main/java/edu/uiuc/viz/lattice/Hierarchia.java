@@ -43,7 +43,8 @@ public class Hierarchia
         attribute_combination.remove(xAxis); // remove the xAxis item in the attribute list
         int n = attribute_names.size();
         System.out.println("Generating all combinations to materialize lattice (This might take a while...)");
-        for(int k = 1; k <= n; k++) // k-attribute combination
+        for(int k = 1; k <= exp.LEVEL_CUTOFF; k++) // k-attribute combination (Optimization: early cutoff of lattice at lower level)
+//        for(int k = 1; k <= n; k++) // k-attribute combination
         {
         	System.out.println("Generating "+ k+"th out of "+n );
             ArrayList<ArrayList<String>> k_attribute_combinations = new ArrayList<ArrayList<String>>();
