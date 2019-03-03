@@ -97,6 +97,9 @@ public class VizBasicAPI {
 		}else if (name.equals("autism")) {
 		   // Dataset #2 : Autism
 		   groupby = new ArrayList<String>(Arrays.asList("autism", "a1_score", "a2_score", "a3_score", "a4_score", "a5_score", "a6_score", "a7_score","a8_score", "a9_score", "a10_score"));
+		}else if (name.equals("cancer")){
+		   // for debug only: dropping high cardinality columns ['primary_diagnosis','morphology','tissue_or_organ_of_origin','site_of_resection_or_biopsy']
+		   groupby = new ArrayList<String>(Arrays.asList("gender", "race", "vital_status", "ethnicity", "age", "years_to_last_follow_up"));
 		}
 //		Database d = new Database();
 //		ResultSet ret= d.getColumns(name);
