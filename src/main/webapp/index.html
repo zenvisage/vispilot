@@ -61,17 +61,18 @@
     <div class="bar3"></div>
   </div>
   <div id = "menubar" style="padding: 10px;display: inline-block;">
+    
     <form class="form-inline menu-item">
         <b>Dataset:</b>
             <select id="data" onChange="getCol()">
               <option>Select an Option</option>
-              <option>titanic</option>
-              <option>turn</option>
-              <option>ct_police_stop</option>
-              <option>mushroom</option>
-              <option>autism</option>
             </select>
     </form>
+    <script type="text/javascript">
+    $(document).ready(function() {
+    getTable();
+    });
+    </script>
     <form class="form-inline menu-item">
     <b>X-Axis:</b>
       <select id="x" style="width: 150px">
@@ -80,9 +81,9 @@
     </form>
     <form class="form-inline menu-item">
         <b>Y-Axis:</b>
-        <select id="y">
+        <select id="y" style="width: 150px">
       <option>Select an Option</option>
-      <option>id</option>
+      <!-- <option>id</option> -->
     </select>
     </form>
     <form class="form-inline menu-item" class="form-inline" id = "agg_select" name = "agg_select">

@@ -23,6 +23,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Hashtable;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Scanner;
 
 import javax.servlet.ServletException;
@@ -30,6 +31,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.swing.text.html.HTMLDocument.Iterator;
 
 import org.codehaus.jackson.JsonGenerationException;
 import org.codehaus.jackson.JsonParseException;
@@ -96,7 +98,10 @@ public class VizBasicAPI {
 		   // Dataset #2 : Autism
 		   groupby = new ArrayList<String>(Arrays.asList("autism", "a1_score", "a2_score", "a3_score", "a4_score", "a5_score", "a6_score", "a7_score","a8_score", "a9_score", "a10_score"));
 		}
-
+//		Database d = new Database();
+//		ResultSet ret= d.getColumns(name);
+//		groupby = d.resultSet2ArrayStr(ret);
+//		groupby.remove(new String("id"));
 		
 		String key = name + x + y + agg;
 		
@@ -116,6 +121,31 @@ public class VizBasicAPI {
 			
 			System.out.print(name + x + y + agg + Integer.toString(k) + " "+Double.toString(ic)+" "+Double.toString(info));
 			Experiment exp = new Experiment(name, x, y ,groupby,agg, k, dist,ic,info,false);
+			System.out.print(exp.uniqueAttributeKeyVals);
+//			for (Entry<String, ArrayList<String>> entry : exp.uniqueAttributeKeyVals.entrySet()) {
+//			    String attr = entry.getKey();
+//			    int length = entry.getValue().size();
+//			    if(length >= 20) {
+//			    	exp.groupby.remove(attr);
+//			    }
+//			}
+//			java.util.Iterator<Entry<String, ArrayList<String>>> it = exp.uniqueAttributeKeyVals.entrySet().iterator();
+//		    while (it.hasNext()) {
+//		        Map.Entry pair = (Map.Entry)it.next();
+//		        String attr = (String) pair.getKey();
+//		        int len = ((ArrayList<String>) pair.getValue()).size();
+//		        if(len>=20) {
+//		        	exp.groupby.remove(attr);
+//		        	it.remove();
+//		        }
+//		        //System.out.println(pair.getKey() + " = " + pair.getValue());
+//		         // avoids a ConcurrentModificationException
+//		    }
+			
+			
+			System.out.println(exp.uniqueAttributeKeyVals);
+			System.out.println(exp.groupby);
+			//exp.groupby = groupby;
 			exp.buildLattice(false);
 			cache.put(key, exp.lattice);
 			exp.setAlgo(ourAlgo);
@@ -135,6 +165,16 @@ public class VizBasicAPI {
 		ResultSet ret= d.getColumns(name);
 		ArrayList<String> colArrs = d.resultSet2ArrayStr(ret);
 		return colArrs;
+	}	
+	
+	@RequestMapping(value = "/getTable", method = RequestMethod.POST)
+	@ResponseBody
+	public ArrayList<String> getTable(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException, InterruptedException, SQLException {
+		
+		Database d = new Database();
+		ResultSet ret= d.getTables();
+		ArrayList<String> tableArrs = d.resultSet2ArrayStr(ret);
+		return tableArrs;
 	}	
 	
 	@RequestMapping(value = "/expand", method = RequestMethod.POST)
@@ -158,28 +198,33 @@ public class VizBasicAPI {
 		ArrayList<Integer> org = new ArrayList<Integer>(Arrays.asList(1,2,3,5,6,7,8,9));
 		Traversal ourAlgo = new GreedyPickingAlternativeRoot(newroot);
 		
-		if (name.equals("turn")){
-		   	groupby = new ArrayList<String>(Arrays.asList("is_multi_query","is_profile_query","is_event_query","has_impressions_tbl",
-				"has_clicks_tbl","has_actions_tbl","has_distinct","has_list_fn"));
-		}
-		else if (name.equals("ct_police_stop")) {
-		   // Dataset #2 : Police Stop
-		   groupby = new ArrayList<String>(Arrays.asList(
-			"driver_gender", "driver_race", "search_conducted",
-			"contraband_found",  "duration", "stop_outcome",
-			"stop_time", "driver_age"));//"is_arrested",
-		}
-		else if (name.equals("mushroom")) {
-		   // Dataset #3 : Mushroom 
-		   groupby = new ArrayList<String>(Arrays.asList("type","cap_shape", "cap_surface" , "cap_color" , "bruises" , "odor"));
-		}else if (name.equals("titanic")) {
-		   // Dataset #3 : Titanic 
-		   groupby = new ArrayList<String>(Arrays.asList("survived","gender","pc_class"));
-		}else if (name.equals("autism")) {
-		   // Dataset #2 : Autism
-		   groupby = new ArrayList<String>(Arrays.asList("autism", "a1_score", "a2_score", "a3_score", "a4_score", "a5_score", "a6_score", "a7_score","a8_score", "a9_score", "a10_score"));
-		}
-
+//		if (name.equals("turn")){
+//		   	groupby = new ArrayList<String>(Arrays.asList("is_multi_query","is_profile_query","is_event_query","has_impressions_tbl",
+//				"has_clicks_tbl","has_actions_tbl","has_distinct","has_list_fn"));
+//		}
+//		else if (name.equals("ct_police_stop")) {
+//		   // Dataset #2 : Police Stop
+//		   groupby = new ArrayList<String>(Arrays.asList(
+//			"driver_gender", "driver_race", "search_conducted",
+//			"contraband_found",  "duration", "stop_outcome",
+//			"stop_time", "driver_age"));//"is_arrested",
+//		}
+//		else if (name.equals("mushroom")) {
+//		   // Dataset #3 : Mushroom 
+//		   groupby = new ArrayList<String>(Arrays.asList("type","cap_shape", "cap_surface" , "cap_color" , "bruises" , "odor"));
+//		}else if (name.equals("titanic")) {
+//		   // Dataset #3 : Titanic 
+//		   groupby = new ArrayList<String>(Arrays.asList("survived","gender","pc_class"));
+//		}else if (name.equals("autism")) {
+//		   // Dataset #2 : Autism
+//		   groupby = new ArrayList<String>(Arrays.asList("autism", "a1_score", "a2_score", "a3_score", "a4_score", "a5_score", "a6_score", "a7_score","a8_score", "a9_score", "a10_score"));
+//		}
+		
+		Database d = new Database();
+		ResultSet ret= d.getColumns(name);
+		groupby = d.resultSet2ArrayStr(ret);
+		groupby.remove(new String("id"));
+		
 		String key = name + x + y + agg;
 		System.out.print(name + x + y + agg + Integer.toString(expand) + " "+Double.toString(ic)+" "+Double.toString(info));
 		Experiment exp = new Experiment(name, x, y ,groupby,agg, expand, dist,ic,info,false);
