@@ -39,6 +39,7 @@ public class Hierarchia
         attribute_combination.addAll(attribute_names); // Deep copy original attribute names
         attribute_combination.remove(xAxis); // remove the xAxis item in the attribute list
         int n = attribute_names.size();
+        System.out.println("Generating all combinations to materialize lattice (This might take a while...)");
         for(int k = 1; k <= n; k++) // k-attribute combination
         {
         		//System.out.println("k: "+k);
@@ -102,7 +103,7 @@ public class Hierarchia
 //                    ArrayList<Double> measure_values = compute_visualization(new Node("#"),current_combination, current_permutation);
                     Node node = new Node(visualization_key);
                     ArrayList<Double> current_visualization_measure_values = compute_visualization(node,current_combination, current_permutation,uniqueAttributeKeyVals,attribute_names,xAxis,datasetName);
-                    
+                    // ArrayList<Double> current_visualization_measure_values = computeVizualization()
                     if (node.getPopulation_size()>= min_iceberg_support) {
 	                    	if(current_visualization_measure_values.get(0) > 0.0 || current_visualization_measure_values.get(1)> 0.0 )
 	                        {
