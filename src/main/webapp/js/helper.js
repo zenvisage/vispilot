@@ -827,8 +827,10 @@ function getCol(){
             success: function(data) {
                     //console.log(data);
                     document.getElementById("x").innerHTML = "";
+                    document.getElementById("y").innerHTML = "";
                     for(i = 0; i<data.length; i++){
                         document.getElementById("x").innerHTML += "<option>" + data[i] + "</option>";
+                        document.getElementById("y").innerHTML += "<option>" + data[i] + "</option>";
                     }
                 }
 
@@ -907,4 +909,23 @@ function showDialog(nodeID){
     document.getElementById('expandID').style.width = '50px';
 }
 
+function getTable(){
+    //console.log("!!!!!!!!!!!!!!!!!!!");
+    $.ajax({
+            type: "POST",
+            url: "viz/getTable",
+            async: false,
+            data: {
+                
+            },
+            success: function(data) {
+                    //console.log(data);
+                    document.getElementById("data").innerHTML = "";
+                    document.getElementById("data").innerHTML += "<option>" + "Select an Option" + "</option>";
+                    for(i = 0; i<data.length; i++){
+                        document.getElementById("data").innerHTML += "<option>" + data[i] + "</option>";
+                    }
+                }
 
+            })
+}

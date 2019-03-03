@@ -184,11 +184,16 @@ public class Database {
 		return Database.query(query_stmt);
 	}
 
+	public static ResultSet getTables() throws SQLException {
+		String query_stmt = "SELECT table_name FROM information_schema.tables WHERE table_schema = 'public' AND TABLE_TYPE='BASE TABLE';";
+		return Database.query(query_stmt);
+	}
+	
 	public static void main(String[] args) throws SQLException, FileNotFoundException, UnsupportedEncodingException 
     {
 //		Database db = new Database();
 //		
-//		ResultSet rs = db.query("SELECT id, name FROM titanic LIMIT 5;");
+//		ResultSet rs = db.getTables();
 //		System.out.println(rs);
 //		ArrayList<Double> rsArr = printResultSet(rs);
 		
