@@ -28,9 +28,6 @@ public class Hierarchia
         Node root = new Node("#");
 //        ArrayList<Double> root_measure_values =  exp.computeVisualization(root, exp, "#");
         ArrayList<Double> root_measure_values = compute_visualization(root,new ArrayList<String>(),new ArrayList<String>(),uniqueAttributeKeyVals,attribute_names,xAxis,datasetName);
-        //ArrayList<Double> root_measure_values = new ArrayList<Double>(); 
-		//root_measure_values.add(46.0);
-		//root_measure_values.add(64.0);
         System.out.println("Root measure:"+root_measure_values);
         Double rootSize = root.getPopulation_size();
         System.out.println("Root size:"+rootSize);

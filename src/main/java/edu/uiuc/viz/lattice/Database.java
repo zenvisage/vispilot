@@ -135,7 +135,7 @@ public class Database {
 		
 		
 		String query_stmt ="SELECT " + exp.xAxisName + ", " +exp.aggFunc +"(" + exp.yAxisName + ")" + " FROM " + exp.datasetName;
-		if (filters.size()!=0) { query_stmt += " WHERE "+ arr2DelimitedStrings(newFilters, "AND");}
+		if (newFilters.size()!=0) { query_stmt += " WHERE "+ arr2DelimitedStrings(newFilters, "AND");}
         query_stmt +=" GROUP BY " + exp.xAxisName+";"; 
         //System.out.println(query_stmt);
 		ResultSet rs = query(query_stmt);
