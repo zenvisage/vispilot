@@ -26,6 +26,7 @@ public class Hierarchia
         System.out.println("uniqueAttributeKeyVals:"+uniqueAttributeKeyVals);
         HashMap<String, Integer> map_id_to_index = new HashMap<String, Integer>();
         Node root = new Node("#");
+//        ArrayList<Double> root_measure_values =  exp.computeVisualization(root, exp, "#");
         ArrayList<Double> root_measure_values = compute_visualization(root,new ArrayList<String>(),new ArrayList<String>(),uniqueAttributeKeyVals,attribute_names,xAxis,datasetName);
         //ArrayList<Double> root_measure_values = new ArrayList<Double>(); 
 		//root_measure_values.add(46.0);
@@ -43,7 +44,8 @@ public class Hierarchia
         attribute_combination.remove(xAxis); // remove the xAxis item in the attribute list
         int n = attribute_names.size();
         System.out.println("Generating all combinations to materialize lattice (This might take a while...)");
-        for(int k = 1; k <= exp.LEVEL_CUTOFF; k++) // k-attribute combination (Optimization: early cutoff of lattice at lower level)
+        n =Math.min(n,exp.LEVEL_CUTOFF);
+        for(int k = 1; k <= n ; k++) // k-attribute combination (Optimization: early cutoff of lattice at lower level)
 //        for(int k = 1; k <= n; k++) // k-attribute combination
         {
         	System.out.println("Generating "+ k+"th out of "+n );

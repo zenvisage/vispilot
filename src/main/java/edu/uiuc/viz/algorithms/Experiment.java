@@ -39,7 +39,7 @@ public class Experiment {
 	public ArrayList<String> groupby;
 	public String aggFunc;
 	public static String experiment_name="../ipynb/dashboards/json/"+"vary_dataset_ip";
-	public final int LEVEL_CUTOFF = 4;//set level cutoff for lattice generation to be no more than 5 filter combination (speed up lattice materialization process)
+	public final int LEVEL_CUTOFF = 3;//set level cutoff for lattice generation to be no more than x level filter combination (speed up lattice materialization process)
 	public static Database db ;
 	public static ArrayList<String> attribute_names;
 	public static HashMap<String, ArrayList<String>> uniqueAttributeKeyVals;
@@ -177,20 +177,23 @@ public class Experiment {
 	}
 	public static ArrayList<Double> computeVisualization(Node node,Experiment exp,String filterStr) throws SQLException {
 //		System.out.println("computeVisualization for:"+filterStr);
-		String[] items;
 		ArrayList<String> split_filters = new ArrayList<String>();
-		int hashCount = filterStr.length() - filterStr.replace("#", "").length();
+		if (!filterStr.equals("#")) {
+			String[] items;
+			int hashCount = filterStr.length() - filterStr.replace("#", "").length();
 
-		if (hashCount>=1) {
-			if (filterStr.charAt(0)=='#') {
-				items = filterStr.substring(1).replace("$","=").split("#");
+			if (hashCount>=1) {
+				if (filterStr.charAt(0)=='#') {
+					items = filterStr.substring(1).replace("$","=").split("#");
+				}else {
+					items = filterStr.replace("$","=").split("#");
+				}
+				split_filters = new ArrayList<String>(Arrays.asList(items));
 			}else {
-				items = filterStr.replace("$","=").split("#");
+				split_filters.add(filterStr.replace("$","=")); 
 			}
-			split_filters = new ArrayList<String>(Arrays.asList(items));
-		}else {
-			split_filters.add(filterStr.replace("$","=")); 
 		}
+		
 //	    System.out.println("split_filters"+split_filters);
 	    ArrayList<Double> measure_values =  Database.computeViz(exp, split_filters);
 

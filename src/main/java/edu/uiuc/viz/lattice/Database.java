@@ -117,22 +117,25 @@ public class Database {
 	public static ArrayList<Double> computeViz(Experiment exp, ArrayList<String> filters) throws SQLException {
 		//System.out.println("------");
 		//System.out.println(filters);
-		// When the filter variable are characters and not int/floats, need to insert single quotes. 
-		int startIdx = filters.get(0).indexOf("=");
+		// When the filter variable are characters and not int/floats, need to insert single quotes.
 		ArrayList<String> newFilters = new ArrayList<String>();
-		if (!isNumeric(filters.get(0).substring(startIdx))) {
-			Iterator<String> iter = filters.iterator();
-			while (iter.hasNext()) {
-				String filter = iter.next();
-				newFilters.add(filter.replace("=", "='") +"'");
-				iter.remove();
+		if (filters.size()!=0) { // non-root
+			int startIdx = filters.get(0).indexOf("=");
+			if (!isNumeric(filters.get(0).substring(startIdx))) {
+				Iterator<String> iter = filters.iterator();
+				while (iter.hasNext()) {
+					String filter = iter.next();
+					newFilters.add(filter.replace("=", "='") +"'");
+					iter.remove();
+				}
+			}else {
+				newFilters = filters;
 			}
-		}else {
-			newFilters = filters;
 		}
 		
+		
 		String query_stmt ="SELECT " + exp.xAxisName + ", " +exp.aggFunc +"(" + exp.yAxisName + ")" + " FROM " + exp.datasetName;
-		query_stmt += " WHERE "+ arr2DelimitedStrings(newFilters, "AND");
+		if (filters.size()!=0) { query_stmt += " WHERE "+ arr2DelimitedStrings(newFilters, "AND");}
         query_stmt +=" GROUP BY " + exp.xAxisName+";"; 
         //System.out.println(query_stmt);
 		ResultSet rs = query(query_stmt);
