@@ -85,8 +85,9 @@ public class VizBasicAPI {
 		   // Dataset #2 : Police Stop
 		   groupby = new ArrayList<String>(Arrays.asList(
 			"driver_gender", "driver_race", "search_conducted",
-			"contraband_found",  "duration", "stop_outcome",
-			"stop_time", "driver_age"));//"is_arrested",
+			"contraband_found",  "duration", "stop_outcome","is_arrested",
+			"stop_time", "driver_age", "speeding_violations", "other_violations",
+			"registration_plates_violations","moving_violations","cell_phone_violations"));//"is_arrested",
 		}
 		else if (name.equals("mushroom")) {
 		   // Dataset #3 : Mushroom 
@@ -98,8 +99,31 @@ public class VizBasicAPI {
 		   // Dataset #2 : Autism
 		   groupby = new ArrayList<String>(Arrays.asList("autism", "a1_score", "a2_score", "a3_score", "a4_score", "a5_score", "a6_score", "a7_score","a8_score", "a9_score", "a10_score"));
 		}else if (name.equals("cancer")){
-		   // for debug only: dropping high cardinality columns ['primary_diagnosis','morphology','tissue_or_organ_of_origin','site_of_resection_or_biopsy']
-		   groupby = new ArrayList<String>(Arrays.asList("gender", "race", "vital_status", "ethnicity", "age", "years_to_last_follow_up"));
+		   // for debug only: dropping high cardinality columns ["primary_diagnosis","morphology","tissue_or_organ_of_origin","site_of_resection_or_biopsy"]
+			groupby = new ArrayList<String>(Arrays.asList("gender", "race", "vital_status", "ethnicity", "age",
+		       "years_to_last_follow_up",  "morphology_behavior",
+		       "diagnosis_contain_adenocarcinoma", "diagnosis_contain_squamous",
+		       "diagnosis_contain_papillary", "diagnosis_contain_infiltrating",
+		       "diagnosis_contain_glioblastoma",
+		       "diagnosis_contain_cystadenocarcinoma", "diagnosis_contain_melanoma",
+		       "diagnosis_contain_endometrioid", "diagnosis_contain_hepatocellular",
+		       "diagnosis_contain_transitional", "diagnosis_contain_lobular",
+		       "diagnosis_contain_mixed", "diagnosis_contain_oligodendroglioma",
+		       "diagnosis_contain_anaplastic", "diagnosis_contain_leukemia",
+		       "diagnosis_contain_lymphoma", "diagnosis_contain_acute",
+		       "diagnosis_contain_myeloid", "diagnosis_contain_tumor",
+		       "origin_region"));
+		   // groupby = new ArrayList<String>(Arrays.asList(
+		   // 	"gender", "race", "vital_status", "ethnicity", "age",
+		   //     "years_to_last_follow_up", "morphology_behavior",
+		   //     "diagnosis_contain_squamous",
+		   //      "diagnosis_contain_melanoma",
+		   //      "diagnosis_contain_mixed", 
+		   //      "diagnosis_contain_leukemia",
+		   //      "diagnosis_contain_lymphoma", 
+		   //      "diagnosis_contain_tumor",
+		   //     "origin_region"));
+		   
 		}
 //		Database d = new Database();
 //		ResultSet ret= d.getColumns(name);

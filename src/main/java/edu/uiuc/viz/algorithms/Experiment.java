@@ -21,11 +21,12 @@ import edu.uiuc.viz.lattice.Database;
 import edu.uiuc.viz.lattice.Hierarchia;
 import edu.uiuc.viz.lattice.Lattice;
 import edu.uiuc.viz.lattice.VizOutput;
+import edu.uiuc.viz.lattice.Node;
 
 public class Experiment {
-	static String datasetName;
-	public String xAxisName;
-	public String yAxisName;
+	public static String datasetName;
+	public static String xAxisName;
+	public static String yAxisName;
 	int k;
 	public Distance dist ;
 	double iceberg_ratio;// [ic] % of root population size to keep as a node
@@ -38,7 +39,7 @@ public class Experiment {
 	public ArrayList<String> groupby;
 	public String aggFunc;
 	public static String experiment_name="../ipynb/dashboards/json/"+"vary_dataset_ip";
-	
+	public final int LEVEL_CUTOFF = 3;//set level cutoff for lattice generation to be no more than x level filter combination (speed up lattice materialization process)
 	public static Database db ;
 	public static ArrayList<String> attribute_names;
 	public static HashMap<String, ArrayList<String>> uniqueAttributeKeyVals;
@@ -56,7 +57,7 @@ public class Experiment {
 		this.iceberg_ratio = iceberg_ratio;
 		this.informative_critera = informative_critera;
 		this.attribute_names = get_attribute_names();//read the csv file to get attribute names
-//		this.attribute_names = Database.resultSet2ArrayStr(Database.getColumns(this.datasetName));
+		//this.attribute_names = Database.resultSet2ArrayStr(Database.getColumns(this.datasetName));
 //		this.attribute_names.remove("id");
 		this.uniqueAttributeKeyVals = populateUniqueAttributeKeyVals();
 		// Generate base table via group-by
@@ -72,7 +73,7 @@ public class Experiment {
 			ResultSet rs = Database.viz_query(this.datasetName, this.groupby, this.yAxisName, this.aggFunc, new ArrayList<String>(Arrays.asList()));
 			Database.resultSet2csv(rs,this.datasetName,this.groupby,this.aggFunc+"("+this.yAxisName+")"); //generate csv file
 			//generate the lattice for this experiment
-			this.lattice = Hierarchia.generateFullyMaterializedLattice(dist,iceberg_ratio,
+			this.lattice = Hierarchia.generateFullyMaterializedLattice(this,dist,iceberg_ratio,
 							informative_critera,uniqueAttributeKeyVals,attribute_names,xAxisName,datasetName);
 			//get the number of filters
 			this.nbars = lattice.id2MetricMap.get("#").size();
@@ -179,24 +180,45 @@ public class Experiment {
 	    Collections.shuffle(copy);
 	    return new ArrayList<String>(copy.subList(0, n));
 	}
-	public static ArrayList<Double> computeVisualization(Experiment exp,String filterStr) throws SQLException {
-		System.out.println("computeVisualization for:"+filterStr);
-		String[] items;
+	public static ArrayList<Double> computeVisualization(Node node,Experiment exp,String filterStr) throws SQLException {
+//		System.out.println("computeVisualization for:"+filterStr);
 		ArrayList<String> split_filters = new ArrayList<String>();
-		int hashCount = filterStr.length() - filterStr.replace("#", "").length();
+		if (!filterStr.equals("#")) {
+			String[] items;
+			int hashCount = filterStr.length() - filterStr.replace("#", "").length();
 
-		if (hashCount>=1) {
-			if (filterStr.charAt(0)=='#') {
-				items = filterStr.substring(1).replace("$","=").split("#");
+			if (hashCount>=1) {
+				if (filterStr.charAt(0)=='#') {
+					items = filterStr.substring(1).replace("$","=").split("#");
+				}else {
+					items = filterStr.replace("$","=").split("#");
+				}
+				split_filters = new ArrayList<String>(Arrays.asList(items));
 			}else {
-				items = filterStr.replace("$","=").split("#");
+				split_filters.add(filterStr.replace("$","=")); 
 			}
-			split_filters = new ArrayList<String>(Arrays.asList(items));
-		}else {
-			split_filters.add(filterStr.replace("$","=")); 
 		}
-	    System.out.println("split_filters"+split_filters);
-	    return Database.computeViz(exp.datasetName, exp.xAxisName,exp.groupby, exp.yAxisName, exp.aggFunc, split_filters);
+		
+//	    System.out.println("split_filters"+split_filters);
+	    ArrayList<Double> measure_values =  Database.computeViz(exp, split_filters);
+
+	    ArrayList<Double> normalized_measure_values = new ArrayList<Double>();
+	    double denominator=0;
+	    for (int i =0;i <measure_values.size();i ++){
+	    	denominator+=measure_values.get(i);
+	    }
+		for (int j =0;j <measure_values.size();j ++){
+			if (Math.abs(denominator)>0.000001) {
+				normalized_measure_values.add(measure_values.get(j)/denominator*100);
+				//System.out.println("measure_values:"+measure_values);
+		        //System.out.println("normalized_measure_values:"+normalized_measure_values);
+			}else {
+				normalized_measure_values.add(-1.0);
+			}
+		}
+//		System.out.print(normalized_measure_values);
+    		node.setPopulation_size(denominator);
+        return normalized_measure_values;
 	}
 	public static void main(String[] args) throws SQLException, FileNotFoundException, UnsupportedEncodingException 
 	{

@@ -1,6 +1,9 @@
 package edu.uiuc.viz.lattice;
 import java.io.*;
+import java.sql.SQLException;
 import java.util.*;
+
+import edu.uiuc.viz.algorithms.Experiment;
 import edu.uiuc.viz.distance.Distance;
 
 public class Hierarchia 
@@ -8,8 +11,8 @@ public class Hierarchia
 	/*
 	 * Offline methods for generating fully materialized lattice. 
 	 */
-    public static Lattice generateFullyMaterializedLattice(Distance distance, double iceberg_ratio,
-    		double informative_criteria,HashMap<String, ArrayList<String>> uniqueAttributeKeyVals,ArrayList<String> attribute_names,String xAxis,String datasetName){
+    public static Lattice generateFullyMaterializedLattice(Experiment exp, Distance distance, double iceberg_ratio,
+    		double informative_criteria,HashMap<String, ArrayList<String>> uniqueAttributeKeyVals,ArrayList<String> attribute_names,String xAxis,String datasetName) throws SQLException{
     	/**
     	 * Fully Materialize Visualization Lattice by populating id2MetricMap, nodeList, id2IDMap 
     	 * @param distance: Distance function used for computing edge weights between parent & child
@@ -23,10 +26,8 @@ public class Hierarchia
         System.out.println("uniqueAttributeKeyVals:"+uniqueAttributeKeyVals);
         HashMap<String, Integer> map_id_to_index = new HashMap<String, Integer>();
         Node root = new Node("#");
-        ArrayList<Double> root_measure_values = compute_visualization(root,new ArrayList<String>(),new ArrayList<String>(),uniqueAttributeKeyVals,attribute_names,xAxis,datasetName);
-        //ArrayList<Double> root_measure_values = new ArrayList<Double>(); 
-		//root_measure_values.add(46.0);
-		//root_measure_values.add(64.0);
+        ArrayList<Double> root_measure_values =  exp.computeVisualization(root, exp, "#");
+//        ArrayList<Double> root_measure_values = compute_visualization(root,new ArrayList<String>(),new ArrayList<String>(),uniqueAttributeKeyVals,attribute_names,xAxis,datasetName);
         System.out.println("Root measure:"+root_measure_values);
         Double rootSize = root.getPopulation_size();
         System.out.println("Root size:"+rootSize);
@@ -40,9 +41,11 @@ public class Hierarchia
         attribute_combination.remove(xAxis); // remove the xAxis item in the attribute list
         int n = attribute_names.size();
         System.out.println("Generating all combinations to materialize lattice (This might take a while...)");
-        for(int k = 1; k <= n; k++) // k-attribute combination
+        n =Math.min(n,exp.LEVEL_CUTOFF);
+        for(int k = 1; k <= n ; k++) // k-attribute combination (Optimization: early cutoff of lattice at lower level)
+//        for(int k = 1; k <= n; k++) // k-attribute combination
         {
-        		//System.out.println("k: "+k);
+        	System.out.println("Generating "+ k+"th out of "+n );
             ArrayList<ArrayList<String>> k_attribute_combinations = new ArrayList<ArrayList<String>>();
             ArrayList<String> current_combination = new ArrayList<String>();
             for(int i = 0; i < k; i++)
@@ -102,13 +105,16 @@ public class Hierarchia
                     
 //                    ArrayList<Double> measure_values = compute_visualization(new Node("#"),current_combination, current_permutation);
                     Node node = new Node(visualization_key);
-                    ArrayList<Double> current_visualization_measure_values = compute_visualization(node,current_combination, current_permutation,uniqueAttributeKeyVals,attribute_names,xAxis,datasetName);
-                    // ArrayList<Double> current_visualization_measure_values = computeVizualization()
+                    //ArrayList<Double> current_visualization_measure_values = compute_visualization(node,current_combination, current_permutation,uniqueAttributeKeyVals,attribute_names,xAxis,datasetName);
+                    String filterStr="#";
+                    for (int _t=0; _t<current_permutation.size();_t++){
+                        filterStr+=current_combination.get(_t)+"$"+current_permutation.get(_t)+"#";
+                    }
+                    ArrayList<Double> current_visualization_measure_values = exp.computeVisualization(node,exp, filterStr);
                     if (node.getPopulation_size()>= min_iceberg_support) {
 	                    	if(current_visualization_measure_values.get(0) > 0.0 || current_visualization_measure_values.get(1)> 0.0 )
 	                        {
-	                            //System.out.println("Current Visualization: "+visualization_key+" -- "+measure_values);
-	                            //System.out.print("C");
+	                            //System.out.println("Current Visualization: "+visualization_key+" -- "+current_visualization_measure_values);
 	                            map_id_to_metric_values.put(visualization_key, current_visualization_measure_values);
 	                            node_list.add(node);
 	                            map_id_to_index.put(visualization_key, node_list.size()-1);

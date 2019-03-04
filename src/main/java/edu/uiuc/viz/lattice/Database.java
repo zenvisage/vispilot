@@ -9,7 +9,10 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Iterator;
+
+import edu.uiuc.viz.algorithms.Experiment;
 public class Database {
 	private String database = "summarization";
 	private String host = "jdbc:postgresql://localhost:5432/"+database;
@@ -111,34 +114,55 @@ public class Database {
 	public static boolean isNumeric(String s) {  
 	    return s != null && s.matches("[-+]?\\d*\\.?\\d+");  
 	}  
-	public static ArrayList<Double> computeViz(String tablename, String x_attr, ArrayList<String> groupby,String y_attr,String agg_func, ArrayList<String> filters) throws SQLException {
-		// When the filter variable are characters and not int/floats, need to insert single quotes. 
-		int startIdx = filters.get(0).indexOf("=");
+	public static ArrayList<Double> computeViz(Experiment exp, ArrayList<String> filters) throws SQLException {
+		//System.out.println("------");
+		//System.out.println(filters);
+		// When the filter variable are characters and not int/floats, need to insert single quotes.
 		ArrayList<String> newFilters = new ArrayList<String>();
-		if (!isNumeric(filters.get(0).substring(startIdx))) {
-			Iterator<String> iter = filters.iterator();
-			while (iter.hasNext()) {
-				String filter = iter.next();
-				newFilters.add(filter.replace("=", "='") +"'");
-				iter.remove();
+		if (filters.size()!=0) { // non-root
+			int startIdx = filters.get(0).indexOf("=");
+			if (!isNumeric(filters.get(0).substring(startIdx))) {
+				Iterator<String> iter = filters.iterator();
+				while (iter.hasNext()) {
+					String filter = iter.next();
+					newFilters.add(filter.replace("=", "='") +"'");
+					iter.remove();
+				}
+			}else {
+				newFilters = filters;
 			}
-		}else {
-			newFilters = filters;
 		}
 		
-		String groupbyJoined =arr2DelimitedStrings(groupby, ",");
-		String query_stmt ="SELECT sum(subquery.sum) FROM (";
-		query_stmt +="SELECT " + x_attr + ", " +agg_func +"(" + y_attr + ")" + " FROM " + tablename;
-		query_stmt += " WHERE "+ arr2DelimitedStrings(newFilters, "AND");
-        query_stmt +=" GROUP BY " + groupbyJoined; 
-        	query_stmt += ") subquery GROUP BY "+x_attr+";";
-        System.out.println(query_stmt);
+		
+		String query_stmt ="SELECT " + exp.xAxisName + ", " +exp.aggFunc +"(" + exp.yAxisName + ")" + " FROM " + exp.datasetName;
+		if (newFilters.size()!=0) { query_stmt += " WHERE "+ arr2DelimitedStrings(newFilters, "AND");}
+        query_stmt +=" GROUP BY " + exp.xAxisName+";"; 
+        //System.out.println(query_stmt);
 		ResultSet rs = query(query_stmt);
-		ArrayList<Double> rsArr = new ArrayList<Double>();
+		ArrayList<Double> measure_values = new ArrayList<Double>();
+		ArrayList<String> options = exp.uniqueAttributeKeyVals.get(exp.xAxisName);
+		HashMap<String,Double> opt2measure = new HashMap<String,Double> (); 
 		while (rs.next()) {
-			rsArr.add(rs.getDouble(rs.getMetaData().getColumnCount()));
+			String opt = rs.getString(1);
+			double val = rs.getDouble(rs.getMetaData().getColumnCount());
+			opt2measure.put(opt, val);
+		}
+		// Fill zero to populate measure_value array from HashMap
+		
+		for (int oi=0 ; oi<options.size();oi++) {
+			String opt = options.get(oi);
+			//System.out.println(opt);
+			if (opt2measure.containsKey(opt)) {
+				measure_values.add(opt2measure.get(opt));
+			}else {
+				measure_values.add(0.0);
+//				System.out.println("Contain missing value");
+//				System.out.println(opt2measure);
+			}
+//			System.out.println(measure_values);
 	    }
-		return rsArr;
+	    return measure_values;
+		
 	}
 	public static ResultSet getColumns(String tablename) throws SQLException {
 		/*

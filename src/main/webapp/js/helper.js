@@ -642,11 +642,11 @@ async function generateNode(nodeDicStr,callback){
         var xname;
         var yname;
         for(values in node){
-            if(node[values]['yAxis'])
+            if(node[values]['yAxis']!=null)
                 yVals.push(node[values]['yAxis']);
-            if(node[values]['xAxis'])
+            if(node[values]['xAxis']!=null)
                 xAttrs.push(node[values]['xAxis']);
-            if(node[values]["filter"]){
+            if(node[values]["filter"]!=null){
                 dic[i]=  node[values]["filter"];
                 
                 if(node[values]["filter"]=="#")
@@ -656,11 +656,11 @@ async function generateNode(nodeDicStr,callback){
                 else
                     filterVal = String(node[values]["filter"].split("#").join(", ").split("$").join("=")).slice(1, -2);
             }
-            if(node[values]['xName'])
+            if(node[values]['xName']!=null)
                 xname = node[values]['xName'];
-            if(node[values]['yName'])
+            if(node[values]['yName']!=null)
                 yname = node[values]['yName'];
-            if(node[values]['collapse'])
+            if(node[values]['collapse']!=null)
                 collapse.push(node[values]['collapse']);
         }
         console.log(filterVal);
@@ -682,7 +682,8 @@ async function generateNode(nodeDicStr,callback){
         for(i in xAttrs){
             vlSpec['data']['values'].push({});
             vlSpec['data']['values'][i][xname] = xAttrs[i];
-            vlSpec['data']['values'][i][yname] = Math.max( Math.round(yVals[i] * 10) / 10, 2.8 ).toFixed(2);
+            // vlSpec['data']['values'][i][yname] = Math.max( Math.round(yVals[i] * 10) / 10, 2.8 ).toFixed(2);
+            vlSpec['data']['values'][i][yname] = yVals[i].toFixed(2);
         }
         vlSpec['config'] = {
             "text":{"color":"black"},
