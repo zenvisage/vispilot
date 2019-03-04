@@ -26,8 +26,8 @@ public class Hierarchia
         System.out.println("uniqueAttributeKeyVals:"+uniqueAttributeKeyVals);
         HashMap<String, Integer> map_id_to_index = new HashMap<String, Integer>();
         Node root = new Node("#");
-//        ArrayList<Double> root_measure_values =  exp.computeVisualization(root, exp, "#");
-        ArrayList<Double> root_measure_values = compute_visualization(root,new ArrayList<String>(),new ArrayList<String>(),uniqueAttributeKeyVals,attribute_names,xAxis,datasetName);
+        ArrayList<Double> root_measure_values =  exp.computeVisualization(root, exp, "#");
+//        ArrayList<Double> root_measure_values = compute_visualization(root,new ArrayList<String>(),new ArrayList<String>(),uniqueAttributeKeyVals,attribute_names,xAxis,datasetName);
         System.out.println("Root measure:"+root_measure_values);
         Double rootSize = root.getPopulation_size();
         System.out.println("Root size:"+rootSize);

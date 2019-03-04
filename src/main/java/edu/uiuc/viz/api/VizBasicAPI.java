@@ -85,8 +85,9 @@ public class VizBasicAPI {
 		   // Dataset #2 : Police Stop
 		   groupby = new ArrayList<String>(Arrays.asList(
 			"driver_gender", "driver_race", "search_conducted",
-			"contraband_found",  "duration", "stop_outcome",
-			"stop_time", "driver_age"));//"is_arrested",
+			"contraband_found",  "duration", "stop_outcome","is_arrested",
+			"stop_time", "driver_age", "speeding_violations", "other_violations",
+			"registration_plates_violations","moving_violations","cell_phone_violations"));//"is_arrested",
 		}
 		else if (name.equals("mushroom")) {
 		   // Dataset #3 : Mushroom 

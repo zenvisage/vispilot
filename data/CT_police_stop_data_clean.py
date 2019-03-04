@@ -41,19 +41,21 @@ for violation in top5violations:
     if "violation" not in violation:
         violation_name = violation +"_violations"
     else:
-        violation_name = violation
+        violation_name = violation+"s"
     violation_name = violation_name.lower().replace(" ","_").replace("/","_")
     df[violation_name]=False
     df.loc[df.violation.apply(lambda x: violation in x ),violation_name]=True
-df = df.drop(["stop_date","stop_time","location_raw","county_name",'county_fips','stop_hr','fine_grained_location',\
+df = df.drop(["state","stop_date","stop_time","location_raw","county_name",'county_fips','stop_hr','fine_grained_location',\
 'search_type_raw', 'search_type','police_department','officer_id',"violation","violation_raw","driver_age","driver_age_raw","driver_race_raw"],axis=1)
 # cols = ['id', 'driver_gender', 'driver_race', 'search_conducted', 'contraband_found', 'stop_outcome', 'is_arrested', 'stop_duration', 'stop_time_of_day', 'driver_age_category']
 # df = df[cols]
 df =df.dropna()
 df = df.rename(index=str,columns={"stop_time_of_day":"stop_time","driver_age_category":"driver_age","stop_duration":"duration"})
-df.to_csv("CT_police_stop.csv")
+df.id = df.index
+data = df.dropna(axis=0,how='any') # Drop any columns with NaN values (since it messes with the combination code)
+print ("Finished processing")
+data.to_csv("CT_police_stop.csv")
 #Upload to database:
 from sqlalchemy import create_engine
-data = df.dropna(axis=0,how='any') # Drop any columns with NaN values (since it messes with the combination code)
 engine = create_engine("postgresql://summarization:lattice@localhost:5432")
 data.to_sql(name='ct_police_stop', con=engine, if_exists = 'replace', index=False)
