@@ -110,7 +110,7 @@ public class Experiment {
 		}
 		return uniqueAttributeKeyVals;
 	}
-	static ArrayList<String> get_attribute_names()
+	static ArrayList<String> get_attribute_names() throws SQLException
     {
         ArrayList<String> attribute_names = new ArrayList<String>();
         try
@@ -132,6 +132,11 @@ public class Experiment {
             System.out.println("Error in get_attribute_names()");
             System.out.println("attribute_names:"+attribute_names);
         }
+        
+//        Database d = new Database();
+//		ResultSet ret= d.getColumns(datasetName);
+//		attribute_names = d.resultSet2ArrayStr(ret);
+//		attribute_names.remove(new String("id"));
         return attribute_names;
     }
 	public void runOutput(Experiment exp) throws SQLException {

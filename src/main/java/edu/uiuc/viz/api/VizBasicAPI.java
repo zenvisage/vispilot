@@ -125,6 +125,7 @@ public class VizBasicAPI {
 			System.out.print(name + x + y + agg + Integer.toString(k) + " "+Double.toString(ic)+" "+Double.toString(info));
 			Experiment exp = new Experiment(name, x, y ,groupby,agg, k, dist,ic,info,false);
 			System.out.print(exp.uniqueAttributeKeyVals);
+			
 //			for (Entry<String, ArrayList<String>> entry : exp.uniqueAttributeKeyVals.entrySet()) {
 //			    String attr = entry.getKey();
 //			    int length = entry.getValue().size();
@@ -132,12 +133,14 @@ public class VizBasicAPI {
 //			    	exp.groupby.remove(attr);
 //			    }
 //			}
+//			exp.groupby = exp.attribute_names;
 //			java.util.Iterator<Entry<String, ArrayList<String>>> it = exp.uniqueAttributeKeyVals.entrySet().iterator();
 //		    while (it.hasNext()) {
 //		        Map.Entry pair = (Map.Entry)it.next();
 //		        String attr = (String) pair.getKey();
 //		        int len = ((ArrayList<String>) pair.getValue()).size();
-//		        if(len>=20) {
+//		        if(len>=20) {// remove attributes with large cardinality
+//		        	exp.attribute_names.remove(attr);
 //		        	exp.groupby.remove(attr);
 //		        	it.remove();
 //		        }
@@ -145,7 +148,7 @@ public class VizBasicAPI {
 //		         // avoids a ConcurrentModificationException
 //		    }
 			
-			
+			System.out.println(exp.attribute_names);
 			System.out.println(exp.uniqueAttributeKeyVals);
 			System.out.println(exp.groupby);
 			//exp.groupby = groupby;

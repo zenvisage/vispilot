@@ -176,11 +176,11 @@ public class Database {
 	
 	public static void main(String[] args) throws SQLException, FileNotFoundException, UnsupportedEncodingException 
     {
-//		Database db = new Database();
+		Database db = new Database();
 //		
-//		ResultSet rs = db.getTables();
+		ResultSet rs = db.getColumns("titanic");
 //		System.out.println(rs);
-//		ArrayList<Double> rsArr = printResultSet(rs);
+		ArrayList<Double> rsArr = printResultSet(rs);
 		
 //		ResultSet rs = Database.viz_query("titanic", new ArrayList<String>(Arrays.asList("survived")), "id", "COUNT", new ArrayList<String>(Arrays.asList("sex='male'", "age<20")));
 //		ArrayList<Double> rsArr = printResultSet(rs);
