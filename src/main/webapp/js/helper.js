@@ -626,6 +626,9 @@ function updateTextInput(val) {
     //console.log(svgString)
 }*/
 var dic = [];
+var subpop_dic = [];
+var root_pop = 0;
+var group_dic = [];
 async function generateNode(nodeDicStr,callback){
     console.log("start svg");
     dic = [];
@@ -641,6 +644,8 @@ async function generateNode(nodeDicStr,callback){
         var filterVal;
         var xname;
         var yname;
+        var subpop;
+        var group_num;
         for(values in node){
             if(node[values]['yAxis']!=null)
                 yVals.push(node[values]['yAxis']);
@@ -649,21 +654,28 @@ async function generateNode(nodeDicStr,callback){
             if(node[values]["filter"]!=null){
                 dic[i]=  node[values]["filter"];
                 
-                if(node[values]["filter"]=="#")
-                    filterVal="overall"
+                if(node[values]["filter"]=="#"){
+                    filterVal="overall";
+                    root_pop =node[values]['populationSize'];
+                }
                 else if(node[values]["filter"]=="collapsed")
                     filterVal="collapsed"
                 else
                     filterVal = String(node[values]["filter"].split("#").join(", ").split("$").join("=")).slice(1, -2);
             }
+            if(node[values]['populationSize']!=null)
+                subpop_dic[i]=node[values]['populationSize'];
             if(node[values]['xName']!=null)
                 xname = node[values]['xName'];
             if(node[values]['yName']!=null)
                 yname = node[values]['yName'];
             if(node[values]['collapse']!=null)
                 collapse.push(node[values]['collapse']);
+            if(root_pop != 0)
+                group_dic[i] = Math.round((node[values]['populationSize'] / root_pop) / 0.1) ;
         }
         console.log(filterVal);
+        console.log(group_num);
         /*console.log(yVals);
         console.log(xAttrs);
         console.log(filterVal);
@@ -730,7 +742,7 @@ async function generateNode(nodeDicStr,callback){
         //  }).catch(function(err) { console.error(err); });
         var svgString =  (view.toSVG()).then(function(result) {
             //console.log(filterVal);
-            nodelist.push({"id": parseInt(i), "filterVal":filterVal,"collapse":collapse,"image": "data:image/svg+xml;base64," + btoa(result), "shape": 'image', "color":{"border": "grey"} });
+            nodelist.push({"id": parseInt(i), "group": 0, "filterVal":filterVal,"collapse":collapse,"image": "data:image/svg+xml;base64," + btoa(result), "shape": 'image'});
             if (nodelist.length == Object.keys(nodeDicStr).length){//$("#kInputId").val()
                 console.log("finish svg");
                 var cur = 0;
@@ -929,4 +941,19 @@ function getTable(){
                 }
 
             })
+}
+
+function get_subpop(nodeID){
+    var s = subpop_dic[nodeID];
+    return s;
+}
+
+function buildGroup(node){
+    //console.log("!!!!!!!!!!!!!!!");
+    //console.log(node);
+    for(i in node){
+        //console.log(node[i]);
+        node[i]["group"] = group_dic[node[i]["id"]];
+    }
+    return node;
 }
