@@ -672,7 +672,8 @@ async function generateNode(nodeDicStr,callback){
             if(node[values]['collapse']!=null)
                 collapse.push(node[values]['collapse']);
             if(root_pop != 0)
-                group_dic[i] = Math.round((node[values]['populationSize'] / root_pop) / 0.12) ;
+                group_dic[i] = Math.round((node[values]['populationSize'] / root_pop) / 0.1) ;
+
         }
         console.log(filterVal);
         console.log(group_num);
