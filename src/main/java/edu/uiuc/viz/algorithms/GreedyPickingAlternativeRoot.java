@@ -23,13 +23,13 @@ public class GreedyPickingAlternativeRoot extends Traversal{
 	public void pickVisualizations(Experiment exp) {
 	   this.exp = exp;
 	   this.lattice=exp.lattice;
-	   System.out.println("---------------- Greedy Picking -----------------");
+	   System.out.println("---------------- Greedy Picking Alternative Root-----------------");
        double total_utility = 0;
        ArrayList<Integer> dashboard = new ArrayList<Integer>();
-       System.out.println(exp.lattice.id2IDMap);
-       System.out.println(alternativeRoot);
+       // System.out.println(exp.lattice.id2IDMap);
+       // System.out.println(alternativeRoot);
        int correspondingID = exp.lattice.id2IDMap.get(alternativeRoot);
-       System.out.println(correspondingID);
+       // System.out.println(correspondingID);
        dashboard.add(correspondingID); 
        // Stop when dashboard exceeds desired size k 
        while(dashboard.size()<exp.k && dashboard.size() < lattice.nodeList.size())
