@@ -4,7 +4,11 @@ import java.sql.SQLException;
 import java.util.*;
 
 import edu.uiuc.viz.algorithms.Experiment;
+import edu.uiuc.viz.algorithms.GreedyPicking;
+import edu.uiuc.viz.algorithms.GreedyPickingAlternativeRoot;
+import edu.uiuc.viz.algorithms.Traversal;
 import edu.uiuc.viz.distance.Distance;
+import edu.uiuc.viz.distance.Euclidean;
 
 public class Hierarchia 
 {
@@ -52,9 +56,9 @@ public class Hierarchia
             {
                 current_combination.add("#");
             }
-            /*
-	            System.out.println("current_combination:"+current_combination);
-	            current_combination:[#]
+            
+	        //    System.out.println("current_combination:"+current_combination);
+	        /*   current_combination:[#]
 				current_combination:[#, #]
 				current_combination:[#, #, #]
 				current_combination:[#, #, #, #]
@@ -63,19 +67,19 @@ public class Hierarchia
 				current_combination:[#, #, #, #, #, #, #]
             */
             generate_k_combinations(attribute_combination, k, 0, current_combination, k_attribute_combinations);
-            //System.out.println("Number of combinations: "+k_attribute_combinations.size());
+            System.out.println("Number of combinations: "+k_attribute_combinations.size());
             
-            //System.out.println("Attribute Combinations: "+k_attribute_combinations);
+            System.out.println("Attribute Combinations: "+k_attribute_combinations);
             for(int i = 0; i < k_attribute_combinations.size(); i++) // Looping through the i-th item in the k-attribute combination
             {
                 current_combination = k_attribute_combinations.get(i);
-//                System.out.println(current_combination);
-//                System.out.println(current_combination.get(0));
+                //System.out.println(current_combination);
+                //System.out.println(current_combination.get(0));
                 ArrayList<ArrayList<String>> attribute_values = new ArrayList<ArrayList<String>>();
                 for(int j = 0; j < k; j++)
                 {
-//                		System.out.println(j);
-//                		System.out.println(current_combination.get(j));
+                		System.out.println(j);
+                		System.out.println(current_combination.get(j));
 //                		ArrayList<String> possibleAttrVals = 
 //                				db.resultSet2ArrayStr(Database.findDistinctAttrVal(current_combination.get(j), datasetName));
                 		ArrayList<String> possibleAttrVals = uniqueAttributeKeyVals.get(current_combination.get(j));
@@ -92,7 +96,7 @@ public class Hierarchia
                     current_permutation.add("#");
                 }
                 generate_value_permutations(attribute_values, 0, current_permutation, value_permutations);
-//                System.out.println("Value Permutations: "+value_permutations);
+                System.out.println("Value Permutations: "+value_permutations);
                 
                 for(int j=0; j < value_permutations.size(); j++)
                 {
@@ -114,7 +118,7 @@ public class Hierarchia
                     if (node.getPopulation_size()>= min_iceberg_support) {
 	                    	if(current_visualization_measure_values.get(0) > 0.0 || current_visualization_measure_values.get(1)> 0.0 )
 	                        {
-	                            //System.out.println("Current Visualization: "+visualization_key+" -- "+current_visualization_measure_values);
+	                            System.out.println("Current Visualization: "+visualization_key+" -- "+current_visualization_measure_values);
 	                            map_id_to_metric_values.put(visualization_key, current_visualization_measure_values);
 	                            node_list.add(node);
 	                            map_id_to_index.put(visualization_key, node_list.size()-1);
@@ -137,7 +141,8 @@ public class Hierarchia
 	                                    Node parent = node_list.get(map_id_to_index.get(visualization_key));
 	                                    //System.out.println("populationSize:"+node.population_size);
 	                                    //System.out.println("parentSize:"+parent.population_size);
-	                                    double dist = distance.computeNormalizedDistance(current_visualization_measure_values,parent_visualization_measure_values,node.population_size,parent.population_size);
+	                                    //System.out.println("Potential parent: "+visualization_key+" -- "+map_id_to_metric_values.get(visualization_key));
+	                                    double dist = distance.computeNormalizedDistance(current_visualization_measure_values,parent_visualization_measure_values,parent.population_size,node.population_size);
 	                                    if(dist < min_distance)
 	                                        min_distance = dist;
 	                                }
@@ -156,8 +161,9 @@ public class Hierarchia
 	                                {
 	                                    ArrayList<Double> parent_visualization_measure_values = map_id_to_metric_values.get(visualization_key);
 	                                    Node parent = node_list.get(map_id_to_index.get(visualization_key));	                                    
-	                                    double dist = distance.computeNormalizedDistance(current_visualization_measure_values,parent_visualization_measure_values,node.population_size,parent.population_size);
-	                                    //System.out.println("dist criteria:"+min_distance/informative_criteria);
+	                                    double dist = distance.computeNormalizedDistance(current_visualization_measure_values,parent_visualization_measure_values,parent.population_size,node.population_size);
+	                                    System.out.print("dist:"+dist);
+	                                    System.out.println("dist criteria:"+min_distance/informative_criteria);
 	                                    if(dist*informative_criteria <= min_distance)
 	                                    {
 	                                        int parent_index = map_id_to_index.get(visualization_key);
@@ -169,7 +175,7 @@ public class Hierarchia
 	                                        node_list.get(parent_index).set_child_list(child_list);
 	                                        ArrayList<Double> dist_list = node_list.get(parent_index).get_dist_list();
 	                                        dist_list.add(dist);
-	                                        //System.out.println("Informative parent: "+visualization_key+" -- "+dist);
+	                                        System.out.println("Informative parent: "+visualization_key+" -- "+dist);
 	                                    }/*else {
 	                                    		System.out.println("Non-informative parent:"+visualization_key+" -- "+dist);
 	                                    }*/
@@ -201,7 +207,7 @@ public class Hierarchia
                 }
             }            
         }
-        /*
+        
         // Printing out materialized outputs 
         for(int x = 0; x < node_list.size(); x++)
         {
@@ -213,7 +219,7 @@ public class Hierarchia
                         +node_list.get(x).get_dist_list().get(y));
             }
             System.out.println();
-        }*/
+        }
         Lattice materialized_lattice = new Lattice(map_id_to_metric_values,node_list,map_id_to_index);
         System.out.println("--------------------finish lattice---------------------------- ");
         return materialized_lattice;
@@ -425,5 +431,31 @@ public class Hierarchia
 		*/
 		return all_combo;
 	}
-
+	public static void main(String[] args) throws FileNotFoundException, UnsupportedEncodingException, SQLException {
+//        ArrayList<String> groupby = new ArrayList<String>(Arrays.asList("gender", "race", "vital_status", "ethnicity", "age",
+// 		       "years_to_last_follow_up",  "morphology_behavior",
+// 		       "diagnosis_contain_adenocarcinoma", "diagnosis_contain_squamous",
+// 		       "diagnosis_contain_papillary", "diagnosis_contain_infiltrating",
+// 		       "diagnosis_contain_glioblastoma",
+// 		       "diagnosis_contain_cystadenocarcinoma", "diagnosis_contain_melanoma",
+// 		       "diagnosis_contain_endometrioid", "diagnosis_contain_hepatocellular",
+// 		       "diagnosis_contain_transitional", "diagnosis_contain_lobular",
+// 		       "diagnosis_contain_mixed", "diagnosis_contain_oligodendroglioma",
+// 		       "diagnosis_contain_anaplastic", "diagnosis_contain_leukemia",
+// 		       "diagnosis_contain_lymphoma", "diagnosis_contain_acute",
+// 		       "diagnosis_contain_myeloid", "diagnosis_contain_tumor",
+// 		       "origin_region"));
+        Traversal ourAlgo = new GreedyPicking();
+		Distance dist = new Euclidean();
+//        Experiment exp = new Experiment("cancer", "vital_status", "id", groupby, "COUNT", 9, dist,0,0.9,false);
+		ArrayList<String>  groupby = new ArrayList<String>(Arrays.asList("survived","gender","pc_class"));
+		String yAxis = "id";
+	    String xAxis = "survived"; 
+	    String aggType = "COUNT";
+	    Experiment exp = new Experiment("titanic", xAxis, yAxis,groupby,aggType, 9, dist,0,0.9,false);
+        exp.buildLattice(false);
+        exp.setAlgo(ourAlgo);
+        String nodedic = exp.runOutputReturnJSON(exp);
+        System.out.println(nodedic);
+    }
 }
