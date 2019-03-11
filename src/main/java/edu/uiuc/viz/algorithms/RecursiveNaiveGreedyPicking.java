@@ -6,7 +6,7 @@ import java.util.HashMap;
 
 import edu.uiuc.viz.distance.Distance;
 import edu.uiuc.viz.distance.Euclidean;
-import edu.uiuc.viz.lattice.Hierarchia;
+//import edu.uiuc.viz.lattice.Hierarchia;
 import edu.uiuc.viz.lattice.Lattice;
 
 public class RecursiveNaiveGreedyPicking extends LookAheadPicking{

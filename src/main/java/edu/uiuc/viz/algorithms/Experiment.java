@@ -18,7 +18,7 @@ import edu.uiuc.viz.distance.Distance;
 import edu.uiuc.viz.distance.Euclidean;
 import edu.uiuc.viz.lattice.Dashboard;
 import edu.uiuc.viz.lattice.Database;
-import edu.uiuc.viz.lattice.Hierarchia;
+//import edu.uiuc.viz.lattice.Hierarchia;
 import edu.uiuc.viz.lattice.Lattice;
 import edu.uiuc.viz.lattice.VizOutput;
 import edu.uiuc.viz.lattice.Node;
@@ -73,9 +73,11 @@ public class Experiment {
 			ResultSet rs = Database.viz_query(this.datasetName, this.groupby, this.yAxisName, this.aggFunc, new ArrayList<String>(Arrays.asList()));
 			Database.resultSet2csv(rs,this.datasetName,this.groupby,this.aggFunc+"("+this.yAxisName+")"); //generate csv file
 			//generate the lattice for this experiment
-			this.lattice = Hierarchia.generateFullyMaterializedLattice(this,dist,iceberg_ratio,
+			this.lattice = new Lattice();
+			Lattice l = this.lattice.generateFullyMaterializedLattice(this,dist,iceberg_ratio,
 							informative_critera,uniqueAttributeKeyVals,attribute_names,xAxisName,datasetName);
 			//get the number of filters
+			this.lattice = l;
 			this.nbars = lattice.id2MetricMap.get("#").size();
 		}
 	}
