@@ -1,3 +1,4 @@
+//Main function to draw the Visulization
 var network = null;
 var DIR = 'img/refresh-cl/';
 var LENGTH_MAIN = 150;
@@ -87,6 +88,7 @@ function draw(node,edge) {
 
     console.log(node_dataset);
     network = new vis.Network(container, data, options);
+    //show collapsed node's title when hovering
     network.on("hoverNode", function (params) {
         //console.log('hoverNode Event:', params);
         var nodeID = params.node;
@@ -117,6 +119,7 @@ function draw(node,edge) {
 
         var nodeID = params['nodes']['0'];
         console.log(nodeID);
+        //coloring interested and uninterested nodes
 
         // totalclick[nodeID] = (totalclick[nodeID]+1)%3;
         // if(totalclick[nodeID]==0)

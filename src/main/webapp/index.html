@@ -9,7 +9,6 @@
 <!-- Dependencies -->
 <script src="js/d3.v3.min.js"></script>
 <script src="js/raphael.js"></script>
-<script src="js/Treant.js"></script>
 <script src="js/jquery.min.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script src="js/jquery.easing.js"></script>
@@ -190,91 +189,11 @@
 
  <div id="right-sidebar-graph" class="clearfix" style="width:17%; float:right; z-index: 1; position: relative;">
 <br><br>
-<!-- <form class="form-inline menu-item">
-  <h1>Dashboard Options:</h1>
-  <br>
-  <h2 class = "title"><b>Dataset:</b></h2>
-    <select id="data" onChange="getCol()">
-      <option>Select an Option</option>
-      <option>titanic</option>
-      <option>turn</option>
-      <option>ct_police_stop</option>
-      <option>mushroom</option>
-      <option>autism</option>
-    </select>
-</form>
-<br><br>
-<form class="form-inline menu-item">
-   <h2 class = "title"><b>X-Axis</b></h2>
-  <select id="x" style="width: 150px">
-
-  <option>Select an Option</option>
-
-</select>
-</form>
-<br><br>
-<form class="form-inline menu-item">
-    <h2 class = "title"><b>Y-Axis</b></h2>
-    <select id="y">
-  
-  <option>Select an Option</option>
-  <option>id</option>
-
-</select>
-</form>
-<br><br>
-<form class="form-inline menu-item" class="form-inline" id = "agg_select" name = "agg_select">
-  <h2 class = "title"><b>Aggregation function</b></h2>
-    <select id="agg">
-  
-  <option>Select an Option</option>
-  <option>SUM</option>
-  <option>AVERAGE</option>
-  <option>COUNT</option>
-</select>
-  <br>
-</form>
-<br><br>
-<div class="form-group" style="margin-left: 21px;">
-
-    <label for="collapse-on">Collapse Visualizations</label>
-    <input type="checkbox" id="collapse-on" style="zoom: 1.5;">
-</div>
-
-<form class="form-inline menu-item" class="form-inline">
-  <h2 class = "title"><b>number of visualizations</b></h2>
-</form>
-<form name="k-val" style="display: flex; flex-direction:row;">
-   <input type="range" name="kInputName" id="kInputId" style ="margin-left: 20px" value="24" min="0" max="30" step = "1" oninput="kOutputId.value = kInputId.value">
-   <output name="kOutputName" id="kOutputId" style="margin-left: 10px; padding-bottom: 5px;margin-right: 5px;">20</output>
-</form>
-<div class ="k-slider">
-
-</div>
-<br>
-<form class="form-inline menu-item" class="form-inline">
-  <h2 class = "title"><b>iceberg condition</b></h2>
-</form>
-
-<form name="ic-val" style="display: flex; flex-direction:row;">
-   <input type="range" name="icInputName" id="icInputId" style ="margin-left: 20px" value="24" min="0" max="100" step = "10" oninput="icOutputId.value = icInputId.value">
-   <output name="icOutputName" id="icOutputId" style="margin-left: 10px; padding-bottom: 5px;margin-right: 5px;">20</output>
-</form>
-<br>
-
-<form class="form-inline menu-item" class="form-inline">
-  <h2 class = "title"><b>informative parent criterion</b></h2>
-</form>
-<form name="ic-val" style="display: flex; flex-direction:row;">
-   <input type="range" name="infoInputName" id="infoInputId" style ="margin-left: 20px" value="24" min="0" max="1" step = "0.1" oninput="infoOutputId.value = infoInputId.value">
-   <output name="infoOutputName" id="infoOutputId" style="margin-left: 10px; padding-bottom: 5px;margin-right: 5px;">1</output>
-</form>
-<div id="additionalInfoPanel" style="margin-left: 10px; word-wrap: break-word;"></div>
-
-<button onclick="testDraw()">Submit</button>
- -->
   </div>
+
  </div>
+ 
+ <!-- panel for interested and uninterested nodes -->
 <!-- <div id="right-sidebar-table" class="clearfix" style="background-color:White;width:20%;height:100%; float:right;display:none; z-index: 1; position: relative;" >
 <div class="sidebar-menu" style="width:100%">
    <div>
@@ -306,6 +225,9 @@
 <!-- Javascript files -->
 <script type="text/javascript" src="js/sidebar.js"></script>
 <script type="text/javascript" src="js/helper.js"></script>
+<script type="text/javascript" src="js/expand.js"></script>
+<script type="text/javascript" src="js/draw.js"></script>
+<script type="text/javascript" src="js/drop-down-menu.js"></script>
 <script type="text/javascript" src="js/barchart.js"></script>
 </div>
 </div>
