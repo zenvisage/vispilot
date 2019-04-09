@@ -53,6 +53,9 @@ import edu.uiuc.viz.evaluation.*;
 import edu.uiuc.viz.lattice.*;
 
 
+/**
+ * The VizBasicAPI class is a collection of API functions to connect the front-end and the back-end.
+ */
 
 @Controller
 public class VizBasicAPI {
@@ -60,7 +63,10 @@ public class VizBasicAPI {
 	public VizBasicAPI(){
 			cache = new Hashtable<String, Lattice>();
 		}
-	
+	/**
+	 * Generate the Experiment object and the Lattice object.
+	 * Return the node list in JSON format.
+	 */
 	@RequestMapping(value = "/draw", method = RequestMethod.POST)
 	@ResponseBody
 	public String draw(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException, InterruptedException, SQLException {
@@ -184,6 +190,9 @@ public class VizBasicAPI {
 		}		
     }
 	
+	/**
+	 * Fetch the column name of a given table.
+	 */
 	@RequestMapping(value = "/getCol", method = RequestMethod.POST)
 	@ResponseBody
 	public ArrayList<String> getCol(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException, InterruptedException, SQLException {
@@ -197,6 +206,9 @@ public class VizBasicAPI {
 		return colArrs;
 	}	
 	
+	/**
+	 * Fetch the names of all tables in the database.
+	 */
 	@RequestMapping(value = "/getTable", method = RequestMethod.POST)
 	@ResponseBody
 	public ArrayList<String> getTable(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException, InterruptedException, SQLException {
@@ -207,6 +219,9 @@ public class VizBasicAPI {
 		return tableArrs;
 	}	
 	
+	/**
+	 * Generate a new expanded node list given the expand number.
+	 */
 	@RequestMapping(value = "/expand", method = RequestMethod.POST)
 	@ResponseBody
 	public String expand(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException, InterruptedException, SQLException {

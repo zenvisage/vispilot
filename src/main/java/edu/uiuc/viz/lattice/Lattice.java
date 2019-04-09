@@ -70,8 +70,8 @@ public class Lattice
     	/**
     	 * Fully Materialize Visualization Lattice by populating id2MetricMap, nodeList, id2IDMap 
     	 * @param distance: Distance function used for computing edge weights between parent & child
-    	 * iceberg_ratio: enforces that all nodes to be added into the lattice must be > x % of size of the root node
-    	 * informative_criteria: for a parent to be added to the lattice, it must be within x % the minimum distance to be declared an "informative parent" 
+    	 * @param iceberg_ratio: enforces that all nodes to be added into the lattice must be > x % of size of the root node
+    	 * @param informative_criteria: for a parent to be added to the lattice, it must be within x % the minimum distance to be declared an "informative parent" 
     	 */
     	    System.out.println("---------------- Generate Fully Materialized Lattice -----------------");
     	    System.out.println("Informative parent defined as parents within "+informative_criteria*100+"% the minimum.");
@@ -117,9 +117,9 @@ public class Lattice
 				current_combination:[#, #, #, #, #, #, #]
             */
             generate_k_combinations(attribute_combination, k, 0, current_combination, k_attribute_combinations);
-            System.out.println("Number of combinations: "+k_attribute_combinations.size());
+            //System.out.println("Number of combinations: "+k_attribute_combinations.size());
             
-            System.out.println("Attribute Combinations: "+k_attribute_combinations);
+            //System.out.println("Attribute Combinations: "+k_attribute_combinations);
             for(int i = 0; i < k_attribute_combinations.size(); i++) // Looping through the i-th item in the k-attribute combination
             {
                 current_combination = k_attribute_combinations.get(i);

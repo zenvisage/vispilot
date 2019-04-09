@@ -30,7 +30,9 @@ public class Database {
 	      }
       System.out.println("Opened database successfully");
 	}
-	// Query database and return result
+	/**
+	 * Query database and return result
+	 */ 
 	public static  ResultSet query(String sQLQuery) throws SQLException {
 		//System.out.println(sQLQuery);
 	    Statement stmt = c.createStatement();
@@ -51,6 +53,9 @@ public class Database {
 		return rsArr;
 	}
 	
+	/**
+	 * Covert the result set object to a ArrayList.
+	 */
 	public static ArrayList<String> resultSet2ArrayStr(ResultSet rs) throws SQLException {
 		ArrayList<String> rsArr = new ArrayList<String>();
 		while (rs.next()) {
@@ -63,6 +68,9 @@ public class Database {
 		return rsArr;
 	}
 	
+	/**
+	 * Covert the result set object to a CSV file.
+	 */
 	public static void resultSet2csv(ResultSet rs,String filename, ArrayList<String> header,String measure_name) throws SQLException, FileNotFoundException, UnsupportedEncodingException {
 		PrintWriter writer = new PrintWriter(filename+".csv", "UTF-8");
 		writer.println(arr2DelimitedStrings(header, ",")+","+measure_name);
@@ -98,6 +106,10 @@ public class Database {
 		}
 		return arrJoined;
 	}
+	
+	/**
+	 * Generate the query statement, query the data set and return result.
+	 */
 	public static  ResultSet viz_query(String tablename, ArrayList<String> x_attr,String y_attr,String agg_func, ArrayList<String> filters) throws SQLException {
 		String xAttrJoined =arr2DelimitedStrings(x_attr, ",");
 		String query_stmt = "SELECT " + xAttrJoined + ", " +agg_func +"(" + y_attr + ")" + " FROM " + tablename;
@@ -164,6 +176,10 @@ public class Database {
 	    return measure_values;
 		
 	}
+	
+	/**
+	 * Get the column names of a given table.
+	 */
 	public static ResultSet getColumns(String tablename) throws SQLException {
 		/*
 		  Get a list of all the columns inside a particular table to display to the front end
@@ -187,12 +203,17 @@ public class Database {
 	    return Database.query(query_stmt);
 	}
 	
+	/**
+	 * Find the distinct values for this attribute
+	 */
 	public static ResultSet findDistinctAttrVal(String attribute, String tablename) throws SQLException {
-		// Find the distinct values for this attribute
 		String query_stmt = "SELECT DISTINCT "+ attribute +" FROM "+tablename+" ;";
 		return Database.query(query_stmt);
 	}
-
+	
+	/**
+	 * Get the name of all tables stored in the database.
+	 */
 	public static ResultSet getTables() throws SQLException {
 		String query_stmt = "SELECT table_name FROM information_schema.tables WHERE table_schema = 'public' AND TABLE_TYPE='BASE TABLE';";
 		return Database.query(query_stmt);

@@ -20,8 +20,12 @@ public class VizOutput {
 	public VizOutput(Experiment exp) {
 		this.exp = exp;
 	}
+
+	/**
+	 * Generate node dictionary that contains all the data required for generating the visualizations
+	 */
 	public String generateNodeDic() {
-		// Node dictionary contains all the data required for generating the visualizations
+		// 
 		/*  {1: [{'xAxis': 'Clinton', 'yAxis': 48},
 			  {'xAxis': 'Trump', 'yAxis': 46},
 			  {'xAxis': 'Others', 'yAxis': 6},
@@ -67,8 +71,12 @@ public class VizOutput {
 		//System.out.println(nodeDic);
 		return nodeDic;
 	}
+	
+	/**
+	 *  Generating node dictionary where keys are all sequentially ordered (for table layout)
+	 */
 	public String generateOrderedNodeDic() {
-		// Generating node dictionary where keys are all sequentially ordered (for table layout)
+		
 		ArrayList<String> xAttr = exp.uniqueAttributeKeyVals.get(exp.xAxisName);
 		String nodeDic = "{";
 		for (int i=0; i< exp.dashboard.maxSubgraph.size();i++) {

@@ -43,7 +43,10 @@ public class Experiment {
 	public static Database db ;
 	public static ArrayList<String> attribute_names;
 	public static HashMap<String, ArrayList<String>> uniqueAttributeKeyVals;
-
+	
+	/**
+	 * Generate Experiment object given all information it needs.
+	 */
 	public Experiment(String datasetName, String xAxisName, String yAxisName, ArrayList<String> groupby, String aggFunc, int k, Distance dist,
 			double iceberg_ratio, double informative_critera,boolean online) throws SQLException, FileNotFoundException, UnsupportedEncodingException {
 		db = new Database();
