@@ -15,7 +15,7 @@ function draw(node,edge) {
 
     //(totalclick = []).length = node.length;
     //totalclick.fill(0);
-
+    node = buildGroup(node);
     node_dataset = new vis.DataSet(node);
     for (i = 0; i < node.length; i++){
 
@@ -36,14 +36,14 @@ function draw(node,edge) {
         },
         nodes: {
           chosen:false,
-          borderWidth:3,
+          borderWidth:4,
           size: 100,
-          color: {
-              border: '#A1BACB',
-              background: '#FFFFFF',
-              //highlight: 'red',
-              //hover: '#ff9933'
-            },
+          // color: {
+          //        border: 'red'
+          //     background: '#FFFFFF',
+          //     //highlight: 'red',
+          //     //hover: '#ff9933'
+          //   },
           font:{color:'#0B131A',
                 size:8
           },
@@ -52,6 +52,19 @@ function draw(node,edge) {
             }
           //   ,
           // label: "xxx title"
+        },
+        groups: {
+            0: {color:{border:'#C7D4F3', background: '#FFFFFF'}},
+            1: {color:{border:'#B5C6F0', background: '#FFFFFF'}},
+            2: {color:{border:'#A3B7E7', background: '#FFFFFF'}},
+            3: {color:{border:'#91A8DE', background: '#FFFFFF'}},
+            4: {color:{border:'#7F98D5', background: '#FFFFFF'}},
+            5: {color:{border:'#6D89CD', background: '#FFFFFF'}},
+            6: {color:{border:'#5A7AC4', background: '#FFFFFF'}},
+            7: {color:{border:'#486ABB', background: '#FFFFFF'}},
+            8: {color:{border:'#365BB2', background: '#FFFFFF'}},
+            9: {color:{border:'#244CA9', background: '#FFFFFF'}},
+            10: {color:{border:'#123DA1', background: '#FFFFFF'}}
         },
         physics: {enabled: false},
         edges: {smooth: false,
@@ -92,7 +105,7 @@ function draw(node,edge) {
     network.on("hoverNode", function (params) {
         //console.log('hoverNode Event:', params);
         var nodeID = params.node;
-        //console.log(nodeID)
+        console.log(nodeID)
         var hoveredNode = node_dataset.get(nodeID);
         if(hoveredNode.collapse.length > 0){
             //console.log(hoveredNode)
@@ -114,6 +127,12 @@ function draw(node,edge) {
             }
             node_dataset.update(hoveredNode);
         }
+        else{
+          var subpop = get_subpop(nodeID);
+          hoveredNode.title = '<div><font size="4">'+"This visualization is aggregated across "+subpop+" records."+'</font></div>';
+          node_dataset.update(hoveredNode);
+        }
+
     });
     network.on("click", function(params) {
 

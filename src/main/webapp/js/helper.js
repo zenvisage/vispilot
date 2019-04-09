@@ -625,4 +625,3 @@ function updateTextInput(val) {
     })
     //console.log(svgString)
 }*/
-

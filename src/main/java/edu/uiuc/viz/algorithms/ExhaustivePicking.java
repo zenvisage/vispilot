@@ -11,7 +11,7 @@ import java.util.stream.Stream;
 import edu.uiuc.viz.distance.Distance;
 import edu.uiuc.viz.distance.Euclidean;
 import edu.uiuc.viz.lattice.Dashboard;
-import edu.uiuc.viz.lattice.Hierarchia;
+//import edu.uiuc.viz.lattice.Hierarchia;
 import edu.uiuc.viz.lattice.Lattice;
 import edu.uiuc.viz.lattice.Node;
 
