@@ -23,7 +23,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 
-
+/**
+ * A jetty server to enable the communication between front end and back end.
+ */
 public class VizServer {
 
 	public static void main(String[] args) throws Exception {
