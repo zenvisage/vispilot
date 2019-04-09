@@ -1,0 +1,68 @@
+\hypertarget{classedu_1_1uiuc_1_1viz_1_1lattice_1_1_lattice}{}\section{edu.\+uiuc.\+viz.\+lattice.\+Lattice Class Reference}
+\label{classedu_1_1uiuc_1_1viz_1_1lattice_1_1_lattice}\index{edu.uiuc.viz.lattice.Lattice@{edu.uiuc.viz.lattice.Lattice}}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classedu_1_1uiuc_1_1viz_1_1lattice_1_1_lattice_a496de455ff51eeb81becb5469c24d8c8}\label{classedu_1_1uiuc_1_1viz_1_1lattice_1_1_lattice_a496de455ff51eeb81becb5469c24d8c8}} 
+{\bfseries Lattice} (Hash\+Map$<$ String, Array\+List$<$ Double $>$$>$ id2\+Metric\+Map, Array\+List$<$ \mbox{\hyperlink{classedu_1_1uiuc_1_1viz_1_1lattice_1_1_node}{Node}} $>$ node\+List, Hash\+Map$<$ String, Integer $>$ id2\+I\+D\+Map)
+\item 
+\mbox{\Hypertarget{classedu_1_1uiuc_1_1viz_1_1lattice_1_1_lattice_a4943398fe6944f68fd00ac4006b94403}\label{classedu_1_1uiuc_1_1viz_1_1lattice_1_1_lattice_a4943398fe6944f68fd00ac4006b94403}} 
+void {\bfseries add2\+Lattice} (\mbox{\hyperlink{classedu_1_1uiuc_1_1viz_1_1lattice_1_1_node}{Node}} node, Array\+List$<$ Double $>$ measure\+\_\+values, Integer ID)
+\item 
+\mbox{\hyperlink{classedu_1_1uiuc_1_1viz_1_1lattice_1_1_lattice}{Lattice}} \mbox{\hyperlink{classedu_1_1uiuc_1_1viz_1_1lattice_1_1_lattice_a9561521c4a9067e31306921639af5e19}{generate\+Fully\+Materialized\+Lattice}} (\mbox{\hyperlink{classedu_1_1uiuc_1_1viz_1_1algorithms_1_1_experiment}{Experiment}} exp, \mbox{\hyperlink{interfaceedu_1_1uiuc_1_1viz_1_1distance_1_1_distance}{Distance}} distance, double iceberg\+\_\+ratio, double informative\+\_\+criteria, Hash\+Map$<$ String, Array\+List$<$ String $>$$>$ unique\+Attribute\+Key\+Vals, Array\+List$<$ String $>$ attribute\+\_\+names, String x\+Axis, String dataset\+Name)  throws S\+Q\+L\+Exception
+\item 
+\mbox{\Hypertarget{classedu_1_1uiuc_1_1viz_1_1lattice_1_1_lattice_a40477cace4b55ec366fd7a692cf290d3}\label{classedu_1_1uiuc_1_1viz_1_1lattice_1_1_lattice_a40477cace4b55ec366fd7a692cf290d3}} 
+void {\bfseries generate\+\_\+k\+\_\+combinations} (Array\+List$<$ String $>$ attribute\+\_\+names, int len, int start, Array\+List$<$ String $>$ current\+\_\+combination, Array\+List$<$ Array\+List$<$ String $>$$>$ k\+\_\+combination\+\_\+list)
+\item 
+\mbox{\Hypertarget{classedu_1_1uiuc_1_1viz_1_1lattice_1_1_lattice_a5cf2c0b8fa580dc6a97859d6408f7b03}\label{classedu_1_1uiuc_1_1viz_1_1lattice_1_1_lattice_a5cf2c0b8fa580dc6a97859d6408f7b03}} 
+void {\bfseries generate\+\_\+value\+\_\+permutations} (Array\+List$<$ Array\+List$<$ String $>$$>$ attribute\+\_\+values, int depth, Array\+List$<$ String $>$ current\+\_\+permutation, Array\+List$<$ Array\+List$<$ String $>$$>$ value\+\_\+permutations)
+\item 
+\mbox{\Hypertarget{classedu_1_1uiuc_1_1viz_1_1lattice_1_1_lattice_ae05ad4cf7fe72ffd4be90fd15555a6de}\label{classedu_1_1uiuc_1_1viz_1_1lattice_1_1_lattice_ae05ad4cf7fe72ffd4be90fd15555a6de}} 
+Array\+List$<$ Double $>$ {\bfseries compute\+\_\+visualization} (\mbox{\hyperlink{classedu_1_1uiuc_1_1viz_1_1lattice_1_1_node}{Node}} node, Array\+List$<$ String $>$ current\+\_\+combination, Array\+List$<$ String $>$ current\+\_\+permutation, Hash\+Map$<$ String, Array\+List$<$ String $>$$>$ unique\+Attribute\+Key\+Vals, Array\+List$<$ String $>$ attribute\+\_\+names, String x\+Axis, String dataset\+Name)
+\item 
+\mbox{\Hypertarget{classedu_1_1uiuc_1_1viz_1_1lattice_1_1_lattice_a85ba660cff5a0efc0120a7565f31417d}\label{classedu_1_1uiuc_1_1viz_1_1lattice_1_1_lattice_a85ba660cff5a0efc0120a7565f31417d}} 
+void {\bfseries print\+\_\+map} (Map mp)
+\item 
+\mbox{\Hypertarget{classedu_1_1uiuc_1_1viz_1_1lattice_1_1_lattice_a2af528624b4c1347722d65ab08407a24}\label{classedu_1_1uiuc_1_1viz_1_1lattice_1_1_lattice_a2af528624b4c1347722d65ab08407a24}} 
+void {\bfseries combination\+Util} (Array\+List$<$ Array\+List$<$ String $>$$>$ all\+\_\+combo, Array\+List$<$ String $>$ arr, Array\+List$<$ String $>$ data, int start, int end, int index, int r)
+\item 
+\mbox{\Hypertarget{classedu_1_1uiuc_1_1viz_1_1lattice_1_1_lattice_aeb79126845a5606cfed381241b5d3a7f}\label{classedu_1_1uiuc_1_1viz_1_1lattice_1_1_lattice_aeb79126845a5606cfed381241b5d3a7f}} 
+Array\+List$<$ Array\+List$<$ String $>$ $>$ {\bfseries combination} (Array\+List$<$ String $>$ arr, int r)
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classedu_1_1uiuc_1_1viz_1_1lattice_1_1_lattice_a1dc505c55585ae789606ef78b2c19328}\label{classedu_1_1uiuc_1_1viz_1_1lattice_1_1_lattice_a1dc505c55585ae789606ef78b2c19328}} 
+Array\+List$<$ \mbox{\hyperlink{classedu_1_1uiuc_1_1viz_1_1lattice_1_1_node}{Node}} $>$ {\bfseries node\+List}
+\item 
+\mbox{\Hypertarget{classedu_1_1uiuc_1_1viz_1_1lattice_1_1_lattice_a82161dde901282e143ecb162cdb83bee}\label{classedu_1_1uiuc_1_1viz_1_1lattice_1_1_lattice_a82161dde901282e143ecb162cdb83bee}} 
+Hash\+Map$<$ String, Array\+List$<$ Double $>$ $>$ {\bfseries id2\+Metric\+Map}
+\item 
+\mbox{\Hypertarget{classedu_1_1uiuc_1_1viz_1_1lattice_1_1_lattice_ad12f116a8ee815bfd9867dac2aa76c67}\label{classedu_1_1uiuc_1_1viz_1_1lattice_1_1_lattice_ad12f116a8ee815bfd9867dac2aa76c67}} 
+Hash\+Map$<$ Array\+List$<$ Double $>$, String $>$ {\bfseries Metric2id\+Map}
+\item 
+\mbox{\Hypertarget{classedu_1_1uiuc_1_1viz_1_1lattice_1_1_lattice_ae3c5272ff5edadb855415da0a24dd3fb}\label{classedu_1_1uiuc_1_1viz_1_1lattice_1_1_lattice_ae3c5272ff5edadb855415da0a24dd3fb}} 
+Hash\+Map$<$ String, Integer $>$ {\bfseries id2\+I\+D\+Map}
+\item 
+\mbox{\Hypertarget{classedu_1_1uiuc_1_1viz_1_1lattice_1_1_lattice_a28ba0b41f01b928a94f0de9a6819ade7}\label{classedu_1_1uiuc_1_1viz_1_1lattice_1_1_lattice_a28ba0b41f01b928a94f0de9a6819ade7}} 
+Hash\+Map$<$ Integer, String $>$ {\bfseries I\+D2id\+Map}
+\end{DoxyCompactItemize}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classedu_1_1uiuc_1_1viz_1_1lattice_1_1_lattice_a9561521c4a9067e31306921639af5e19}\label{classedu_1_1uiuc_1_1viz_1_1lattice_1_1_lattice_a9561521c4a9067e31306921639af5e19}} 
+\index{edu.uiuc.viz.lattice.Lattice@{edu.uiuc.viz.lattice.Lattice}!generateFullyMaterializedLattice@{generateFullyMaterializedLattice}}
+\index{generateFullyMaterializedLattice@{generateFullyMaterializedLattice}!edu.uiuc.viz.lattice.Lattice@{edu.uiuc.viz.lattice.Lattice}}
+\subsubsection{\texorpdfstring{generateFullyMaterializedLattice()}{generateFullyMaterializedLattice()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classedu_1_1uiuc_1_1viz_1_1lattice_1_1_lattice}{Lattice}} edu.\+uiuc.\+viz.\+lattice.\+Lattice.\+generate\+Fully\+Materialized\+Lattice (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classedu_1_1uiuc_1_1viz_1_1algorithms_1_1_experiment}{Experiment}}}]{exp,  }\item[{\mbox{\hyperlink{interfaceedu_1_1uiuc_1_1viz_1_1distance_1_1_distance}{Distance}}}]{distance,  }\item[{double}]{iceberg\+\_\+ratio,  }\item[{double}]{informative\+\_\+criteria,  }\item[{Hash\+Map$<$ String, Array\+List$<$ String $>$$>$}]{unique\+Attribute\+Key\+Vals,  }\item[{Array\+List$<$ String $>$}]{attribute\+\_\+names,  }\item[{String}]{x\+Axis,  }\item[{String}]{dataset\+Name }\end{DoxyParamCaption}) throws S\+Q\+L\+Exception}
+
+Fully Materialize Visualization \mbox{\hyperlink{classedu_1_1uiuc_1_1viz_1_1lattice_1_1_lattice}{Lattice}} by populating id2\+Metric\+Map, node\+List, id2\+I\+D\+Map 
+\begin{DoxyParams}{Parameters}
+{\em distance} & Distance function used for computing edge weights between parent \& child iceberg\+\_\+ratio\+: enforces that all nodes to be added into the lattice must be $>$ x \% of size of the root node informative\+\_\+criteria\+: for a parent to be added to the lattice, it must be within x \% the minimum distance to be declared an \char`\"{}informative parent\char`\"{}\\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/main/java/edu/uiuc/viz/lattice/Lattice.\+java\end{DoxyCompactItemize}

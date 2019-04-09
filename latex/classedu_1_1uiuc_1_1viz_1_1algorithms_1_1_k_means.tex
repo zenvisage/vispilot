@@ -1,0 +1,99 @@
+\hypertarget{classedu_1_1uiuc_1_1viz_1_1algorithms_1_1_k_means}{}\section{edu.\+uiuc.\+viz.\+algorithms.\+K\+Means Class Reference}
+\label{classedu_1_1uiuc_1_1viz_1_1algorithms_1_1_k_means}\index{edu.uiuc.viz.algorithms.KMeans@{edu.uiuc.viz.algorithms.KMeans}}
+Inheritance diagram for edu.\+uiuc.\+viz.\+algorithms.\+K\+Means\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classedu_1_1uiuc_1_1viz_1_1algorithms_1_1_k_means}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classedu_1_1uiuc_1_1viz_1_1algorithms_1_1_k_means_a7681bf0f2521c385838b853c11d95aa9}{K\+Means}} ()
+\item 
+\mbox{\hyperlink{classedu_1_1uiuc_1_1viz_1_1algorithms_1_1_k_means_ab3126bebfc8ed429dd34a5e05da7e7e3}{K\+Means}} (int k)
+\item 
+\mbox{\hyperlink{classedu_1_1uiuc_1_1viz_1_1algorithms_1_1_k_means_aedc5f4ee20c7b193c89089a5ac0c2183}{K\+Means}} (int clusters, int iterations)
+\item 
+\mbox{\hyperlink{classedu_1_1uiuc_1_1viz_1_1algorithms_1_1_k_means_ade4c170f802b8593cd82f089a7905cc8}{K\+Means}} (int clusters, int iterations, Distance\+Measure dm)
+\item 
+Dataset \mbox{[}$\,$\mbox{]} \mbox{\hyperlink{classedu_1_1uiuc_1_1viz_1_1algorithms_1_1_k_means_a3ee0bcd01fa2cb25c64789e0cae5fb8c}{cluster}} (Dataset data)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Implements the K-\/means algorithms as described by Mac Queen in 1967.
+
+$<$bibtex$>$ J. B. Mac\+Queen (1967)\+: "Some Methods for classification and Analysis of Multivariate Observations, Proceedings of 5-\/th Berkeley Symposium on Mathematical Statistics and Probability", Berkeley, University of California Press, 1\+:281-\/297 $<$/bibtex$>$
+
+\begin{DoxyAuthor}{Author}
+Thomas Abeel 
+\end{DoxyAuthor}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classedu_1_1uiuc_1_1viz_1_1algorithms_1_1_k_means_a7681bf0f2521c385838b853c11d95aa9}\label{classedu_1_1uiuc_1_1viz_1_1algorithms_1_1_k_means_a7681bf0f2521c385838b853c11d95aa9}} 
+\index{edu.uiuc.viz.algorithms.KMeans@{edu.uiuc.viz.algorithms.KMeans}!KMeans@{KMeans}}
+\index{KMeans@{KMeans}!edu.uiuc.viz.algorithms.KMeans@{edu.uiuc.viz.algorithms.KMeans}}
+\subsubsection{\texorpdfstring{KMeans()}{KMeans()}\hspace{0.1cm}{\footnotesize\ttfamily [1/4]}}
+{\footnotesize\ttfamily edu.\+uiuc.\+viz.\+algorithms.\+K\+Means.\+K\+Means (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Constuct a default K-\/means clusterer with 100 iterations, 4 clusters, a default random generator and using the Euclidean distance. \mbox{\Hypertarget{classedu_1_1uiuc_1_1viz_1_1algorithms_1_1_k_means_ab3126bebfc8ed429dd34a5e05da7e7e3}\label{classedu_1_1uiuc_1_1viz_1_1algorithms_1_1_k_means_ab3126bebfc8ed429dd34a5e05da7e7e3}} 
+\index{edu.uiuc.viz.algorithms.KMeans@{edu.uiuc.viz.algorithms.KMeans}!KMeans@{KMeans}}
+\index{KMeans@{KMeans}!edu.uiuc.viz.algorithms.KMeans@{edu.uiuc.viz.algorithms.KMeans}}
+\subsubsection{\texorpdfstring{KMeans()}{KMeans()}\hspace{0.1cm}{\footnotesize\ttfamily [2/4]}}
+{\footnotesize\ttfamily edu.\+uiuc.\+viz.\+algorithms.\+K\+Means.\+K\+Means (\begin{DoxyParamCaption}\item[{int}]{k }\end{DoxyParamCaption})}
+
+Constuct a default K-\/means clusterer with the specified number of clusters, 100 iterations, a default random generator and using the Euclidean distance.
+
+
+\begin{DoxyParams}{Parameters}
+{\em k} & the number of clusters to create \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classedu_1_1uiuc_1_1viz_1_1algorithms_1_1_k_means_aedc5f4ee20c7b193c89089a5ac0c2183}\label{classedu_1_1uiuc_1_1viz_1_1algorithms_1_1_k_means_aedc5f4ee20c7b193c89089a5ac0c2183}} 
+\index{edu.uiuc.viz.algorithms.KMeans@{edu.uiuc.viz.algorithms.KMeans}!KMeans@{KMeans}}
+\index{KMeans@{KMeans}!edu.uiuc.viz.algorithms.KMeans@{edu.uiuc.viz.algorithms.KMeans}}
+\subsubsection{\texorpdfstring{KMeans()}{KMeans()}\hspace{0.1cm}{\footnotesize\ttfamily [3/4]}}
+{\footnotesize\ttfamily edu.\+uiuc.\+viz.\+algorithms.\+K\+Means.\+K\+Means (\begin{DoxyParamCaption}\item[{int}]{clusters,  }\item[{int}]{iterations }\end{DoxyParamCaption})}
+
+Create a new Simple K-\/means clusterer with the given number of clusters and iterations. The internal random generator is a new one based upon the current system time. For the distance we use the Euclidean n-\/space distance.
+
+
+\begin{DoxyParams}{Parameters}
+{\em clusters} & the number of clusters \\
+\hline
+{\em iterations} & the number of iterations \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classedu_1_1uiuc_1_1viz_1_1algorithms_1_1_k_means_ade4c170f802b8593cd82f089a7905cc8}\label{classedu_1_1uiuc_1_1viz_1_1algorithms_1_1_k_means_ade4c170f802b8593cd82f089a7905cc8}} 
+\index{edu.uiuc.viz.algorithms.KMeans@{edu.uiuc.viz.algorithms.KMeans}!KMeans@{KMeans}}
+\index{KMeans@{KMeans}!edu.uiuc.viz.algorithms.KMeans@{edu.uiuc.viz.algorithms.KMeans}}
+\subsubsection{\texorpdfstring{KMeans()}{KMeans()}\hspace{0.1cm}{\footnotesize\ttfamily [4/4]}}
+{\footnotesize\ttfamily edu.\+uiuc.\+viz.\+algorithms.\+K\+Means.\+K\+Means (\begin{DoxyParamCaption}\item[{int}]{clusters,  }\item[{int}]{iterations,  }\item[{Distance\+Measure}]{dm }\end{DoxyParamCaption})}
+
+Create a new K-\/means clusterer with the given number of clusters and iterations. Also the Random Generator for the clusterer is given as parameter.
+
+
+\begin{DoxyParams}{Parameters}
+{\em clusters} & the number of clustesr \\
+\hline
+{\em iterations} & the number of iterations\\
+\hline
+{\em dm} & the distance measure to use \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classedu_1_1uiuc_1_1viz_1_1algorithms_1_1_k_means_a3ee0bcd01fa2cb25c64789e0cae5fb8c}\label{classedu_1_1uiuc_1_1viz_1_1algorithms_1_1_k_means_a3ee0bcd01fa2cb25c64789e0cae5fb8c}} 
+\index{edu.uiuc.viz.algorithms.KMeans@{edu.uiuc.viz.algorithms.KMeans}!cluster@{cluster}}
+\index{cluster@{cluster}!edu.uiuc.viz.algorithms.KMeans@{edu.uiuc.viz.algorithms.KMeans}}
+\subsubsection{\texorpdfstring{cluster()}{cluster()}}
+{\footnotesize\ttfamily Dataset \mbox{[}$\,$\mbox{]} edu.\+uiuc.\+viz.\+algorithms.\+K\+Means.\+cluster (\begin{DoxyParamCaption}\item[{Dataset}]{data }\end{DoxyParamCaption})}
+
+X\+XX add doc 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/main/java/edu/uiuc/viz/algorithms/K\+Means.\+java\end{DoxyCompactItemize}

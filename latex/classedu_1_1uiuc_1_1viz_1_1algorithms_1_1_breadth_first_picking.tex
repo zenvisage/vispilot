@@ -1,0 +1,48 @@
+\hypertarget{classedu_1_1uiuc_1_1viz_1_1algorithms_1_1_breadth_first_picking}{}\section{edu.\+uiuc.\+viz.\+algorithms.\+Breadth\+First\+Picking Class Reference}
+\label{classedu_1_1uiuc_1_1viz_1_1algorithms_1_1_breadth_first_picking}\index{edu.uiuc.viz.algorithms.BreadthFirstPicking@{edu.uiuc.viz.algorithms.BreadthFirstPicking}}
+Inheritance diagram for edu.\+uiuc.\+viz.\+algorithms.\+Breadth\+First\+Picking\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=4.000000cm]{classedu_1_1uiuc_1_1viz_1_1algorithms_1_1_breadth_first_picking}
+\end{center}
+\end{figure}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+Hash\+Map$<$ Integer, Float $>$ \mbox{\hyperlink{classedu_1_1uiuc_1_1viz_1_1algorithms_1_1_breadth_first_picking_ae66671d6e5c4f77f063bd1bdd7e08e89}{update\+External}} (\mbox{\hyperlink{classedu_1_1uiuc_1_1viz_1_1algorithms_1_1_experiment}{Experiment}} exp, Array\+List$<$ Integer $>$ local\+Max\+Subgraph, Hash\+Map$<$ Integer, Float $>$ current\+Frontier, Integer parent\+Node\+Id, Integer k)
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+In each iteration we pick a node with the highest utility from a set of \char`\"{}frontier\char`\"{} nodes. Then, the children of the picked node are added to the frontier. The utility of a frontier node is based on the edge weight with the parent that \char`\"{}discovered\char`\"{} it.
+
+
+\begin{DoxyParams}{Parameters}
+{\em k} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyAuthor}{Author}
+saarkuzi 
+\end{DoxyAuthor}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classedu_1_1uiuc_1_1viz_1_1algorithms_1_1_breadth_first_picking_ae66671d6e5c4f77f063bd1bdd7e08e89}\label{classedu_1_1uiuc_1_1viz_1_1algorithms_1_1_breadth_first_picking_ae66671d6e5c4f77f063bd1bdd7e08e89}} 
+\index{edu.uiuc.viz.algorithms.BreadthFirstPicking@{edu.uiuc.viz.algorithms.BreadthFirstPicking}!updateExternal@{updateExternal}}
+\index{updateExternal@{updateExternal}!edu.uiuc.viz.algorithms.BreadthFirstPicking@{edu.uiuc.viz.algorithms.BreadthFirstPicking}}
+\subsubsection{\texorpdfstring{updateExternal()}{updateExternal()}}
+{\footnotesize\ttfamily Hash\+Map$<$Integer, Float$>$ edu.\+uiuc.\+viz.\+algorithms.\+Breadth\+First\+Picking.\+update\+External (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classedu_1_1uiuc_1_1viz_1_1algorithms_1_1_experiment}{Experiment}}}]{exp,  }\item[{Array\+List$<$ Integer $>$}]{local\+Max\+Subgraph,  }\item[{Hash\+Map$<$ Integer, Float $>$}]{current\+Frontier,  }\item[{Integer}]{parent\+Node\+Id,  }\item[{Integer}]{k }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+Adding nodes to a frontier; the added nodes are the children of a given parent node.
+
+
+\begin{DoxyParams}{Parameters}
+{\em current\+Frontier,parent\+Node\+Id} & \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/main/java/edu/uiuc/viz/algorithms/Breadth\+First\+Picking.\+java\end{DoxyCompactItemize}

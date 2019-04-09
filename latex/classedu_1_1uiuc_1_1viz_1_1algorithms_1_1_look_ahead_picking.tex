@@ -1,0 +1,60 @@
+\hypertarget{classedu_1_1uiuc_1_1viz_1_1algorithms_1_1_look_ahead_picking}{}\section{edu.\+uiuc.\+viz.\+algorithms.\+Look\+Ahead\+Picking Class Reference}
+\label{classedu_1_1uiuc_1_1viz_1_1algorithms_1_1_look_ahead_picking}\index{edu.uiuc.viz.algorithms.LookAheadPicking@{edu.uiuc.viz.algorithms.LookAheadPicking}}
+Inheritance diagram for edu.\+uiuc.\+viz.\+algorithms.\+Look\+Ahead\+Picking\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=1.370031cm]{classedu_1_1uiuc_1_1viz_1_1algorithms_1_1_look_ahead_picking}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classedu_1_1uiuc_1_1viz_1_1algorithms_1_1_look_ahead_picking_aa831b21cd72710b267745d3145ed38aa}\label{classedu_1_1uiuc_1_1viz_1_1algorithms_1_1_look_ahead_picking_aa831b21cd72710b267745d3145ed38aa}} 
+{\bfseries Look\+Ahead\+Picking} (String algo\+Name)
+\item 
+\mbox{\Hypertarget{classedu_1_1uiuc_1_1viz_1_1algorithms_1_1_look_ahead_picking_ad2e0f12f60eb459fe2c8b47991477a5c}\label{classedu_1_1uiuc_1_1viz_1_1algorithms_1_1_look_ahead_picking_ad2e0f12f60eb459fe2c8b47991477a5c}} 
+void {\bfseries pick\+Visualizations} (\mbox{\hyperlink{classedu_1_1uiuc_1_1viz_1_1algorithms_1_1_experiment}{Experiment}} exp)
+\item 
+\mbox{\Hypertarget{classedu_1_1uiuc_1_1viz_1_1algorithms_1_1_look_ahead_picking_ac0838a359b66ab790af97125184a8433}\label{classedu_1_1uiuc_1_1viz_1_1algorithms_1_1_look_ahead_picking_ac0838a359b66ab790af97125184a8433}} 
+Hash\+Map$<$ Integer, Float $>$ {\bfseries pick\+Visualizations} (\mbox{\hyperlink{classedu_1_1uiuc_1_1viz_1_1algorithms_1_1_experiment}{Experiment}} exp, Integer k, Integer root\+Id)
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+abstract Hash\+Map$<$ Integer, Float $>$ \mbox{\hyperlink{classedu_1_1uiuc_1_1viz_1_1algorithms_1_1_look_ahead_picking_a5ba9a735d4038044011f64928225fb1d}{update\+External}} (\mbox{\hyperlink{classedu_1_1uiuc_1_1viz_1_1algorithms_1_1_experiment}{Experiment}} exp, Array\+List$<$ Integer $>$ local\+Max\+Subgraph, Hash\+Map$<$ Integer, Float $>$ current\+Frontier, Integer parent\+Node\+Id, Integer k)
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+In each iteration we pick a node with the \char`\"{}highest utility\char`\"{} from a set of \char`\"{}frontier\char`\"{} nodes. The \char`\"{}highest utility\char`\"{} should be determined by a specific instantiation
+
+
+\begin{DoxyParams}{Parameters}
+{\em k} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyAuthor}{Author}
+saarkuzi 
+\end{DoxyAuthor}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classedu_1_1uiuc_1_1viz_1_1algorithms_1_1_look_ahead_picking_a5ba9a735d4038044011f64928225fb1d}\label{classedu_1_1uiuc_1_1viz_1_1algorithms_1_1_look_ahead_picking_a5ba9a735d4038044011f64928225fb1d}} 
+\index{edu.uiuc.viz.algorithms.LookAheadPicking@{edu.uiuc.viz.algorithms.LookAheadPicking}!updateExternal@{updateExternal}}
+\index{updateExternal@{updateExternal}!edu.uiuc.viz.algorithms.LookAheadPicking@{edu.uiuc.viz.algorithms.LookAheadPicking}}
+\subsubsection{\texorpdfstring{updateExternal()}{updateExternal()}}
+{\footnotesize\ttfamily abstract Hash\+Map$<$Integer, Float$>$ edu.\+uiuc.\+viz.\+algorithms.\+Look\+Ahead\+Picking.\+update\+External (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classedu_1_1uiuc_1_1viz_1_1algorithms_1_1_experiment}{Experiment}}}]{exp,  }\item[{Array\+List$<$ Integer $>$}]{local\+Max\+Subgraph,  }\item[{Hash\+Map$<$ Integer, Float $>$}]{current\+Frontier,  }\item[{Integer}]{parent\+Node\+Id,  }\item[{Integer}]{k }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [abstract]}, {\ttfamily [protected]}}
+
+Adding nodes to a frontier; the added nodes are the children of a given parent node. A specific algorithm needs to decide what is the utility of the frontier node
+
+
+\begin{DoxyParams}{Parameters}
+{\em current\+Frontier,parent\+Node\+Id} & \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/main/java/edu/uiuc/viz/algorithms/Look\+Ahead\+Picking.\+java\end{DoxyCompactItemize}
