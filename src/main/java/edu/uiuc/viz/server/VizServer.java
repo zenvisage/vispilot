@@ -24,7 +24,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 
 /**
- * A jetty server to enable the communication between front end and back end.
+ * A jetty server to enable communication between front end and back end.
  */
 public class VizServer {
 
