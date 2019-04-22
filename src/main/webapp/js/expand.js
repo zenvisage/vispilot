@@ -1,5 +1,7 @@
 
-//Main expand function
+/**
+*Main expand function. Send all parameters to back end to get the expanded nodeDic.
+*/
 function Expand(id){
     var d = document.getElementById('dlg_text');
     d.style.display = 'none';
@@ -39,7 +41,9 @@ function Expand(id){
             })
 }
 
-//Calculate the number of children of a certain node given node_id
+/**
+*Calculate the number of children of a certain node given node_id.
+*/
 function numOfChildren(id, child_dic){
     var ret = 1;
     console.log(child_dic);
@@ -56,7 +60,9 @@ function numOfChildren(id, child_dic){
     return ret;
 }
 
-//Show Expanding dialog
+/**
+*Show Expanding dialog on UI.
+*/
 function showDialog(nodeID){
     var title = dic[nodeID];
     if(title=="#")

@@ -4,9 +4,13 @@ var DIR = 'img/refresh-cl/';
 var LENGTH_MAIN = 150;
 var LENGTH_SUB = 50;
 var node_dataset = null;
-// Called when the Visualization API is loaded.
+// 
 var totalclick = {};
 var options;
+
+/**
+ * Main draw function. Called when the Visualization API is loaded.
+ */
 function draw(node,edge) {
     console.log(node)
     // create a network

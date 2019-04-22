@@ -3,6 +3,10 @@ var subpop_dic = [];
 var root_pop = 0;
 var group_dic = [];
 
+/**
+ * Generate node list from nodeDicStr.
+ */
+
 async function generateNode(nodeDicStr,callback){
     console.log("start svg");
     dic = [];
@@ -131,6 +135,10 @@ async function generateNode(nodeDicStr,callback){
     }
 }
 var child_dic = []; 
+
+/**
+ * Generate edge list from nodeDicStr.
+ */
 function generateEdge(nodeDicStr){
     child_dic = []; 
     var edgelist = [];
@@ -155,6 +163,9 @@ function generateEdge(nodeDicStr){
 }
 var old_dic;
 
+/**
+ * Generate node list and edge list and call main draw function.
+ */
 function getNodeEdgeListThenDraw(nodeDicStr){
     old_dic = nodeDicStr;
     nodeDicStr = nodeDicStr.split("\\").join("");
@@ -172,12 +183,17 @@ function getNodeEdgeListThenDraw(nodeDicStr){
     // draw(nodelist, edgelist);
 }
 
-
+/**
+ * Get subpopulation of a certain node.
+ */
 function get_subpop(nodeID){
     var s = subpop_dic[nodeID];
     return s;
 }
 
+/**
+ * Assign group ID to each node.
+ */
 function buildGroup(node){
     //console.log("!!!!!!!!!!!!!!!");
     //console.log(node);
@@ -187,7 +203,10 @@ function buildGroup(node){
     }
     return node;
 }
-//Main draw function
+
+/**
+*Send all parameters to backend and get the nodeDic string.
+*/
 function Draw(){
     //console.log(document.getElementById('agg').value)
     //document.getElementById("canvas-graph").style.display = "none"

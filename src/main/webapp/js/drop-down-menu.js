@@ -1,4 +1,6 @@
-//Fetch Column names of a certain datset
+/**
+*Fetch Column names of a certain datset
+*/
 function getCol(){
     $.ajax({
             type: "POST",
@@ -21,7 +23,9 @@ function getCol(){
 }
 
 
-//Fetch the name of datasets to dynamically fill the Dataset field
+/**
+* Fetch the name of datasets to dynamically fill the Dataset field.
+*/
 function getTable(){
     $.ajax({
             type: "POST",
