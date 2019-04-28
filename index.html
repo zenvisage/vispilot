@@ -27,8 +27,8 @@
 
   </head>
   <body>
-  	<script type="text/javascript" src="http://data-people.cs.illinois.edu/papers.json"></script>    
-
+  	<!-- <script type="text/javascript" src="https://data-people.cs.illinois.edu/papers.json"></script>     -->
+	<script type="text/javascript" src="entities.js"></script>
   	<script type="text/javascript" src="display_papers.js"></script>
   	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script> 
 
@@ -78,11 +78,7 @@
                   Team
                 </a>
               </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#contact">
-                  Contact
-                </a>
-              </li>
+              
             </ul>
           </div>
         </div>
@@ -114,11 +110,7 @@
               Team
             </a>
           </li>
-          <li>
-            <a class="page-scroll" href="#contact">
-              Contact
-            </a>
-          </li>
+          
         </ul>
         <!-- Mobile Menu End -->
 
@@ -136,13 +128,12 @@
                 <div class="carousel-inner" role="listbox">
                   <div class="carousel-item active">
                     <img src="img/slider/bg.jpg" alt="">
-                    <div class="carousel-caption">
+                    <div class="carousel-caption" style="top: 20%">
                       <h3 class="slide-title animated fadeInDown"><span>VisPilot</span></h3>
-                      <h5 class="slide-text animated fadeIn" style="margin-top: 10px; font-size: 16px;">A common operation during this exploration is drill-down.<br> However, in the absence of careful attention towards confounding factors, drill-downs could lead to inductive fallacies. <br> We present <font color="#3498DB"><b>VisPilot</b></font>, <br>an <font color="#3498DB"><b>accelerated</b></font> visual data exploration tool that guides analysts through the <font color="#3498DB"><b>key insights</b></font> in a dataset, while avoiding <font color="#3498DB"><b>drill-down fallacies</b></font>.</h5>
-                      <a href="https://github.com/zenvisage/vispilot" class="btn btn-lg btn-border animated fadeInUp">Get Started</a>
-                      <a href="#" class="btn btn-lg btn-border animated fadeInUp">Live Demo</a>
-                      <a href="file:///Users/Huizi/Research/vispilot/src/main/webapp/js/docs/index.html" class="btn btn-lg btn-border animated fadeInUp">Front-end Documentation</a>
-                      <a href="file:///Users/Huizi/Research/vispilot/html/index.html" class="btn btn-lg btn-border animated fadeInUp">Back-end Documentation</a>
+                      <h5 class="slide-text animated fadeIn" style="margin-top: 10px; font-size: 16px;">A common operation during this exploration is drill-down.<br> However, drill-downs could lead to inductive fallacies. <br> We present <i><b>VisPilot</b></i>, an <i><b>accelerated</b></i> visual data exploration tool.<br> It will guide analysts through the <i><b>key insights</b></i> in a dataset, while avoiding <i><b>drill-down fallacies</b></i>.</h5>
+                      <a href="https://github.com/zenvisage/vispilot" class="btn btn-lg btn-border animated fadeInUp"><span class="fa fa-github"></span>Get Started</a>
+                      <a href="#" class="btn btn-lg btn-border animated fadeInUp"><span class="fa fa-desktop"></span>Live Demo</a>
+                      <a href="file:///Users/Huizi/Research/vispilot/html/index.html" class="btn btn-lg btn-border animated fadeInUp"><span class="fa fa-book"></span>Documentation</a>
                     </div>
                   </div>
                 <a class="carousel-control-prev" href="#carousel-slider" role="button" data-slide="prev">
@@ -247,7 +238,7 @@
       <div class="container">
         <div class="row">
           <div class="col-md-12">
-            <h2 class="section-title wow fadeInDown animated" data-wow-delay="0.3s">Examples</h2>
+            <h2 class="section-title wow fadeInDown animated" data-wow-delay="0.3s">Example</h2>
           </div>
         </div>
 
@@ -268,7 +259,7 @@
                     <img src="img/slider/bg-1.jpg" alt="">
                     <div class="carousel-caption">
                       
-                      <h5 class="slide-text animated fadeIn">Fill in the boxes on the top and click Submit to draw the dashboard.</h5>
+                      <h5 class="slide-text animated fadeIn">Fill in the boxes on the top and click Submit to draw the dashboard.<br> You can zoom in or zoom out as you like.</h5>
                       
                     </div>
                   </div>
@@ -332,38 +323,10 @@
             <h2 class="section-title wow fadeInDown animated" data-wow-delay="0.3s">Our Team</h2>
           </div>
         </div>
-        <table style="width:70%; margin-left: auto; margin-right: auto;">
-		  <tr>
-		    <th>Doris Jung-Lin Lee</th>
-		    <th>Himel Dev</th> 
-		    <th>Huizi Hu</th> 
-		    <th>Hazem Elmeleegy</th> 
-		    <th>Aditya Parameswaran</th> 
-		  </tr>
-		  <tr>
-		    <td>University of Illinois,</td>
-		    <td>University of Illinois,</td>
-		    <td>University of Illinois,</td>
-		    <td>Google, Inc.</td>
-		    <td>University of Illinois,</td>
-		  </tr>
-		  <tr>
-		    <td>Urbana-Champaign</td>
-		    <td>Urbana-Champaign</td>
-		    <td>Urbana-Champaign</td>
-		    <td>elmeleegy@google.com</td>
-		    <td>Urbana-Champaign</td>
-		  </tr>
-		  <tr>
-		    <td>jlee782@illinois.edu</td>
-		    <td>hdev3@illinois.edu</td>
-		    <td>huizihu2@illinois.edu</td>
-		    <td></td>
-		    <td>adityagp@illinois.edu</td>
-		  </tr>
-		  
-		</table>
-      
+        <div class="container">
+        <p> VisPilot is being developed by a team of undergraduate and graduate students headed by Professor <a href="http://data-people.cs.illinois.edu"><font color="#3498DB">Aditya Parameswaran</font></a> . The current list of contributors includes Doris Lee,  Himel Dev, Huizi Hu, and Hazem Elmeleegy. </p>
+        <p> Please reach out to <a href="http://dorisjunglinlee.com/"><font color="#3498DB">Doris Lee</font></a> if you'd like to either contribute or be a beta tester of VisPilot! </p>
+      	</div>
     </div>
     <!-- Team Section End -->
 
@@ -371,68 +334,6 @@
 
    
 
-    <!-- Contact Form Section Start -->
-    <section id="contact" class="contact-form section-padding">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12">
-            <h2 class="section-title wow fadeInDown animated" data-wow-delay="0.3s">Contact Us</h2>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-lg-8 col-md-6 col-xs-12">
-            <h3 class="title-head text-left">Get in touch</h3>
-            <form class="contact-form" data-toggle="validator">
-              <div class="row">
-                <div class="col-lg-4 col-md-12 col-xs-12">
-                  <div class="form-group">
-                    <i class="contact-icon fa fa-user"></i>
-                    <input type="text" class="form-control" id="name" placeholder="Full Name" required data-error="Please enter your name">
-                    <div class="help-block with-errors"></div>
-                  </div>
-                </div>
-                <div class="col-lg-4 col-md-12 col-xs-12">
-                  <div class="form-group">
-                    <i class="contact-icon fa fa-envelope-o"></i>
-                    <input type="email" class="form-control" id="email" placeholder="Email" required data-error="Please enter your email">
-                    <div class="help-block with-errors"></div>
-                  </div>
-                </div>
-                <div class="col-lg-4 col-md-12 col-xs-12">
-                  <div class="form-group">
-                    <i class="contact-icon fa fa-pencil-square-o"></i>
-                    <input type="text" class="form-control" id="subject" placeholder="Subject" required data-error="Please enter your Subject">
-                    <div class="help-block with-errors"></div>
-                  </div>
-                </div>
-                <div class="col-lg-12 col-md-12 col-xs-12">
-                  <textarea class="form-control" id="message" rows="4" placeholder="Message" required data-error="Please enter your message"></textarea>
-                  <div class="help-block with-errors"></div>
-                  <button type="submit" id="form-submit" class="btn btn-common btn-form-submit">Send Message</button>
-                  <div id="msgSubmit" class="h3 text-center hidden"></div>
-                  <div class="clearfix"></div>
-                </div>
-              </div>
-            </form>
-          </div>
-
-          <div class="col-lg-4 col-md-6 col-xs-12">
-            <h4 class="contact-info-title text-left">Contact Information</h4>
-            <div class="contact-info">
-              <address>
-              <i class="lni-map-marker icons cyan-color contact-info-icon"></i>
-              <a href="http://dorisjunglinlee.com/"><i class="lni-envelope icons cyan-color contact-info-icon"></i>Doris Lee</a>
-              
-            </address>
-              
-              <a href="mailto:jlee782@illinois.edu"><i class="lni-envelope icons cyan-color contact-info-icon"></i>jlee782@illinois.edu</a>
-              
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-    <!-- Contact Form Section End -->
 
 	  
 

@@ -25,7 +25,7 @@ function display_papers(papers, ordered, num_to_display){
             document.write('<span class="label label-primary">PRE-PRINT</span> ');
           else
             document.write('<span class="label label-primary">PAPER</span> ');
-          document.write('<a href='+entities[y]["link"]+">"+entities[y]["title"]+"</a>. <br/>");
+          document.write('<a href='+entities[y]["link"]+"><font color='#3498DB'>"+entities[y]["title"]+"</font></a>. <br/>");
           document.write(entities[y]["authors"]+". ");
           if (entities[y]["location"] == null)
             document.write(entities[y]["type"]+ ". "+ entities[y]["date"]+"<br/>");
