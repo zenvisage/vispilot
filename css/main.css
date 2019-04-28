@@ -3058,6 +3058,7 @@ nav#menu span.fa.fa-bars:hover {
   margin-top: 250px;
   font-size: 20px;
   font-family: "Rubik", sans-serif;
+  text-align: left;
 }
 
 #carousel-area .carousel-item .carousel-caption h3 {
