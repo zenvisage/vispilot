@@ -67,7 +67,7 @@ body {
 }
 
 #chartid h1, button {
-  margin-left: 25px;
+  margin-left: 5px;
   text-align: left;
 }
 
@@ -146,7 +146,7 @@ rect:hover {
 }
 input[type=range] {
     display: block;
-    width: 80%;
+    width: 50%;
 }
 
 /* The slider itself */

@@ -97,13 +97,14 @@
     <div class="form-inline menu-item">
       <form name="k-val" style="display: flex; flex-direction:row;">
         <b>k:</b>
-         <input type="range" name="kInputName" id="kInputId" style ="margin-left: 20px;margin-bottom: 2px;" value="24" min="0" max="30" step = "1" oninput="kOutputId.value = kInputId.value">
-         <output name="kOutputName" id="kOutputId" style="margin-left: 10px; margin-right: 5px;margin-top: -6px; color:white">20</output>
+         <input type="range" name="kInputName" id="kInputId" style ="margin-left: 20px;margin-bottom: 2px;" value="9" min="0" max="30" step = "1" oninput="kOutputId.value = kInputId.value">
+         <output name="kOutputName" id="kOutputId" style="margin-left: 10px; margin-right: 5px;margin-top: -6px; color:white">9</output>
       </form>
     </div>
-    <button onclick="Draw()">Submit</button>
+    <button onclick="Draw()" style="margin-left: -20px">Submit</button>
+    <button id="helpmsg" style="font-weight: bold; margin-left: 5px">?</button>
   </div>
-  <button id="helpmsg" style="float:right;width:3%;height:5.65%;text-align:center;font-size:20px;color:#009688;font-weight: bold">?</button>
+  
 </div>
 <!-- The Modal -->
 <div id="message" class="modal" >
@@ -192,7 +193,7 @@
   </div>
 
  </div>
- 
+
  <!-- panel for interested and uninterested nodes -->
 <!-- <div id="right-sidebar-table" class="clearfix" style="background-color:White;width:20%;height:100%; float:right;display:none; z-index: 1; position: relative;" >
 <div class="sidebar-menu" style="width:100%">
