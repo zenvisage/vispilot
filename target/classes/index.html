@@ -1,0 +1,234 @@
+<!-- Stylesheets -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="css/Treant.css">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/form.css">
+<!-- Dependencies -->
+<script src="js/d3.v3.min.js"></script>
+<script src="js/raphael.js"></script>
+<script src="js/jquery.min.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script src="js/jquery.easing.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vega@4.3.0"></script>
+<script src="https://cdn.jsdelivr.net/npm/vega-lite@3.0.0-rc8"></script>
+<script src="https://cdn.jsdelivr.net/npm/vega-embed@3.20.0"></script>
+
+<div class="w3-sidebar w3-bar-block w3-border-right" style="display:none; width: 15%;" id="mySidebar">
+    <br><br>
+    <h1 for="sel1">User Selection</h1>
+    <br>
+      <form>
+        <div class="form-group">
+          <select class="form-control" id="user" style="width: 30%;margin: 10px 30px;" >
+            <script>
+                var num = 18;
+                var options = "";
+                for(var i = 1; i<=num; i++){
+                      options += "<option>"+ i +"</option>";
+                }
+                document.getElementById("user").innerHTML = options;
+            </script>
+          </select>
+          <br>
+        </div>
+      </form>
+    <h1>Task Selection:</h1>
+            <button type="button" name="T1" onclick="populateT1()" aria-pressed="false" class="btn btn-default btn-xs">T1</button>
+            <button type="button" name="T2" onclick="populateT2()" aria-pressed="false" class="btn btn-default btn-xs">T2</button>
+            <button type="button" name="T3" onclick="populateT3()" aria-pressed="false" class="btn btn-default btn-xs">T3</button>
+<br><br><br>
+            <button type="button" name="D1Q1" onclick="populateA1()" aria-pressed="false" class="btn btn-default btn-xs">A1</button>
+            <button type="button" name="D1Q2" onclick="populateA2()" aria-pressed="false" class="btn btn-default btn-xs">A2</button>
+            <button type="button" name="D1Q3" onclick="populateA3()" aria-pressed="false" class="btn btn-default btn-xs">A3</button>
+<br><br><br>
+            <button type="button" name="D2Q1" onclick="populateB1()" aria-pressed="false" class="btn btn-default btn-xs">B1</button>
+            <button type="button" name="D2Q2" onclick="populateB2()" aria-pressed="false" class="btn btn-default btn-xs">B2</button>
+            <button type="button" name="D2Q3" onclick="populateB3()" aria-pressed="false" class="btn btn-default btn-xs">B3</button>
+
+</div>
+
+
+<div class="w3-main" id="main">
+
+<div class="w3-teal">
+  <div class="iconcontainer" style="margin-left: 10px;margin-top: 10px;" onclick="mymenuicon(this);menuItem_open_close();">
+    <div class="bar1"></div>
+    <div class="bar2"></div>
+    <div class="bar3"></div>
+  </div>
+  <div id = "menubar" style="padding: 10px;display: inline-block;">
+    
+    <form class="form-inline menu-item">
+        <b>Dataset:</b>
+            <select id="data" onChange="getCol()">
+              <option>Select an Option</option>
+            </select>
+    </form>
+    <script type="text/javascript">
+    $(document).ready(function() {
+    getTable();
+    });
+    </script>
+    <form class="form-inline menu-item">
+    <b>X-Axis:</b>
+      <select id="x" style="width: 150px">
+        <option>Select an Option</option>
+      </select>
+    </form>
+    <form class="form-inline menu-item">
+        <b>Y-Axis:</b>
+        <select id="y" style="width: 150px">
+      <option>Select an Option</option>
+      <!-- <option>id</option> -->
+    </select>
+    </form>
+    <form class="form-inline menu-item" class="form-inline" id = "agg_select" name = "agg_select">
+      <b>Aggregation function:</b>
+        <select id="agg">
+          <option>Select an Option</option>
+          <option>SUM</option>
+          <option>AVERAGE</option>
+          <option>COUNT</option>
+        </select>
+    </form>
+    <div class="form-inline menu-item">
+      <form name="k-val" style="display: flex; flex-direction:row;">
+        <b>k:</b>
+         <input type="range" name="kInputName" id="kInputId" style ="margin-left: 20px;margin-bottom: 2px;" value="9" min="0" max="30" step = "1" oninput="kOutputId.value = kInputId.value">
+         <output name="kOutputName" id="kOutputId" style="margin-left: 10px; margin-right: 5px;margin-top: -6px; color:white">20</output>
+      </form>
+    </div>
+    <button onclick="Draw()" style="margin-left: -20px">Submit</button>
+    <button id="helpmsg" style="font-weight: bold; margin-left: 5px">?</button>
+  </div>
+  
+</div>
+<!-- The Modal -->
+<div id="message" class="modal" >
+  <!-- Modal content -->
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <p style="color:grey;text-align:left">
+        <br>1. Press the options button <img src="css/icon.png" height="20" width="20"> on the top left corner to reveal sidebar<br>
+        <br>2. Sidebar contains different pre-loaded datasets with customizable options<br>
+        <br>3. Click 'Submit' button to view the processed tree<br>
+        <br>4. For each node of the tree, click the graph to change border color<br>
+        <br>5. Red means not interested, green means interested and grey is not yet decided<br>
+        <br><img src="css/red.png" height="100" width="100">
+        <img src="css/green.png" height="100" width="100">
+
+
+        <br>
+        <br>6. The sidebar on the right will show your current selection of node(s) and their filter(s)<br>
+    </p>
+  </div>
+
+</div>
+
+</div>
+
+<div class="w3-container">
+
+    <div id="testbar">
+    </div>
+        <!-- <div>    
+            <br> graphDic: <input type="text" id="graphDic" style="width: 30%;">
+            <input type="submit" id="graphDicSubmit" style = "display: inline-block;font-size: 15px;">
+            &nbsp;&nbsp;&nbsp;&nbsp;
+            <input id="newCanvas" type="checkbox" onchange="toggleCanvas(this)" style="display:none">
+        </div> -->
+        <!-- <button onclick="testajax()">test</button> -->
+</div>
+    <script>
+        $( function() {
+          $( "#charttable" ).draggable({ containment: '#canvas-table', scroll: false });
+        });
+        $(document).ready(function(){
+            $('#canvas-table').bind('wheel mousewheel', function(e){
+            var delta;
+            if (e.originalEvent.wheelDelta !== undefined)
+                delta = e.originalEvent.wheelDelta;
+            else
+                delta = e.originalEvent.deltaY * -1;
+
+                if(delta > 0) {
+                    $("#canvas-table").css("zoom", "+=0.1");
+                }
+                else{
+                    $("#canvas-table").css("zoom", "-=0.1");
+                }
+            });
+        });
+    </script>
+
+
+        <div id="canvas-graph" style="height:100%; width:100%; float:left; background-color: rgb(239, 240, 242);">
+            <img src="css/Eclipse.svg" id = 'loadingDashboard' style="display: none; position: relative; z-index: 10; width: 100%; height: 50%;">
+        </div>
+        <div id="dialog">
+            <div id="dlg_text" style="padding: 7px;background-color: white;border-style: solid;border-width: 1px;border-radius: 8px;border-color: grey;display:none; font-size: 15px;">
+
+            </div>
+        </div>
+        <div id="canvas-table" style="zoom:100%;height:100%; width:80%; float:left;display:none;background-color:#eff0f2; ">
+            <table id="charttable" style="border-spacing: 5px 12px; border-collapse: separate; ">
+
+            </table>
+        </div>
+        <pre id="eventSpan"></pre>
+
+<div id = "chart_container">
+
+        <div style="visibility: hidden; display:inline; width: 0%; height: 0px" id="chartid">
+            <div id="chartid2" style="width: 0px; height: 0px">
+            </div>
+        </div>
+</div>
+
+ <div id="right-sidebar-graph" class="clearfix" style="width:17%; float:right; z-index: 1; position: relative;">
+<br><br>
+  </div>
+
+ </div>
+
+ <!-- panel for interested and uninterested nodes -->
+<!-- <div id="right-sidebar-table" class="clearfix" style="background-color:White;width:20%;height:100%; float:right;display:none; z-index: 1; position: relative;" >
+<div class="sidebar-menu" style="width:100%">
+   <div>
+            <li class="panel">You are interested in...</li>
+
+                <p style="color:green;font-weight: bold ">filter</p>
+               <ol id="selected" style="list-style-type:circle；color:#368332;font-weight: bold;">
+
+               </ol>
+        </div>
+
+      <div >
+          <li class="panel">You are not interested in...</li>
+          <table>
+
+              <p style="color:red;font-weight: bold ">filter</p>
+               <ol id="notselected" style="list-style-type:circle；color:#368332;font-weight: bold;">
+
+               </ol>
+          </table>
+      </div>
+<br>
+</div> -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vis/4.20.1/vis.min.js"></script>
+    <script type="text/javascript" src="http://cdn.jsdelivr.net/qtip2/3.0.3/jquery.qtip.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/vis/4.20.1/vis.min.css" rel="stylesheet" type="text/css" />
+    <link href="http://cdn.jsdelivr.net/qtip2/3.0.3/jquery.qtip.min.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="js/barchart.js"></script>
+<!-- Javascript files -->
+<script type="text/javascript" src="js/sidebar.js"></script>
+<script type="text/javascript" src="js/helper.js"></script>
+<script type="text/javascript" src="js/expand.js"></script>
+<script type="text/javascript" src="js/draw.js"></script>
+<script type="text/javascript" src="js/drop-down-menu.js"></script>
+<script type="text/javascript" src="js/barchart.js"></script>
+</div>
+</div>

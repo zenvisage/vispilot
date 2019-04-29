@@ -1,0 +1,13 @@
+survived,gender,pc_class,COUNT(id)
+t,female,1,96
+t,female,2,75
+t,female,3,46
+f,male,1,82
+f,male,2,106
+f,male,3,184
+t,male,3,32
+t,male,1,43
+t,male,2,21
+f,female,3,56
+f,female,1,5
+f,female,2,10

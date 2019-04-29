@@ -1,0 +1,945 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset='utf-8' />
+  <title>  | Documentation</title>
+  <meta name='viewport' content='width=device-width,initial-scale=1'>
+  <link href='assets/bass.css' rel='stylesheet' />
+  <link href='assets/style.css' rel='stylesheet' />
+  <link href='assets/github.css' rel='stylesheet' />
+  <link href='assets/split.css' rel='stylesheet' />
+</head>
+<body class='documentation m0'>
+    <div class='flex'>
+      <div id='split-left' class='overflow-auto fs0 height-viewport-100'>
+        <div class='py1 px2'>
+          <h3 class='mb0 no-anchor'></h3>
+          <div class='mb1'><code></code></div>
+          <input
+            placeholder='Filter'
+            id='filter-input'
+            class='col12 block input'
+            type='text' />
+          <div id='toc'>
+            <ul class='list-reset h5 py1-ul'>
+              
+                
+                <li><a
+                  href='#draw'
+                  class="">
+                  draw
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#'
+                  class="">
+                  
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#generatenode'
+                  class="">
+                  generateNode
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#generateedge'
+                  class="">
+                  generateEdge
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#getnodeedgelistthendraw'
+                  class="">
+                  getNodeEdgeListThenDraw
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#get_subpop'
+                  class="">
+                  get_subpop
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#buildgroup'
+                  class="">
+                  buildGroup
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#draw'
+                  class="">
+                  Draw
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#getcol'
+                  class="">
+                  getCol
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#gettable'
+                  class="">
+                  getTable
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#expand'
+                  class="">
+                  Expand
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#numofchildren'
+                  class="">
+                  numOfChildren
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#showdialog'
+                  class="">
+                  showDialog
+                  
+                </a>
+                
+                </li>
+              
+            </ul>
+          </div>
+          <div class='mt1 h6 quiet'>
+            <a href='https://documentation.js.org/reading-documentation.html'>Need help reading this?</a>
+          </div>
+        </div>
+      </div>
+      <div id='split-right' class='relative overflow-auto height-viewport-100'>
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='draw'>
+      draw
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Main draw function. Called when the Visualization API is loaded.</p>
+
+    <div class='pre p1 fill-light mt0'>draw(node: any, edge: any)</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>node</span> <code class='quiet'>(any)</code>
+	    
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>edge</span> <code class='quiet'>(any)</code>
+	    
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id=''>
+      
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>function test_chart(){
+// On document load, call the render() function to load the graph
+for (i = 0; i &#x3C; data.length; i++)
+{
+render_chart(i);
+$('rect').mouseenter(function(){
+$('#xAxis').html(this.className.animVal);
+$('#yAxis').html($(this).attr('id'));
+});
+}*</p>
+
+    <div class='pre p1 fill-light mt0'></div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='generatenode'>
+      generateNode
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Generate node list from nodeDicStr.</p>
+
+    <div class='pre p1 fill-light mt0'>generateNode(nodeDicStr: any, callback: any)</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>nodeDicStr</span> <code class='quiet'>(any)</code>
+	    
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>callback</span> <code class='quiet'>(any)</code>
+	    
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='generateedge'>
+      generateEdge
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Generate edge list from nodeDicStr.</p>
+
+    <div class='pre p1 fill-light mt0'>generateEdge(nodeDicStr: any)</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>nodeDicStr</span> <code class='quiet'>(any)</code>
+	    
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='getnodeedgelistthendraw'>
+      getNodeEdgeListThenDraw
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Generate node list and edge list and call main draw function.</p>
+
+    <div class='pre p1 fill-light mt0'>getNodeEdgeListThenDraw(nodeDicStr: any)</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>nodeDicStr</span> <code class='quiet'>(any)</code>
+	    
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='get_subpop'>
+      get_subpop
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Get subpopulation of a certain node.</p>
+
+    <div class='pre p1 fill-light mt0'>get_subpop(nodeID: any)</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>nodeID</span> <code class='quiet'>(any)</code>
+	    
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='buildgroup'>
+      buildGroup
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Assign group ID to each node.</p>
+
+    <div class='pre p1 fill-light mt0'>buildGroup(node: any)</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>node</span> <code class='quiet'>(any)</code>
+	    
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='draw'>
+      Draw
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Send all parameters to backend and get the nodeDic string.</p>
+
+    <div class='pre p1 fill-light mt0'>new Draw()</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='getcol'>
+      getCol
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Fetch Column names of a certain datset</p>
+
+    <div class='pre p1 fill-light mt0'>getCol()</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='gettable'>
+      getTable
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Fetch the name of datasets to dynamically fill the Dataset field.</p>
+
+    <div class='pre p1 fill-light mt0'>getTable()</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='expand'>
+      Expand
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Main expand function. Send all parameters to back end to get the expanded nodeDic.</p>
+
+    <div class='pre p1 fill-light mt0'>new Expand(id: any)</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>id</span> <code class='quiet'>(any)</code>
+	    
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='numofchildren'>
+      numOfChildren
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Calculate the number of children of a certain node given node_id.</p>
+
+    <div class='pre p1 fill-light mt0'>numOfChildren(id: any, child_dic: any)</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>id</span> <code class='quiet'>(any)</code>
+	    
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>child_dic</span> <code class='quiet'>(any)</code>
+	    
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='showdialog'>
+      showDialog
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Show Expanding dialog on UI.</p>
+
+    <div class='pre p1 fill-light mt0'>showDialog(nodeID: any)</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>nodeID</span> <code class='quiet'>(any)</code>
+	    
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+      </div>
+    </div>
+  <script src='assets/anchor.js'></script>
+  <script src='assets/split.js'></script>
+  <script src='assets/site.js'></script>
+</body>
+</html>
