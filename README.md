@@ -1,11 +1,15 @@
-# vispilot
+# VisPilot
 
-The system is a Flask application inside the ``systems/`` directory, to run the webapp, make sure you have the latest version of Flask installed. 
- 
+## Introduction
+As datasets continue to grow in size and complexity, exploring multi-dimensional datasets remain challenging for analysts. A common operation during this exploration is drilldown—understanding the behavior of data subsets by progressively adding filters. While widely used, in the absence of careful attention towards confounding factors, drill-downs could lead to inductive fallacies. Specifically, an analyst may end up being “deceived” into thinking that a deviation in trend is attributable to a local change, when in fact it is a more general phenomenon; we term this the drill-down fallacy. One way to avoid falling prey to drill-down fallacies is to exhaustively explore all potential drill-down paths, which quickly becomes infeasible on complex datasets with many attributes. We present VisPilot, an accelerated visual data exploration tool that guides analysts through the key insights in a dataset, while avoiding drill-down fallacies. Our user study results show that VisPilot helps analysts discover interesting visualizations, understand attribute importance, and predict unseen visualizations better than other multidimensional data analysis baselines.
+
+## Basic Setup
+
+To build the project, run:
 ```
-export FLASK_APP=main.py
-python -m flask run
+bash build.sh
 ```
+Under the ``/vispilot/`` directory.
 
 Install postgres at: https://postgresapp.com/
 
@@ -17,17 +21,14 @@ CREATE USER summarization WITH CREATEDB CREATEROLE;
 ALTER USER summarization WITH PASSWORD 'lattice';
 ALTER USER summarization WITH SUPERUSER;
 ```
-To upload data see the [notebook](https://github.com/dorisjlee/viz-summarization/blob/master/ipynb/Testing%20Postgres%20SQL.ipynb)
 
-If after running the flask server, you see the error: 
-```
-socket.error: [Errno 48] Address already in use
-```
-then kill the process by : 
-```
-$ ps aux | grep 'python -m flask run'
-dorislee         28248   0.6  0.0  2436888    812 s002  S+    4:15PM   0:00.00 grep --color=auto python -m flask run
-dorislee         27885   0.0  0.5  2552352  76224 s002  T     3:58PM   0:01.26 python -m flask run
+## Build Outputs
 
-$kill $(ps aux | grep 'python -m flask run' | awk '{print $2}')
+To run the built server, run:
 ```
+bash run.sh
+```
+Under the ``/vispilot/`` directory.
+
+
+
