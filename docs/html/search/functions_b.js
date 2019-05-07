@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['viz_5fquery',['viz_query',['../classedu_1_1uiuc_1_1viz_1_1lattice_1_1_database.html#a1c068934b872f09fa921a39c1094e39d',1,'edu::uiuc::viz::lattice::Database']]]
+  ['naiveexhaustivepicking',['NaiveExhaustivePicking',['../classedu_1_1uiuc_1_1viz_1_1algorithms_1_1_naive_exhaustive_picking.html#a4f5002eb011ae736da8f1644d306c689',1,'edu::uiuc::viz::algorithms::NaiveExhaustivePicking']]],
+  ['node',['Node',['../classedu_1_1uiuc_1_1viz_1_1lattice_1_1_node.html#adf772043e374666acdf74fc3da434cf4',1,'edu::uiuc::viz::lattice::Node']]]
 ];

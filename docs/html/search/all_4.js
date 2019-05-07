@@ -1,8 +1,23 @@
 var searchData=
 [
-  ['earthmover',['EarthMover',['../classedu_1_1uiuc_1_1viz_1_1distance_1_1_earth_mover.html',1,'edu::uiuc::viz::distance']]],
-  ['euclidean',['Euclidean',['../classedu_1_1uiuc_1_1viz_1_1distance_1_1_euclidean.html',1,'edu::uiuc::viz::distance']]],
-  ['exhaustivepicking',['ExhaustivePicking',['../classedu_1_1uiuc_1_1viz_1_1algorithms_1_1_exhaustive_picking.html',1,'edu::uiuc::viz::algorithms']]],
+  ['algorithms',['algorithms',['../namespaceedu_1_1uiuc_1_1viz_1_1algorithms.html',1,'edu::uiuc::viz']]],
+  ['api',['api',['../namespaceedu_1_1uiuc_1_1viz_1_1api.html',1,'edu::uiuc::viz']]],
+  ['distance',['distance',['../namespaceedu_1_1uiuc_1_1viz_1_1distance.html',1,'edu::uiuc::viz']]],
+  ['earthmover',['EarthMover',['../classedu_1_1uiuc_1_1viz_1_1distance_1_1_earth_mover.html',1,'edu.uiuc.viz.distance.EarthMover'],['../classedu_1_1uiuc_1_1viz_1_1distance_1_1_earth_mover.html#a0ce2c0e0919dc78d792318b325a3319b',1,'edu.uiuc.viz.distance.EarthMover.EarthMover()']]],
+  ['earthmover_2ejava',['EarthMover.java',['../_earth_mover_8java.html',1,'']]],
+  ['edu',['edu',['../namespaceedu.html',1,'']]],
+  ['euclidean',['Euclidean',['../classedu_1_1uiuc_1_1viz_1_1distance_1_1_euclidean.html',1,'edu.uiuc.viz.distance.Euclidean'],['../classedu_1_1uiuc_1_1viz_1_1distance_1_1_euclidean.html#a4c63a0ffb07c866e69f8c5bfa0930ca6',1,'edu.uiuc.viz.distance.Euclidean.Euclidean()']]],
+  ['euclidean_2ejava',['Euclidean.java',['../_euclidean_8java.html',1,'']]],
+  ['evaluation',['evaluation',['../namespaceedu_1_1uiuc_1_1viz_1_1evaluation.html',1,'edu::uiuc::viz']]],
+  ['exhaustivepicking',['ExhaustivePicking',['../classedu_1_1uiuc_1_1viz_1_1algorithms_1_1_exhaustive_picking.html',1,'edu.uiuc.viz.algorithms.ExhaustivePicking'],['../classedu_1_1uiuc_1_1viz_1_1algorithms_1_1_exhaustive_picking.html#ace21b294c314c31cd1316582fa35328d',1,'edu.uiuc.viz.algorithms.ExhaustivePicking.ExhaustivePicking()']]],
+  ['exhaustivepicking_2ejava',['ExhaustivePicking.java',['../_exhaustive_picking_8java.html',1,'']]],
+  ['exp',['exp',['../classedu_1_1uiuc_1_1viz_1_1lattice_1_1_viz_output.html#a3192697fe0bef42f79b1eb58ba57bac0',1,'edu::uiuc::viz::lattice::VizOutput']]],
   ['expand',['expand',['../classedu_1_1uiuc_1_1viz_1_1api_1_1_viz_basic_a_p_i.html#ae245c3e253abd0330e8c0c4897dda1eb',1,'edu::uiuc::viz::api::VizBasicAPI']]],
-  ['experiment',['Experiment',['../classedu_1_1uiuc_1_1viz_1_1algorithms_1_1_experiment.html',1,'edu.uiuc.viz.algorithms.Experiment'],['../classedu_1_1uiuc_1_1viz_1_1algorithms_1_1_experiment.html#a6e1595f762646d6ae4576f8dd8825120',1,'edu.uiuc.viz.algorithms.Experiment.Experiment()']]]
+  ['experiment',['Experiment',['../classedu_1_1uiuc_1_1viz_1_1algorithms_1_1_experiment.html',1,'edu.uiuc.viz.algorithms.Experiment'],['../classedu_1_1uiuc_1_1viz_1_1algorithms_1_1_experiment.html#a6e1595f762646d6ae4576f8dd8825120',1,'edu.uiuc.viz.algorithms.Experiment.Experiment()']]],
+  ['experiment_2ejava',['Experiment.java',['../_experiment_8java.html',1,'']]],
+  ['experiment_5fname',['experiment_name',['../classedu_1_1uiuc_1_1viz_1_1algorithms_1_1_experiment.html#aee7b59b20ef7e41159671111ea31fe59',1,'edu::uiuc::viz::algorithms::Experiment']]],
+  ['lattice',['lattice',['../namespaceedu_1_1uiuc_1_1viz_1_1lattice.html',1,'edu::uiuc::viz']]],
+  ['server',['server',['../namespaceedu_1_1uiuc_1_1viz_1_1server.html',1,'edu::uiuc::viz']]],
+  ['uiuc',['uiuc',['../namespaceedu_1_1uiuc.html',1,'edu']]],
+  ['viz',['viz',['../namespaceedu_1_1uiuc_1_1viz.html',1,'edu::uiuc']]]
 ];

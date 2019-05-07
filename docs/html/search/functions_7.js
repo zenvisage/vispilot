@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['pickvisualizations',['pickVisualizations',['../classedu_1_1uiuc_1_1viz_1_1algorithms_1_1_exhaustive_picking.html#a03c9781724cd64c0d1294c06b9bb9ceb',1,'edu.uiuc.viz.algorithms.ExhaustivePicking.pickVisualizations()'],['../classedu_1_1uiuc_1_1viz_1_1algorithms_1_1_multiple_probablistic_picking.html#a2242e3dcbae46fe66872bbe6fe912049',1,'edu.uiuc.viz.algorithms.MultipleProbablisticPicking.pickVisualizations()'],['../classedu_1_1uiuc_1_1viz_1_1algorithms_1_1_naive_exhaustive_picking.html#a20999a527bdc67d6227300611db8d2fa',1,'edu.uiuc.viz.algorithms.NaiveExhaustivePicking.pickVisualizations()'],['../classedu_1_1uiuc_1_1viz_1_1algorithms_1_1_probablistic_picking.html#a9166d3fa8f4f1057ecbd343fae327362',1,'edu.uiuc.viz.algorithms.ProbablisticPicking.pickVisualizations()']]]
+  ['improvesubgraphlocally',['improveSubgraphLocally',['../classedu_1_1uiuc_1_1viz_1_1algorithms_1_1_local_graph_improve.html#a0c4ae555848219fd07f2aab350d309bf',1,'edu::uiuc::viz::algorithms::LocalGraphImprove']]],
+  ['isnumeric',['isNumeric',['../classedu_1_1uiuc_1_1viz_1_1lattice_1_1_database.html#aefb44964489e83df40f17a0a37f54b31',1,'edu::uiuc::viz::lattice::Database']]]
 ];
