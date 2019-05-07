@@ -1,0 +1,23 @@
+In the Doxygen GUI: 
+
+Step 1: 
+	Source code directory: 
+	<LOCALPATH>/vispilot/src/main/java/edu/uiuc/viz/
+
+	Specify directory
+	<LOCALPATH>/vispilot/docs
+
+
+Step 2: 
+	Documented entities only
+	Optimized for Java or C# Output
+
+Step 3: 
+	Output:
+		check HTML, plain HTML
+
+Step 4:
+ 	Use built-in class diagram generator
+
+Then Doxygen generates the documentation. 
+You can view the generated documentation inside docs and annotated.html
