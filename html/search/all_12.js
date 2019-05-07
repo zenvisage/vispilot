@@ -1,9 +1,9 @@
 var searchData=
 [
-  ['viz_5fquery',['viz_query',['../classedu_1_1uiuc_1_1viz_1_1lattice_1_1_database.html#a1c068934b872f09fa921a39c1094e39d',1,'edu::uiuc::viz::lattice::Database']]],
-  ['vizbasicapi',['VizBasicAPI',['../classedu_1_1uiuc_1_1viz_1_1api_1_1_viz_basic_a_p_i.html',1,'edu::uiuc::viz::api']]],
-  ['viznode',['vizNode',['../classpython_1_1node_1_1viz_node.html',1,'python::node']]],
-  ['vizobj',['vizObj',['../classpython_1_1viz_obj_1_1viz_obj.html',1,'python::vizObj']]],
-  ['vizoutput',['VizOutput',['../classedu_1_1uiuc_1_1viz_1_1lattice_1_1_viz_output.html',1,'edu::uiuc::viz::lattice']]],
-  ['vizserver',['VizServer',['../classedu_1_1uiuc_1_1viz_1_1server_1_1_viz_server.html',1,'edu::uiuc::viz::server']]]
+  ['uniqueattributekeyvals',['uniqueAttributeKeyVals',['../classedu_1_1uiuc_1_1viz_1_1algorithms_1_1_experiment.html#ab35e0234c8ed1256e257be5930aed766',1,'edu::uiuc::viz::algorithms::Experiment']]],
+  ['updateexternal',['updateExternal',['../classedu_1_1uiuc_1_1viz_1_1algorithms_1_1_breadth_first_picking.html#ae66671d6e5c4f77f063bd1bdd7e08e89',1,'edu.uiuc.viz.algorithms.BreadthFirstPicking.updateExternal()'],['../classedu_1_1uiuc_1_1viz_1_1algorithms_1_1_look_ahead_picking.html#a5ba9a735d4038044011f64928225fb1d',1,'edu.uiuc.viz.algorithms.LookAheadPicking.updateExternal()'],['../classedu_1_1uiuc_1_1viz_1_1algorithms_1_1_probablistic_picking_test.html#a96642cd7cc4fbd22725028d61e3919b1',1,'edu.uiuc.viz.algorithms.ProbablisticPickingTest.updateExternal()'],['../classedu_1_1uiuc_1_1viz_1_1algorithms_1_1_recursive_breadth_first_picking.html#a236387c8532b844530d15e70b1bdbb87',1,'edu.uiuc.viz.algorithms.RecursiveBreadthFirstPicking.updateExternal()'],['../classedu_1_1uiuc_1_1viz_1_1algorithms_1_1_recursive_naive_greedy_picking.html#a223e7c7904236d36437fd8189e27128a',1,'edu.uiuc.viz.algorithms.RecursiveNaiveGreedyPicking.updateExternal()'],['../classedu_1_1uiuc_1_1viz_1_1algorithms_1_1_two_step_look_aheadalgorithm.html#a0193b2b08d366154293f1c17249f1d8c',1,'edu.uiuc.viz.algorithms.TwoStepLookAheadalgorithm.updateExternal()']]],
+  ['updatesubgraphutility',['updateSubGraphUtility',['../classedu_1_1uiuc_1_1viz_1_1lattice_1_1_dashboard.html#a8df0f4fca22aceb9de4f568f6f54b85b',1,'edu::uiuc::viz::lattice::Dashboard']]],
+  ['updateutilities',['updateUtilities',['../classedu_1_1uiuc_1_1viz_1_1algorithms_1_1_local_graph_improve.html#a181cac5e84e9f3901eec038297fcd708',1,'edu::uiuc::viz::algorithms::LocalGraphImprove']]],
+  ['userstudybaseline',['UserStudyBaseline',['../classedu_1_1uiuc_1_1viz_1_1evaluation_1_1_user_study_baseline.html',1,'edu::uiuc::viz::evaluation']]],
+  ['userstudybaseline_2ejava',['UserStudyBaseline.java',['../_user_study_baseline_8java.html',1,'']]]
 ];

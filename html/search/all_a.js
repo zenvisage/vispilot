@@ -1,6 +1,11 @@
 var searchData=
 [
-  ['maxdiff',['MaxDiff',['../classedu_1_1uiuc_1_1viz_1_1distance_1_1_max_diff.html',1,'edu::uiuc::viz::distance']]],
-  ['multipleprobablisticpicking',['MultipleProbablisticPicking',['../classedu_1_1uiuc_1_1viz_1_1algorithms_1_1_multiple_probablistic_picking.html',1,'edu::uiuc::viz::algorithms']]],
-  ['multiplerandomwalk',['MultipleRandomWalk',['../classedu_1_1uiuc_1_1viz_1_1algorithms_1_1_multiple_random_walk.html',1,'edu::uiuc::viz::algorithms']]]
+  ['lattice',['Lattice',['../classedu_1_1uiuc_1_1viz_1_1lattice_1_1_lattice.html',1,'edu.uiuc.viz.lattice.Lattice'],['../classedu_1_1uiuc_1_1viz_1_1lattice_1_1_lattice.html#a496de455ff51eeb81becb5469c24d8c8',1,'edu.uiuc.viz.lattice.Lattice.Lattice(HashMap&lt; String, ArrayList&lt; Double &gt;&gt; id2MetricMap, ArrayList&lt; Node &gt; nodeList, HashMap&lt; String, Integer &gt; id2IDMap)'],['../classedu_1_1uiuc_1_1viz_1_1lattice_1_1_lattice.html#a1354814409ca9a1f493d02f07dddd668',1,'edu.uiuc.viz.lattice.Lattice.Lattice()'],['../classedu_1_1uiuc_1_1viz_1_1algorithms_1_1_experiment.html#ae0a02f9887ac0f2a82efd66739a7a525',1,'edu.uiuc.viz.algorithms.Experiment.lattice()'],['../classedu_1_1uiuc_1_1viz_1_1lattice_1_1_dashboard.html#a63a74fa170c8deda7b05ded929774567',1,'edu.uiuc.viz.lattice.Dashboard.lattice()']]],
+  ['lattice_2ejava',['Lattice.java',['../_lattice_8java.html',1,'']]],
+  ['level_5fcutoff',['LEVEL_CUTOFF',['../classedu_1_1uiuc_1_1viz_1_1algorithms_1_1_experiment.html#a97491a54890a4741607ef1f432a22461',1,'edu::uiuc::viz::algorithms::Experiment']]],
+  ['localgraphimprove',['LocalGraphImprove',['../classedu_1_1uiuc_1_1viz_1_1algorithms_1_1_local_graph_improve.html',1,'edu.uiuc.viz.algorithms.LocalGraphImprove'],['../classedu_1_1uiuc_1_1viz_1_1algorithms_1_1_local_graph_improve.html#a7d7c2e993a45e2983ad6be3b0d2b345b',1,'edu.uiuc.viz.algorithms.LocalGraphImprove.LocalGraphImprove()']]],
+  ['localgraphimprove_2ejava',['LocalGraphImprove.java',['../_local_graph_improve_8java.html',1,'']]],
+  ['logistic',['logistic',['../classedu_1_1uiuc_1_1viz_1_1algorithms_1_1_multiple_probablistic_picking.html#a47a82a00700c994be6300cc86df206d7',1,'edu.uiuc.viz.algorithms.MultipleProbablisticPicking.logistic()'],['../classedu_1_1uiuc_1_1viz_1_1algorithms_1_1_probablistic_picking.html#a78e5c7b529ac2cf441c2b9eb3e9746b7',1,'edu.uiuc.viz.algorithms.ProbablisticPicking.logistic()']]],
+  ['lookaheadpicking',['LookAheadPicking',['../classedu_1_1uiuc_1_1viz_1_1algorithms_1_1_look_ahead_picking.html',1,'edu.uiuc.viz.algorithms.LookAheadPicking'],['../classedu_1_1uiuc_1_1viz_1_1algorithms_1_1_look_ahead_picking.html#aa831b21cd72710b267745d3145ed38aa',1,'edu.uiuc.viz.algorithms.LookAheadPicking.LookAheadPicking()']]],
+  ['lookaheadpicking_2ejava',['LookAheadPicking.java',['../_look_ahead_picking_8java.html',1,'']]]
 ];
